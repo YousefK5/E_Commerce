@@ -5269,10 +5269,10 @@ a[data-toggle="tooltip"]:hover {
   z-index: 1;
 }
 .dhslider .slide-bg-1 {
-  background-image:url(../images/slideshow/1.jpg)
+  background-image:url(../images/slideshow/stonebridge.jpg)
 }
 .dhslider .slide-bg-2 {
-  background-image:url(../images/slideshow/home-slide-2.png)
+  background-image:url(../images/slideshow/stonebridge3.jpg)
 }
 .dhslider .slide-bg-3 {
   background-image:url(../images/slideshow/7.jpg)
@@ -12022,11 +12022,11 @@ img.grayscale:hover {
   font-size: 0.8em;
 }
 .lookbook-info-wrap {
-  background: url(../images/lookbook/lookbook.jpg) no-repeat scroll center center;
+  background: url(../images/lookbook/discounts.webp) no-repeat scroll center center;
 }
 .lookbook-info-wrap.bg-1 {
-  background: url(../images/lookbook/lookbook-1.jpg) no-repeat scroll center center;
+  background: url(../images/lookbook/cover4.webp) no-repeat scroll center center;
 }
 .lookbook-info-wrap.bg-2 {
-  background: url(../images/lookbook/lookbook-2.jpg) no-repeat scroll center center;
+  background: url(../images/lookbook/bedroom.webp) no-repeat scroll center center;
 }
