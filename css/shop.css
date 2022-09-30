@@ -4743,22 +4743,23 @@ textarea.shop form .form-row textarea {
   backface-visibility: hidden;
 }
 .product-categories-grid-wrap .wall-col .product-category-grid-featured.bg-1 {
-  background-image: url(../images/categories/category-1.jpg);
+  background-image: url(../images/categories/matrs.webp);
+  
 }
 .product-categories-grid-wrap .wall-col .product-category-grid-featured.bg-2 {
-  background-image: url(../images/categories/category-2.jpg);
+  background-image: url(../images/categories/matrs2.png);
 }
 .product-categories-grid-wrap .wall-col .product-category-grid-featured.bg-3 {
-  background-image: url(../images/categories/category-10.jpg);
+  background-image: url(../images/categories/pillow8.webp);
 }
 .product-categories-grid-wrap .wall-col .product-category-grid-featured.bg-4 {
-  background-image: url(../images/categories/category-11.jpg);
+  background-image: url(../images/categories/pillow.png);
 }
 .product-categories-grid-wrap .wall-col .product-category-grid-featured.bg-5 {
-  background-image: url(../images/categories/category-9.jpg);
+  background-image: url(../images/categories/mat.PNG);
 }
 .product-categories-grid-wrap .wall-col .product-category-grid-featured.bg-6 {
-  background-image: url(../images/categories/category-6.jpg);
+  background-image: url(../images/categories/blankets.PNG);
 }
 .product-categories-grid-wrap .wall-col:hover .product-category-grid-featured {
   -webkit-transform: scale3d(1.1, 1.1, 1);
