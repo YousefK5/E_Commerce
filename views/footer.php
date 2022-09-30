@@ -37,7 +37,7 @@
 <div class="modal fade user-login-modal" id="userloginModal" tabindex="-1" role="dialog" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form id="userloginModalForm" method="post" action="login.php">
+			<form id="userloginModalForm" method="post" >
 
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">
@@ -161,10 +161,6 @@
 
 					</div>
 					
-
-
-
-
 
 
 

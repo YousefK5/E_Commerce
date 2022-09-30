@@ -2,7 +2,6 @@
 require_once "connection.php";
 
 
-
 if (isset($_POST['login'])) {
 	$password = $_POST['password'];
 	$email = $_POST['email'];
@@ -24,7 +23,6 @@ if (isset($_POST['login'])) {
 
 
 <?php require 'header.php'; ?>
-
 
 
 

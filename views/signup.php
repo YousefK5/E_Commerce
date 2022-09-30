@@ -96,16 +96,6 @@ function test_input($data)
 
 
 
-
-
-
-
-
-
-
-
-
-
 if (isset($_POST['register'])) {
     $nameErr = $emailErr = $phoneErr = $cpassErr = $passErr = " ";
 
@@ -142,11 +132,15 @@ if (isset($_POST['register'])) {
             $emailErr = "Name is required";  $emailE = false;
         } else {
             $Singup->setEmail(test_input($Singup->getEmail()));
-            $emailEr = true;
+            // $emailEr = false;
             // check if name only contains letters and whitespace
 
-            if (!filter_var($Singup->getEmail(), FILTER_VALIDATE_EMAIL)) {
+            if (filter_var($Singup->getEmail(), FILTER_VALIDATE_EMAIL)) {
                 $emailErr = "Invalid email format";
+                $emailEr = false;
+
+            }else{
+                $emailErr = true;
             }
         }
 
@@ -157,10 +151,13 @@ if (isset($_POST['register'])) {
             $phoneErr = "phone is required";   $phoneEr = false;
         } else {
             $Singup->setPhone(test_input($Singup->getPhone()));
-            $phoneEr = true;
+         
             // check if name only contains letters and whitespace
             if (!preg_match("/^\+?\d{3}[- ]?\d{3}[- ]?\d{6}$/", $Singup->getPhone())) {
                 $phoneErr = "Invalid phone number format";
+                $phoneEr = false;
+            }else{
+                $phoneEr = true;
             }
         }
 
@@ -171,10 +168,13 @@ if (isset($_POST['register'])) {
             $passEr = false;
         } else {
             $Singup->setPassword(test_input($Singup->getPassword()));
-            $passEr = true;
+         
             // check if name only contains letters and whitespace
             if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/", $Singup->getPassword())) {
                 $passErr = "Invalid password format";
+                $passEr = false;
+            }else{
+                $passErr = true;
             }
         }
 
