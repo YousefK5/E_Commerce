@@ -4743,23 +4743,23 @@ textarea.shop form .form-row textarea {
   backface-visibility: hidden;
 }
 .product-categories-grid-wrap .wall-col .product-category-grid-featured.bg-1 {
-  background-image: url(../images/categories/matrs.webp);
+  background-image: url(../images/categories/blankets.PNG);
   
 }
 .product-categories-grid-wrap .wall-col .product-category-grid-featured.bg-2 {
-  background-image: url(../images/categories/matrs2.png);
+  background-image: url(../images/categories/mattresses.PNG);
 }
 .product-categories-grid-wrap .wall-col .product-category-grid-featured.bg-3 {
-  background-image: url(../images/categories/pillow8.webp);
+  background-image: url(../images/categories/duvetcover.webp);
 }
 .product-categories-grid-wrap .wall-col .product-category-grid-featured.bg-4 {
-  background-image: url(../images/categories/pillow.png);
+  background-image: url(../images/categories/duvet.png);
 }
 .product-categories-grid-wrap .wall-col .product-category-grid-featured.bg-5 {
-  background-image: url(../images/categories/mat.PNG);
+  background-image: url(../images/categories/sheets.png);
 }
 .product-categories-grid-wrap .wall-col .product-category-grid-featured.bg-6 {
-  background-image: url(../images/categories/blankets.PNG);
+  background-image: url(../images/categories/pillows.jpg);
 }
 .product-categories-grid-wrap .wall-col:hover .product-category-grid-featured {
   -webkit-transform: scale3d(1.1, 1.1, 1);
