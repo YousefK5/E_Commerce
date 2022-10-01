@@ -3,7 +3,6 @@ require_once 'connection.php';
 // require 'header.php';
 // require 'footer.php';
 
-print_r($_POST);
 class Singup
 {
     private $name;
@@ -84,26 +83,29 @@ function test_input($data)
 
 if (isset($_POST['register'])) {
     $nameErr = $emailErr = $phoneErr = $cpassErr = $passErr = ' ';
+    $nameEr = $emailEr = $phoneEr = $passEr = $cpassEr = $addressEr = $cityEr = false;
 
     $Singup = new Singup(
-        $_REQUEST['name'],
-        $_REQUEST['email'],
-        $_REQUEST['password'],
-        $_REQUEST['phone'],
-        $_REQUEST['address'],
-        $_REQUEST['city']
+        $_POST['name'],
+        $_POST['email'],
+        $_POST['password'],
+        $_POST['phone'],
+        $_POST['address'],
+        $_POST['city']
     );
+    print_r($Singup);
 
     $query = 'SELECT * from `users` where email=?';
     $query = $connect->prepare($query);
     $query->execute([$Singup->getEmail()]);
 
     $isFound = $query->fetch(PDO::FETCH_OBJ);
+    print_r($isFound);
 
     if (empty($isFound)) {
         if (empty($Singup->getName())) {
             $nameErr = 'Name is required';
-            $nameEr = false;
+            echo "<script>alert(   '$nameErr') </script>";
         } else {
             $Singup->setName(test_input($Singup->getName()));
             // check if name only contains letters and whitespace
@@ -112,7 +114,7 @@ if (isset($_POST['register'])) {
                 strlen($Singup->getName()) > 4
             ) {
                 $nameErr = 'Only letters and white space allowed';
-                $nameEr = false;
+                echo "<script>alert(   '$nameErr') </script>";
             } else {
                 $nameEr = true;
             }
@@ -120,23 +122,23 @@ if (isset($_POST['register'])) {
 
         if (empty($Singup->getEmail())) {
             $emailErr = 'Name is required';
-            $emailE = false;
+            echo "<script>alert(   '$emailErr') </script>";
         } else {
             $Singup->setEmail(test_input($Singup->getEmail()));
             // $emailEr = false;
             // check if name only contains letters and whitespace
 
-            if (filter_var($Singup->getEmail(), FILTER_VALIDATE_EMAIL)) {
+            if (!filter_var($Singup->getEmail(), FILTER_VALIDATE_EMAIL)) {
                 $emailErr = 'Invalid email format';
-                $emailEr = false;
+                echo "<script>alert(   '$emailErr') </script>";
             } else {
-                $emailErr = true;
+                $emailEr = true;
             }
         }
 
         if (empty($Singup->getPhone())) {
             $phoneErr = 'phone is required';
-            $phoneEr = false;
+            echo "<script>alert(   '$phoneErr') </script>";
         } else {
             $Singup->setPhone(test_input($Singup->getPhone()));
 
@@ -148,7 +150,7 @@ if (isset($_POST['register'])) {
                 )
             ) {
                 $phoneErr = 'Invalid phone number format';
-                $phoneEr = false;
+                echo "<script>alert(   '$phoneErr') </script>";
             } else {
                 $phoneEr = true;
             }
@@ -156,7 +158,7 @@ if (isset($_POST['register'])) {
 
         if (empty($Singup->getPassword())) {
             $passErr = 'password is required';
-            $passEr = false;
+            echo "<script>alert(   '$passErr') </script>";
         } else {
             $Singup->setPassword(test_input($Singup->getPassword()));
 
@@ -168,23 +170,23 @@ if (isset($_POST['register'])) {
                 )
             ) {
                 $passErr = 'Invalid password format';
-                $passEr = false;
+                echo "<script>alert(   '$passErr') </script>";
             } else {
-                $passErr = true;
+                $passEr = true;
             }
         }
 
         // form validation for confirm password
         if ($_REQUEST['cuser_password'] != $Singup->getPassword()) {
             $cpassErr = 'Confirm Password doesnot Matche';
-            $cpassErr = false;
+            echo "<script>alert(   '$cpassErr') </script>";
         } else {
             $cpassEr = true;
         }
 
         if (empty($Singup->getAddress())) {
             $addressErr = 'Address is required';
-            $addressErr = false;
+            echo "<script>alert(   '$addressErr') </script>";
         } else {
             $Singup->setAddress(test_input($Singup->getAddress()));
             $addressEr = true;
@@ -192,7 +194,7 @@ if (isset($_POST['register'])) {
 
         if (empty($Singup->getCity())) {
             $cityErr = 'city is required';
-            $cityEr = false;
+            echo "<scrpt>alert(   '$cityErr ') </script>";
         } else {
             $Singup->setCity(test_input($Singup->getCity()));
             $cityEr = true;
@@ -207,9 +209,9 @@ if (isset($_POST['register'])) {
             $cityEr &&
             $addressEr
         ) {
-            echo 'Good';
             $q =
                 'INSERT INTO users (name, address, phone, email, password,city) VALUES (?,?,?,?,?,?)';
+            echo "<script> alert( 'test')  </script>";
 
             $stmt = $connect->prepare($q);
             $stmt->execute([
@@ -221,7 +223,8 @@ if (isset($_POST['register'])) {
                 $Singup->getCity(),
             ]);
         }
+    } else {
+        $emailErr = 'It looks like you’re connected try login. Please ';
+        echo "<script>alert(   '$emailErr') </script>";
     }
-} else {
-    $emailErr = 'It looks like you’re connected try login. Please ';
 }
