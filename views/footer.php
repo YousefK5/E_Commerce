@@ -376,7 +376,7 @@
 		<script type='text/javascript' src='../js/custom.js'></script>
 
 		<script type='text/javascript' src='../js/jquery.magnific-popup.min.js'></script>
-		<script type='text/javascript' src='../js/jquery.js'></script>
+		<!-- <script type='text/javascript' src='../js/jquery.js'></script> -->
 		<script type='text/javascript' src='../js/jquery.cookie.min.js'></script>
 
 
