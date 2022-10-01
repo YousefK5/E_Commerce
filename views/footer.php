@@ -37,7 +37,7 @@
 <div class="modal fade user-login-modal" id="userloginModal" tabindex="-1" role="dialog" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form id="userloginModalForm" method="post" >
+			<form id="userloginModalForm" method="post" action="login.php">
 
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">
@@ -173,7 +173,7 @@
 					<span class="user-login-modal-link pull-left">
 						<a data-rel="loginModal" href="#loginModal">Already have an account?</a>
 					</span>
-					<button type="submit" name="register" class="btn btn-default btn-outline">Register</button>
+					<input type="submit" name="register" class="btn btn-default btn-outline" value="Register">
 				</div>
 			</form>
 		</div>
@@ -346,25 +346,44 @@
 	</div>
 </div>
 
+
+
 <script type='text/javascript' src='http://code.jquery.com/jquery-1.11.3.min.js'></script>
-<script type='text/javascript' src='../js/jquery-migrate.min.js'></script>
-<script type='text/javascript' src='../js/jquery.themepunch.tools.min.js'></script>
-<script type='text/javascript' src='../js/jquery.themepunch.revolution.min.js'></script>
-<script type='text/javascript' src='../js/easing.min.js'></script>
-<script type='text/javascript' src='../js/imagesloaded.pkgd.min.js'></script>
-<script type='text/javascript' src='../js/bootstrap.min.js'></script>
-<script type='text/javascript' src='../js/superfish-1.7.4.min.js'></script>
-<script type='text/javascript' src='../js/jquery.appear.min.js'></script>
-<script type='text/javascript' src='../js/script.js'></script>
-<script type='text/javascript' src='../js/swatches-and-photos.js'></script>
-<script type='text/javascript' src='../js/jquery.prettyPhoto.min.js'></script>
-<script type='text/javascript' src='../js/jquery.prettyPhoto.init.min.js'></script>
-<script type='text/javascript' src='../js/jquery.selectBox.min.js'></script>
-<script type='text/javascript' src='../js/jquery.parallax.js'></script>
-<script type='text/javascript' src='../js/jquery.touchSwipe.min.js'></script>
-<script type='text/javascript' src='../js/jquery.transit.min.js'></script>
-<script type='text/javascript' src='../js/jquery.carouFredSel.min.js'></script>
-<script type='text/javascript' src='../js/isotope.pkgd.min.js'></script>
+		<script type='text/javascript' src='../js/jquery-migrate.min.js'></script>
+		<script type='text/javascript' src='../js/jquery.themepunch.tools.min.js'></script>
+		<script type='text/javascript' src='../js/jquery.themepunch.revolution.min.js'></script>
+		<script type='text/javascript' src='../js/easing.min.js'></script>
+		<script type='text/javascript' src='../js/imagesloaded.pkgd.min.js'></script>
+		<script type='text/javascript' src='../js/bootstrap.min.js'></script>
+		<script type='text/javascript' src='../js/superfish-1.7.4.min.js'></script>
+		<script type='text/javascript' src='../js/jquery.appear.min.js'></script>
+		<script type='text/javascript' src='../js/script.js'></script>
+		<script type='text/javascript' src='../js/swatches-and-photos.js'></script>
+		<script type='text/javascript' src='../js/jquery.prettyPhoto.min.js'></script>
+		<script type='text/javascript' src='../js/jquery.prettyPhoto.init.min.js'></script>
+		<script type='text/javascript' src='../js/jquery.selectBox.min.js'></script>
+		<script type='text/javascript' src='../js/jquery.parallax.js'></script>
+		<script type='text/javascript' src='../js/jquery.touchSwipe.min.js'></script>
+		<script type='text/javascript' src='../js/jquery.transit.min.js'></script>
+		<script type='text/javascript' src='../js/jquery.carouFredSel.min.js'></script>
+		<script type='text/javascript' src='../js/isotope.pkgd.min.js'></script>
+		<script type='text/javascript' src='../js/core.min.js'></script>
+		<script type='text/javascript' src='../js/widget.min.js'></script>
+		<script type='text/javascript' src='../js/mouse.min.js'></script>
+		<script type='text/javascript' src='../js/slider.min.js'></script>
+		<script type='text/javascript' src='../js/jquery-ui-touch-punch.min.js'></script>
+		<script type='text/javascript' src='../js/price-slider.js'></script>
+		<script type='text/javascript' src='../js/custom.js'></script>
+
+		<script type='text/javascript' src='../js/jquery.magnific-popup.min.js'></script>
+		<!-- <script type='text/javascript' src='../js/jquery.js'></script> -->
+		<script type='text/javascript' src='../js/jquery.cookie.min.js'></script>
+
+
+
+<!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+
+
 </body>
 
 </html>
