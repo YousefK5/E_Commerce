@@ -3,15 +3,12 @@
 require_once '../../views/connection.php';
 
 $userID = $_GET['id'];
-
-try {
-    $user = $connect->query("SELECT * FROM users WHERE id='$userID'");
-    $user = $user->fetch();
-}
+$user = $connect->query("SELECT * FROM users WHERE user_id='$userID'");
+$user = $user->fetch();
 
 try {
     $success = 0;
-    if (isset($_POST['addUser'])) {
+    if (isset($_POST['updateUser'])) {
         $name = $_POST['name'];
         $email = $_POST['email'];
         $password = $_POST['pass'];
@@ -20,8 +17,9 @@ try {
         $address = $_POST['address'];
         $role = $_POST['role'];
 
-        $sql = $connect->query("INSERT INTO users (name,address,phone,email,password,is_admin,city)
-        VALUES ('$name','$address','$phone','$email','$password','$role','$city')");
+        $sql = $connect->query("UPDATE users SET
+        name='$name' , email='$email' , city = '$city' , phone='$phone' ,address = '$address' , is_admin ='$role' 
+        WHERE user_id='$userID'");
 
         if ($sql) {
             $success = 1;
@@ -37,9 +35,11 @@ try {
 <?php require '../views/sidebar.php'; ?>
 
 <div class="main-panel">
-          <?php echo "<div class='alert alert-success' role='alert'>
-            Success , You Added New User
-            </div>"; ?>
+          <?php if ($success) {
+              echo "<div class='alert alert-success' role='alert'>
+            Success , You Updated User Information
+            </div>";
+          } ?>
           <div class="content-wrapper">
             <div class="page-header">
               <h3 class="page-title">
@@ -100,7 +100,7 @@ try {
                     <label for="floatingTextarea2">Comments</label>
                 </div> -->
                 <div>
-                    <input type="submit" class="btn btn-lg btn-outline-primary" value="Add User" name='addUser'>
+                    <input type="submit" class="btn btn-lg btn-outline-primary" value="Update User Info" name='updateUser'>
                 </div>
 </form>
 </div>  

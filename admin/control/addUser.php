@@ -18,7 +18,7 @@ try {
 
         if ($sql) {
             $success = 1;
-            header('Refresh: 5; url=../views/users.php');
+            header('Refresh: 3; url=../views/users.php');
         }
     }
 } catch (Exception $e) {
@@ -30,9 +30,12 @@ try {
 <?php require '../views/sidebar.php'; ?>
 
 <div class="main-panel">
-          <?php echo "<div class='alert alert-success' role='alert'>
+
+          <?php if ($success) {
+              echo "<div class='alert alert-success' role='alert'>
             Success , You Added New User
-            </div>"; ?>
+            </div>";
+          } ?>
           <div class="content-wrapper">
             <div class="page-header">
               <h3 class="page-title">
