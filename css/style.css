@@ -49,6 +49,11 @@ Description: CSS
 /*--------------------------------------------------------------
 1.0 - Browser Reset
 --------------------------------------------------------------*/
+.error{
+  color:red;
+}
+
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -5269,10 +5274,10 @@ a[data-toggle="tooltip"]:hover {
   z-index: 1;
 }
 .dhslider .slide-bg-1 {
-  background-image:url(../images/slideshow/1.jpg)
+  background-image:url(../images/slideshow/photo-2.webp)
 }
 .dhslider .slide-bg-2 {
-  background-image:url(../images/slideshow/home-slide-2.png)
+  background-image:url(../images/slideshow/stonebridge3.jpg)
 }
 .dhslider .slide-bg-3 {
   background-image:url(../images/slideshow/7.jpg)
@@ -12022,11 +12027,11 @@ img.grayscale:hover {
   font-size: 0.8em;
 }
 .lookbook-info-wrap {
-  background: url(../images/lookbook/lookbook.jpg) no-repeat scroll center center;
+  background: url(../images/lookbook/arrival.jpg) no-repeat scroll center center;
 }
 .lookbook-info-wrap.bg-1 {
-  background: url(../images/lookbook/lookbook-1.jpg) no-repeat scroll center center;
+  background: url(../images/lookbook/discount4.jpg) no-repeat scroll center center;
 }
 .lookbook-info-wrap.bg-2 {
-  background: url(../images/lookbook/lookbook-2.jpg) no-repeat scroll center center;
+  background: url(../images/lookbook/discount6.gif) no-repeat scroll center center;
 }
