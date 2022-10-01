@@ -6,6 +6,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
 	<title>Home Lookbook | HTML Template</title>
 	<link rel="shortcut icon" href="../images/favicon.png">
+	<!-- <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
 
 	<link rel='stylesheet' href='../css/settings.css' type='text/css' media='all' />
 	<link rel='stylesheet' href='../css/swatches-and-photos.css' type='text/css' media='all' />
@@ -15,6 +18,10 @@
 	<link rel='stylesheet' href='../css/style.css' type='text/css' media='all' />
 	<link rel='stylesheet' href='../css/shop.css' type='text/css' media='all' />
 	<link rel='stylesheet' href='../css/layout.css' type='text/css' media='all' />
+
+	
+
+
 </head>
 
 <body>

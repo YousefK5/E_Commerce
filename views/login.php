@@ -5,27 +5,34 @@ require_once "connection.php";
 if (isset($_POST['login'])) {
 	$password = $_POST['password'];
 	$email = $_POST['email'];
-	$stmt = $connect->query("SELECT * FROM users WHERE email ='$email' and password='$password' ");
+	
+    $query = "SELECT * from `users` where email=?";
+    $query = $connect->prepare($query);
+    $query->execute([$email]);
 
-	$user = $stmt->fetchAll();
-	// print_r($user);
+
+
+    $user = $query->fetch(PDO::FETCH_OBJ);
+	print_r($user);
 	// header("Location: welcome.php");
 
 	if (!empty($user)) {
-		header("Location: index.php");
-	}
-} else echo "<script>alert('It looks like you’re connected try login. Please ');</script>";
+		if($password==$user->password)
+		{echo "<script>swal({ icon: 'success',});</script>";}
+		else{	echo "<script>alert('incorrect password ');</script>";}
+		// header("Location: index.php");
+	} else echo "<script>alert('It looks like you’re used incorrect email try login. Please ');</script>";
 
+}
 
 
 
 ?>
 
-
-<?php require 'header.php'; ?>
-
+<?php /*require 'header.php';*/ ?>
 
 
+<!-- 
 <div class="heading-container">
 	<div class="container heading-standar">
 		<div class="page-breadcrumb">
@@ -64,9 +71,13 @@ if (isset($_POST['login'])) {
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
 
-<?php require 'footer.php'; ?>
-<script>
+<?php /* require 'footer.php'; */?>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+
+<!-- <script>
 	document.body.classList.add("shop-account")
-</script>
+</script> -->
