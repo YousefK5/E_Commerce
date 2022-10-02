@@ -376,14 +376,29 @@ session_start();
 <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
 <?php 
-
-$sub=0;
+	
+	$delevery=0;
+	$sub=0;
+	
+//get cart info 
 $query = "SELECT * from `cart`";
 $query = $connect->prepare($query);
 $query->execute();
 $productsInCart = $query->fetchAll(PDO::FETCH_OBJ);
-$delevery=0;
 
+
+//add to cart 
+if (isset($_POST['update_cart'])) {
+
+	$query ="UPDATE `cart` SET `quantity` =? WHERE `cart_id` = ?";
+	$query = $connect->prepare($query);
+	$query->execute([ intval($_POST['qunatity1']),$_POST['id_c']]);
+
+	$sub=intval($_POST['qunatity1'])*intval($_POST['price']);
+	}
+
+
+//coupon
 if(isset($_POST['apply_coupon'])){
 $coupon=$_POST['coupon_code'];
 $query = "SELECT * from `coupons` where name=?";
@@ -409,13 +424,7 @@ else{
 }else	echo "<script>alert('invalid coupon')</script>";
 }
 
-// ||$_GET['add']
-if (isset($_POST['update_cart'])) {
 
-
-echo $qunatity;
-
-}
 
 
 ?>
@@ -476,6 +485,7 @@ echo $qunatity;
 														?>
                                                         <tr class="cart_item">
 													<td class="product-remove hidden-xs">
+														<input type="hidden" value="<?php echo $product->cart_id?>" name="id_c">
 														<a href="./delete.php?del=<?php echo $product->cart_id?>" class="remove" title="Remove this item">&times;</a>
 													</td>
 													<td class="product-thumbnail hidden-xs">
@@ -491,15 +501,16 @@ echo $qunatity;
 														</dl>
 													</td>
 													<td class="product-price text-center">
-														<span class="amount">JD <?php $sub+=$product_catr_info->price;echo $sub ?></span>
+													<input type="hidden" value="<?php echo $product->price;?>" name="price">
+                                                    <span class="amount">JD <?php echo $product->price;?></span>
 													</td>
 													<td class="product-quantity text-center">
 														<div class="quantity">
-															<input type="number" step="1" min="0" name="qunatity" value="<?php echo $qunatity ?>" title="Qty" class="input-text qty text" size="4"/>
+															<input type="number" step="1" min="0" name="qunatity1" value="<?php echo $product_catr_info->qunatity ?>" title="Qty" class="input-text qty text" size="4"/>
 														</div>
 													</td>
 													<td class="product-subtotal hidden-xs text-center">
-														<span class="amount">JD <?php echo $sub* $qunatity?></span>
+														<span class="amount">JD <?php echo $sub?></span>
 													</td>
 												</tr>
 
@@ -508,11 +519,11 @@ echo $qunatity;
 												<tr>
 													<td colspan="6" class="actions">
 														<div class="coupon">
-                                                            <form method="post" action="cart.php" >
+                                                            <!-- <form method="post" action="cart.php" > -->
 															<label for="coupon_code">Coupon:</label> 
 															<input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="Coupon code"/> 
 															<input type="submit" class="button" name="apply_coupon" value="Apply Coupon"/>
-                                                          </form>
+                                                          <!-- </form> -->
 														</div>
 														<input type="submit" class="button update-cart-button" name="update_cart" value="Update Cart"/>
 													</td>

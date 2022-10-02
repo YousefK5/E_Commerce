@@ -59,9 +59,18 @@ $query->execute();
 $categories = $query->fetchAll(PDO::FETCH_OBJ);
 // print_r($categories);
 
+<<<<<<< HEAD
 // array_search(,$_SESSION["categories"])
 
 
+=======
+
+
+$sql1 = $connect->query('SELECT * FROM products');
+while ($prod = $sql1->fetch(PDO::FETCH_ASSOC)) {
+print_r($prod);}
+
+>>>>>>> 0cc623228a0971de3456a65670c8ba81d3b7f191
 ?>
 
 
