@@ -1,8 +1,10 @@
 <?php
 require_once '../../views/connection.php';
 
-$categories = $connect->query('SELECT * FROM categories');
-$categories = $categories->fetchAll();
+$products = $connect->query(
+    'SELECT * FROM products JOIN categories ON products.category_id=categories.category_id'
+);
+$products = $products->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 
@@ -16,7 +18,7 @@ $categories = $categories->fetchAll();
               <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white me-2">
                   <i class="mdi mdi-contacts menu-icon"></i>
-                </span> Categories
+                </span> Products
               </h3>
               <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
@@ -32,10 +34,10 @@ $categories = $categories->fetchAll();
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-5">
-                        <h2>Category <b>Management</b></h2>
+                        <h2>Products <b>Management</b></h2>
                     </div>
                     <div class="col-sm-7">
-                        <a href="../control/addCategory.php" class="btn btn-secondary bttn"><i class="material-icons">&#xE147;</i> <span>Add New Category</span></a>					
+                        <a href="../control/addProduct.php" class="btn btn-secondary bttn"><i class="material-icons">&#xE147;</i> <span>Add New Product</span></a>					
                     </div>
                 </div>
             </div>
@@ -44,21 +46,38 @@ $categories = $categories->fetchAll();
                     <tr>
                         <th>#</th>
                         <th>Name</th>						
-                        <th>Image</th>			
+                        <th>Price</th>						
+                        <th>Description</th>			
+                        <th>Images</th>						
+                        <th>Category</th>					
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($categories as $category) { ?>
+                    <?php foreach ($products as $product) { ?>
                     <tr>
-                        <td><?php echo $category['category_id']; ?></td>
-                        <td><?php echo $category['category_name']; ?></td>
-                        <td><img src="../../imgs/<?php echo $category[
-                            'image'
-                        ]; ?>"></td>
+                        <td><?php echo $product['product_id']; ?></td>
+                        <td><?php echo $product['product_name']; ?></td>
+                        <td><?php echo $product['price']; ?></td>
+                        <td><?php echo $product['description']; ?></td>
+                        <td><img src="../../imgs/<?php echo $product[
+                            'image1'
+                        ]; ?>">
+                        <?php if ($product['image2'] != null) { ?>
+                            <img src="../../imgs/<?php echo $product[
+                                'image2'
+                            ]; ?>">
+                        <?php } ?>
+                        <?php if ($product['image3'] != null) { ?>
+                            <img src="../../imgs/<?php echo $product[
+                                'image3'
+                            ]; ?>">
+                        <?php } ?>
+                        </td>
+                        <td><?php echo $product['category_name']; ?></td>
                         <td>
-                            <a href="../control/editCategory.php?id=<?php echo $category[
-                                'category_id'
+                            <a href="../control/editProduct.php?id=<?php echo $product[
+                                'product_id'
                             ]; ?>" class="settings" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                             <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>    
                         </td>
@@ -77,8 +96,8 @@ $categories = $categories->fetchAll();
                                     </div>
                                     <div class="modal-footer">
                                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                        <a href="../control/deleteCategory.php?id=<?php
-                                        echo $category['category_id'];
+                                        <a href="../control/deleteProduct.php?id=<?php
+                                        echo $product['product_id'];
                                         $sss = 1;
                                         ?>" title="Delete" data-toggle="tooltip" class="delete btn btn-danger">Delete</a>
                                     </div>
@@ -104,7 +123,7 @@ $(document).ready(function(){
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <?php if (isset($_GET['d'])) { ?>
 <script>
-    swal.fire("Success , You Deleted This Category");
+    swal.fire("Success , You Deleted This Product");
     
 </script>
 <?php } ?>

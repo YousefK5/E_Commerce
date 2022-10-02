@@ -9,7 +9,8 @@ $user = $user->fetch();
 try {
     $success = 0;
     if (isset($_POST['updateUser'])) {
-        $name = $_POST['name'];
+        $fname = $_POST['fname'];
+        $lname = $_POST['lname'];
         $email = $_POST['email'];
         $password = $_POST['pass'];
         $phone = $_POST['phone'];
@@ -18,12 +19,12 @@ try {
         $role = $_POST['role'];
 
         $sql = $connect->query("UPDATE users SET
-        name='$name' , email='$email' , city = '$city' , phone='$phone' ,address = '$address' , is_admin ='$role' 
+        first_name='$fname', last_name='$lname' , email='$email' , city = '$city' , phone='$phone' ,address = '$address' , is_admin ='$role' 
         WHERE user_id='$userID'");
 
         if ($sql) {
             $success = 1;
-            header('Refresh: 5; url=../views/users.php');
+            header('Refresh: 3; url=../views/users.php');
         }
     }
 } catch (Exception $e) {
@@ -32,7 +33,7 @@ try {
 
 <?php require '../views/header.php'; ?>
 <div class="container-fluid page-body-wrapper">
-<?php require '../views/sidebar.php'; ?>
+<?php require 'sidebar.php'; ?>
 
 <div class="main-panel">
           <?php if ($success) {
@@ -60,9 +61,14 @@ try {
                 <hr>
             <form class="form" method='post'>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="John Martin" name='name' required
-                    value = "<?php echo $user['name']; ?>">
-                    <label for="floatingInput">Name</label>
+                    <input type="text" class="form-control" id="floatingInput" placeholder="John" name='fname' required
+                    value = "<?php echo $user['first_name']; ?>">
+                    <label for="floatingInput">First Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="Martin" name='lname' required
+                    value = "<?php echo $user['last_name']; ?>">
+                    <label for="floatingInput">Last Name</label>
                 </div>
                 <div class="form-floating mb-3">
                     <input type="email" class="form-control" id="floatingInput" placeholder="example@gmail.com" name='email'
@@ -95,10 +101,6 @@ try {
                     </select>
                     <label for="floatingSelect">Role</label>
                 </div>
-                <!-- <div class="form-floating mb-3">
-                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                    <label for="floatingTextarea2">Comments</label>
-                </div> -->
                 <div>
                     <input type="submit" class="btn btn-lg btn-outline-primary" value="Update User Info" name='updateUser'>
                 </div>

@@ -2,16 +2,23 @@
 <?php
 require_once '../../views/connection.php';
 
+$categoryID = $_GET['id'];
+$category = $connect->query(
+    "SELECT * FROM categories WHERE category_id='$categoryID'"
+);
+$category = $category->fetch();
+
 try {
     $success = 0;
-    if (isset($_POST['addCategory'])) {
+    if (isset($_POST['updateCategory'])) {
+        $name = $_POST['name'];
         $filename = $_FILES['uploadimg']['name'];
         $tempname = $_FILES['uploadimg']['tmp_name'];
         $folder = '../../imgs/' . $filename;
-        $name = $_POST['name'];
 
-        $sql = $connect->query("INSERT INTO categories (category_name,image)
-        VALUES ('$name','$filename')");
+        $sql = $connect->query("UPDATE categories SET
+        category_name='$name' , image='$filename'
+        WHERE category_id='$categoryID'");
 
         if ($sql) {
             move_uploaded_file($tempname, $folder);
@@ -28,10 +35,9 @@ try {
 <?php require 'sidebar.php'; ?>
 
 <div class="main-panel">
-
           <?php if ($success) {
               echo "<div class='alert alert-success' role='alert'>
-            Success , You Added New Category
+            Success , You Updated Category
             </div>";
           } ?>
           <div class="content-wrapper">
@@ -50,24 +56,25 @@ try {
               </nav>
             </div>
             <div class="container-xl">
-                <h3>Add New Category</h3>
+                <h3>Edit Category</h3>
                 <hr>
-            <form class="form" method='post' enctype="multipart/form-data">
+                <form class="form" method='post' enctype="multipart/form-data">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="John Martin" name='name' required>
+                    <input type="text" class="form-control" id="floatingInput" placeholder="John Martin" name='name'
+                    value = "<?php echo $category[
+                        'category_name'
+                    ]; ?>" required>
                     <label for="floatingInput">Name</label>
                 </div>
                 <label for="floatingInput">Image</label>
                 <div class="form-floating mb-3">
-                    <input type="file" class="form-control" id="floatingInput" placeholder="Add Image For Category" name='uploadimg' required>
+                    <input type="file" class="form-control" id="floatingInput" name='uploadimg'
+                    value = "C:\Apache24\htdocs\E_Commerce\imgs\<?php echo $category[
+                        'image'
+                    ]; ?>" required>
                 </div>
-                
-                <!-- <div class="form-floating mb-3">
-                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                    <label for="floatingTextarea2">Comments</label>
-                </div> -->
                 <div>
-                    <input type="submit" class="btn btn-lg btn-outline-primary" value="Add User" name='addCategory'>
+                    <input type="submit" class="btn btn-lg btn-outline-primary" value="Update Category" name='updateCategory'>
                 </div>
 </form>
 </div>  

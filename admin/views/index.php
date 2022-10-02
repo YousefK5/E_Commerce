@@ -3,6 +3,10 @@ require_once '../../views/connection.php';
 
 $users = $connect->query('SELECT * FROM users');
 $users = $users->fetchAll();
+$orders = $connect->query('SELECT * FROM orders');
+$orders = $orders->fetchAll();
+$products = $connect->query('SELECT * FROM products');
+$products = $products->fetchAll();
 ?>
 
 <?php require 'header.php'; ?>
@@ -43,7 +47,7 @@ $users = $users->fetchAll();
                     <img src="../assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
                     <h4 class="font-weight-normal mb-3">Total Orders <i class="fa-regular fa-credit-card " style="font-size: 70px;margin-left: 10px;position: absolute;"></i>
                     </h4>
-                    <h2 class="mb-5">num</h2>
+                    <h2 class="mb-5"><?php echo count($orders); ?></h2>
                     <h6 class="card-text">Increased by 5%</h6>
                   </div>
                 </div>
@@ -54,7 +58,7 @@ $users = $users->fetchAll();
                     <img src="../assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
                     <h4 class="font-weight-normal mb-3">Total products<i class="mdi mdi-library-books " style="font-size: 70px;margin-left: 5px;position: absolute;"></i>
                     </h4>
-                    <h2 class="mb-5">nummm</h2>
+                    <h2 class="mb-5"><?php echo count($products); ?></h2>
                     <h6 class="card-text">Increased by 5%</h6>
                   </div>
                 </div>

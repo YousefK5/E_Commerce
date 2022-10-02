@@ -56,7 +56,10 @@ $users = $users->fetchAll();
                     <?php foreach ($users as $user) { ?>
                     <tr>
                         <td><?php echo $user['user_id']; ?></td>
-                        <td><?php echo $user['name']; ?></td>
+                        <td><?php
+                        echo $user['first_name'] . ' ';
+                        echo $user['last_name'];
+                        ?></td>
                         <td><?php echo $user[
                             'email'
                         ]; ?></td>                        
@@ -70,7 +73,9 @@ $users = $users->fetchAll();
                             ? 'Admin'
                             : 'Memeber'; ?></td>
                         <td>
-                            <a href="#" class="settings" title="View Orders" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+                            <a href="orders.php?id=<?php echo $user[
+                                'user_id'
+                            ]; ?>" class="settings" title="View Orders" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
                         </td>
                         <td>
                             <a href="../control/editUser.php?id=<?php echo $user[
@@ -120,6 +125,7 @@ $(document).ready(function(){
 <?php if (isset($_GET['d'])) { ?>
 <script>
     swal.fire("Success , You Deleted This User");
+    
 </script>
 <?php } ?>
 

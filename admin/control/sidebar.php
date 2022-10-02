@@ -12,31 +12,31 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.php">
+              <a class="nav-link" href="../views/index.php">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="users.php">
+              <a class="nav-link" href="../views/users.php">
                 <span class="menu-title">Users</span>
                 <i class="mdi mdi-contacts menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="categories.php">
+              <a class="nav-link" href="../views/categories.php">
                 <span class="menu-title">Categories</span>
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="products.php">
+              <a class="nav-link" href="../views/products.php">
                 <span class="menu-title">Products</span>
                 <i class="uil uil-archive menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="orders.php">
+              <a class="nav-link" href="../views/orders.php">
                 <span class="menu-title">Orders</span>
                 <i class="mdi mdi-table-large menu-icon"></i>
               </a>

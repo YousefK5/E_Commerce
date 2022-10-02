@@ -5,7 +5,8 @@ require_once '../../views/connection.php';
 try {
     $success = 0;
     if (isset($_POST['addUser'])) {
-        $name = $_POST['name'];
+        $fname = $_POST['fname'];
+        $lname = $_POST['lname'];
         $email = $_POST['email'];
         $password = $_POST['pass'];
         $phone = $_POST['phone'];
@@ -13,8 +14,8 @@ try {
         $address = $_POST['address'];
         $role = $_POST['role'];
 
-        $sql = $connect->query("INSERT INTO users (name,address,phone,email,password,is_admin,city)
-        VALUES ('$name','$address','$phone','$email','$password','$role','$city')");
+        $sql = $connect->query("INSERT INTO users (first_name,last_name,address,phone,email,password,is_admin,city)
+        VALUES ('$fname','$lname','$address','$phone','$email','$password','$role','$city')");
 
         if ($sql) {
             $success = 1;
@@ -27,7 +28,7 @@ try {
 
 <?php require '../views/header.php'; ?>
 <div class="container-fluid page-body-wrapper">
-<?php require '../views/sidebar.php'; ?>
+<?php require 'sidebar.php'; ?>
 
 <div class="main-panel">
 
@@ -56,8 +57,12 @@ try {
                 <hr>
             <form class="form" method='post'>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="John Martin" name='name' required>
-                    <label for="floatingInput">Name</label>
+                    <input type="text" class="form-control" id="floatingInput" placeholder="John " name='fname' required>
+                    <label for="floatingInput">First Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="Martin" name='lname' required>
+                    <label for="floatingInput">Last Name</label>
                 </div>
                 <div class="form-floating mb-3">
                     <input type="email" class="form-control" id="floatingInput" placeholder="example@gmail.com" name='email' required>
@@ -86,10 +91,6 @@ try {
                     </select>
                     <label for="floatingSelect">Role</label>
                 </div>
-                <!-- <div class="form-floating mb-3">
-                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                    <label for="floatingTextarea2">Comments</label>
-                </div> -->
                 <div>
                     <input type="submit" class="btn btn-lg btn-outline-primary" value="Add User" name='addUser'>
                 </div>
