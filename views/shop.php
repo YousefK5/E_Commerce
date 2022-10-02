@@ -55,6 +55,12 @@ $query->execute();
 $categories = $query->fetchAll(PDO::FETCH_OBJ);
 // print_r($categories);
 
+
+
+$sql1 = $connect->query('SELECT * FROM products');
+while ($prod = $sql1->fetch(PDO::FETCH_ASSOC)) {
+print_r($prod);}
+
 ?>
 
 
