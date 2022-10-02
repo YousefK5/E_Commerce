@@ -43,7 +43,7 @@
 													<form>
 														<div class="row">
 															<div class="col-sm-6">
-																<div>Your Name (required)<br />
+																<div><b>Your Name (required)<b><br />
 															    	<p class="form-control-wrap your-name">
 															    		<input type="text" name="your-name" value="" size="40" class="form-control text validates-as-required" />
 															    	</p>
@@ -63,7 +63,7 @@
 														    	</div>
 															</div>
 														</div>
-														<input type="submit" value="Send" class="form-control submit" />
+													<b>	<input  style="background-color:#424ef5;  color: white ;"   type="submit" value="Send" class="form-control submit" /></b>
 													</form>
 												</div>
 											</div>
@@ -85,11 +85,11 @@
 													<div class="content_element">
 														<div class="support-icon">
 															<i class="fa fa-map-marker"></i>
-															69 New York,CA, 1239 USA
+															JORDAN,AMMAN,Street 16
 														</div>
 														<div class="support-icon">
 															<i class="fa fa-phone"></i>
-															(012) 1234 7824
+															(+962) 770000000
 														</div>
 														<div class="support-icon">
 															<i class="fa fa-envelope-o"></i>
