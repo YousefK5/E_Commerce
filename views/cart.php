@@ -501,12 +501,12 @@ else{
 														</dl>
 													</td>
 													<td class="product-price text-center">
-													<input type="hidden" value="<?php echo $product->price;?>" name="price">
-                                                    <span class="amount">JD <?php echo $product->price;?></span>
+													<input type="hidden" value="<?php echo $product_catr_info->price;?>" name="price">
+                                                    <span class="amount">JD <?php echo $product_catr_info->price;?></span>
 													</td>
 													<td class="product-quantity text-center">
 														<div class="quantity">
-															<input type="number" step="1" min="0" name="qunatity1" value="<?php echo $product_catr_info->qunatity ?>" title="Qty" class="input-text qty text" size="4"/>
+															<input type="number" step="1" min="0" name="qunatity1" value="<?php echo $product->qunatity ?>" title="Qty" class="input-text qty text" size="4"/>
 														</div>
 													</td>
 													<td class="product-subtotal hidden-xs text-center">
