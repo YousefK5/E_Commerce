@@ -8,11 +8,22 @@ define('DB_USER', 'root');
 define('DB_PASS', 'root');
 define('DB_NAME', 'e-commerce');
 try {
-
-    $connect = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS,);
+    $connect = new PDO(
+        'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME,
+        DB_USER,
+        DB_PASS
+    );
     $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // ECHO "CONNECT SUCCESSFULLY" ;
-
 } catch (PDOException $e) {
-    echo "connection falid " . $e->getMessage();
+    echo 'connection falid ' . $e->getMessage();
+}
+
+function getAllUsers()
+{
+    $users = $connect->query('SELECT * FROM users');
+
+    $users = $users->fetchAll();
+
+    return $users;
 }
