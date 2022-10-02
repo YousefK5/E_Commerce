@@ -36,8 +36,8 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="usersorders.php">
-                <span class="menu-title">Users orders</span>
+              <a class="nav-link" href="orders.php">
+                <span class="menu-title">Orders</span>
                 <i class="mdi mdi-table-large menu-icon"></i>
               </a>
             </li>
