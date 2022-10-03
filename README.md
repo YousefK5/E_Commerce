@@ -14,8 +14,6 @@ Team members :
 
 🔗 repo Organization link : [a link] (https://github.com/YousefK5/E_Commerce)
 
-🔗 repo link : [a link] (https://github.com/Waad-Awajneh/E-commerce)
-
 🔗 figma link : [a link] (https://www.figma.com/file/bFFOHbC0wpBFppOPaUUIgS/ECommerce)
 
 Wireframe
