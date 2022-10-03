@@ -14,6 +14,7 @@ $query = $connect->prepare($query);
 $query->execute();
 $productsInCart = $query->fetchAll(PDO::FETCH_OBJ);
 
+
 //
 if (isset($_POST['qunatity_by_js'])) {
     $query = 'UPDATE `cart` SET `quantity` = ? WHERE `cart_id` = ?';
@@ -30,6 +31,7 @@ if (isset($_POST['qunatity_by_js'])) {
 // 	// $query->execute([ intval($_POST['qunatity1']),$_POST['id_c']]);
 
 // 	// $sub=intval($_POST['qunatity1'])*intval($_POST['price']);
+
 
 // }
 
@@ -58,6 +60,7 @@ if (isset($_POST['apply_coupon'])) {
         echo "<script>alert('invalid coupon')</script>";
     }
 }
+
 ?>
 
 
@@ -151,6 +154,7 @@ if (isset($_POST['apply_coupon'])) {
 													<td class="product-price text-center">
 													<input type="hidden" value="<?php echo $product->price; ?>" name="price">
                                                     <span class="amount">JD <?php echo $product->price; ?></span>
+
 													</td>
 													<td class="product-quantity text-center">
 														<div class="quantity">
@@ -335,6 +339,7 @@ if (isset($_POST['apply_coupon'])) {
 					</div>
 				</div>
 			</div>
+
 <?php require_once 'footer.php'; ?>
 
 <script>
@@ -365,7 +370,5 @@ if (isset($_POST['apply_coupon'])) {
 		<script type='text/javascript' src='../js/slider.min.js'></script>
 		<script type='text/javascript' src='../js/jquery-ui-touch-punch.min.js'></script>
 		<script type='text/javascript' src='../js/price-slider.js'></script>
-
-
 
 		<script src="cart.js"></script> 

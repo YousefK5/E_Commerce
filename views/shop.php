@@ -1,5 +1,10 @@
 <?php require_once 'connection.php'; ?>
 <?php require 'header.php'; ?>
+<?php
+  
+session_start();
+  
+?>
 
 <!-- //////////////////////////////////////////////////// -->
 

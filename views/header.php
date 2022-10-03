@@ -329,7 +329,6 @@
 													</li>
 <?php }
  ?>
-
 												<!-- cart and boxes -->
 											</ul>
 
