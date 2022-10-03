@@ -1083,7 +1083,7 @@ object {
 }
 @media (min-width: 1200px) {
   .container {
-    width: 1200px;
+    width: 1350px;
   }
 }
 #wrapper {
@@ -3231,7 +3231,7 @@ input[type="button"].btn-block {
 .navbar-brand .logo-mobile {
   max-height: 79px;
   display: none;
-  max-width: 100px;
+  max-width: 140px;
 }
 @media (max-width: 899px) {
   .navbar-brand .logo,
@@ -5301,10 +5301,10 @@ a[data-toggle="tooltip"]:hover {
   z-index: 1;
 }
 .dhslider .slide-bg-1 {
-  background-image:url(../images/slideshow/photo-2.webp)
+  background-image:url(../images/slideshow/h5.jpg)
 }
 .dhslider .slide-bg-2 {
-  background-image:url(../images/slideshow/stonebridge3.jpg)
+  background-image:url(../images/slideshow/h3.jpeg)
 }
 .dhslider .slide-bg-3 {
   background-image:url(../images/slideshow/7.jpg)

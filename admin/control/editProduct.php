@@ -38,6 +38,9 @@ try {
         $price = $_POST['price'];
         $desc = $_POST['desc'];
         $category = $_POST['category'];
+        $discount = $_POST['discount'];
+        $offer = $_POST['offer']?1:0;
+        $newarrive = $_POST['newarrival']?1:0;
 
         if ($filename1 != null) {
             $sql = $connect->query("UPDATE products SET
@@ -58,7 +61,7 @@ try {
         }
 
         $sql = $connect->query("UPDATE products SET
-        product_name='$name' , price='$price' , description='$desc' , category_id='$category'
+        product_name='$name' , price='$price' , description='$desc' , category_id='$category', discount='$discount' , offers='$offer' , new_arrive='$newarrive'
         WHERE product_id='$productID'");
 
         if ($sql) {
@@ -87,15 +90,15 @@ try {
 <div class="main-panel">
           <?php if ($success) {
               echo "<div class='alert alert-success' role='alert'>
-            Success , You Updated Category
+            Success , The Product Is Updated.
             </div>";
           } ?>
           <div class="content-wrapper">
             <div class="page-header">
               <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white me-2">
-                  <i class="mdi mdi-contacts menu-icon"></i>
-                </span> Category
+                  <i class="uil uil-archive menu-icon"></i>
+                </span> Product
               </h3>
               <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
@@ -106,7 +109,7 @@ try {
               </nav>
             </div>
             <div class="container-xl">
-                <h3>Edit Category</h3>
+                <h3>Edit Product</h3>
                 <hr>
                 <form class="form" method='post' enctype="multipart/form-data">
                 <div class="form-floating mb-3">
@@ -122,9 +125,7 @@ try {
                 <div class="form-floating mb-3">
                     <textarea class="form-control" placeholder="Write Description About Product Here"
                     name="desc" id="floatingTextarea2" style="height: 100px"
-                    value="<?php echo $product[
-                        'description'
-                    ]; ?>" required></textarea>
+                    value="<?php echo $product['description']; ?>" required><?php echo $product['description']; ?></textarea>
                     <label for="floatingTextarea2">Description</label>
                 </div>
                 <label for="floatingInput">Image 1</label>
@@ -153,6 +154,22 @@ try {
                     </select>
                     <label for="floatingSelect">Category Name</label>
                 </div>
+
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="floatingInput" placeholder="0-100%" name='discount'
+                    value="<?php echo $product['discount']; ?>" required>
+                    <label for="floatingInput">discount %</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                        <!-- <label for="offer">On offer</label> -->
+                        <input type="checkbox" id="offer" name="offer" <?php echo $product['offers']?"checked":"" ?>>On offer<br>
+                        <!-- <label for="newarrival">New arrival</label> -->
+                        <input type="checkbox" id="newarrival" name="newarrival" <?php echo $product['new_arrive']?"checked":"" ?>>New arrival
+                        
+                    
+                </div>
+
                 <div>
                     <input type="submit" class="btn btn-lg btn-outline-primary" value="Update Product" name='updateProduct'>
                 </div>
