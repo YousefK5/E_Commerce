@@ -272,6 +272,7 @@ $productsInCart = $query->fetchAll(PDO::FETCH_OBJ);
 														</div>
 													</div>
 												</li>
+<<<<<<< HEAD
 
 
 <?php }else{?>
@@ -324,6 +325,8 @@ $productsInCart = $query->fetchAll(PDO::FETCH_OBJ);
 													</li>
 <?php } ?>
 
+=======
+>>>>>>> b391bb76fb0820e34d465965afbe72f318644a78
 												<!-- cart and boxes -->
 											</ul>
 
