@@ -1,4 +1,4 @@
-<?php require "connection.php"; ?>
+<?php require 'connection.php'; ?>
 <!doctype html>
 <html lang="en-US">
 
@@ -137,8 +137,8 @@
 				</div>
 			</div>
 			<div class="navbar-container">
-				<div class="navbar navbar-default  navbar-scroll-fixed">
-					<div class="navbar-default-wrap">
+				<div class="navbar navbar-default  navbar-scroll-fixed" style="background-color: #1e1e1ea8;">
+					<div class="navbar-default-wrap" >
 						<div class="container">
 							<div class="row">
 								<div class="col-md-12 navbar-default-col">
@@ -194,14 +194,14 @@
 																2
 															</h3>
 
-														</li>
+														
 														</li>
 														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
 															<h3 class="megamenu-title">
 																3
 															</h3>
 
-														</li>
+														
 														</li>
 														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
 															<h3 class="megamenu-title">
@@ -209,29 +209,22 @@
 															</h3>
 
 														</li>
-														</li>
 														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
 															<h3 class="megamenu-title">
 																5
 															</h3>
 
 														</li>
+														
 														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
 															<h3 class="megamenu-title">
 																6
 															</h3>
 
 														</li>
-														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
-															<h3 class="megamenu-title">
-																Woo
-															</h3>
 
-
-														</li>
 													</ul>
 												</li>
-												<li><a href="collection.html"><span class="underline">Collections</span></a></li>
 
 												<li class="menu-item-has-children dropdown">
 
@@ -240,9 +233,9 @@
 														<span class="underline">Pages</span> <span class="caret"></span>
 													</a>
 													<ul class="dropdown-menu">
-														<li><a href="about-us.html">About us</a></li>
-														<li><a href="contact-us.html">Contact Us</a></li>
-														<li><a href="faq.html">FAQ</a></li>
+														<li><a href="about-us.php">About us</a></li>
+														<li><a href="contact-us.php">Contact Us</a></li>
+														
 													</ul>
 												</li>
 												<!-- search desktop icon -->
@@ -255,27 +248,25 @@
 
 
 												<!-- cart and boxes start -->
-	<?php 
-	if(isset($_GET['del'])) {
-$cart_id = $_GET['del'];
+	<?php
+ if (isset($_GET['del'])) {
+     $cart_id = $_GET['del'];
 
-$query = $connect->prepare("DELETE  FROM `cart` Where cart_id=? ");
-$query->execute([$cart_id]);
-	}
+     $query = $connect->prepare('DELETE  FROM `cart` Where cart_id=? ');
+     $query->execute([$cart_id]);
+ }
 
-$query = "SELECT * from `cart`";
-$query = $connect->prepare($query);
-$query->execute();
-$productsInCart = $query->fetchAll(PDO::FETCH_OBJ);
+ $query = 'SELECT * from `cart`';
+ $query = $connect->prepare($query);
+ $query->execute();
+ $productsInCart = $query->fetchAll(PDO::FETCH_OBJ);
 
-
-
-												if(empty($productsInCart)) {?>
+ if (empty($productsInCart)) { ?>
 												<li class="navbar-minicart navbar-minicart-nav">
 													<a class="minicart-link" href="#">
 														<span class="minicart-icon">
 															<i class="minicart-icon-svg elegant_icon_bag"></i>
-															<span><?php echo count($productsInCart) ?></span>
+															<span><?php echo count($productsInCart); ?></span>
 														</span>
 													</a>
 
@@ -295,7 +286,7 @@ $productsInCart = $query->fetchAll(PDO::FETCH_OBJ);
 												</li>
 
 
-<?php }else{?>
+<?php } else { ?>
 
 
 
@@ -305,46 +296,53 @@ $productsInCart = $query->fetchAll(PDO::FETCH_OBJ);
 												<li class="navbar-minicart navbar-minicart-nav">
 														<a class="minicart-link" href="#">
 															<span class="minicart-icon has-item">
-																<i class="minicart-icon-svg elegant_icon_bag"></i> <span><?php echo count($productsInCart) ?></span>
+																<i class="minicart-icon-svg elegant_icon_bag"></i> <span><?php echo count(
+                    $productsInCart
+                ); ?></span>
 															</span>
 														</a>
 														<div class="minicart" style="display:none">
-															<div class="minicart-header"><?php echo count($productsInCart) ?> items in the shopping cart</div>
+															<div class="minicart-header"><?php echo count(
+                   $productsInCart
+               ); ?> items in the shopping cart</div>
 															<div class="minicart-body">
 																<?php foreach ($productsInCart as $pInCart) {
-																	$query = "SELECT * from `products` WHERE product_id= '$pInCart->product_id'";
-																	$query = $connect->prepare($query);
-																	$query->execute();
-																	$product = $query->fetch(PDO::FETCH_OBJ); ?>
+
+                    $query = "SELECT * from `products` WHERE product_id= '$pInCart->product_id'";
+                    $query = $connect->prepare($query);
+                    $query->execute();
+                    $product = $query->fetch(PDO::FETCH_OBJ);
+                    ?>
 																<div class="cart-product clearfix">
 																	<div class="cart-product-image">
 																		<a class="cart-product-img" href="#">
-																			<img width="100" height="150" src="../imgs/<?php echo $product->image ?>" alt="Product-1"/>
+																			<img width="100" height="150" src="../imgs/<?php echo $product->image1; ?>" alt="Product-1"/>
 																		</a>
 																	</div>
 																	<div class="cart-product-details">
 																		<div class="cart-product-title">
-																			<a href="#"><?php echo $product->name ?></a>
+																			<a href="#"><?php echo $product->product_name; ?></a>
 																		</div>
 																		<div class="cart-product-quantity-price">
-																			<?php echo $pInCart->quantity ?> x <span class="amount">&#36;<?php echo $product->price ?></span>
+																			<?php echo $pInCart->quantity; ?> x <span class="amount">&#36;<?php echo $product->price; ?></span>
 																		</div>
 																	</div>
-																	<a href="?del=<?php echo $pInCart->cart_id ?>" class="remove" title="Remove this item">&times;</a>
+																	<a href="?del=<?php echo $pInCart->cart_id; ?>" class="remove" title="Remove this item">&times;</a>
 																</div>
-																<?php } ?>
+																<?php
+                } ?>
 															</div>
 															<div class="minicart-footer">
 																<div class="minicart-actions clearfix">
-																	<a class="checkout-button button" href="#">
-																		<span class="text">Checkout</span>
+																	<a class="checkout-button button" href="./cart.php">
+																		<span class="text">View Cart</span>
 																	</a>
 																</div>
 															</div>
 														</div>
 													</li>
-<?php } ?>
-
+<?php }
+ ?>
 												<!-- cart and boxes -->
 											</ul>
 

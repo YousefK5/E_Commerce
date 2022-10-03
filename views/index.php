@@ -1,5 +1,6 @@
 <?php require 'header.php';
-require './connection.php'; ?>
+require './connection.php';
+?>
 
 
 
@@ -55,57 +56,68 @@ require './connection.php'; ?>
 										<div class="product-category-wall">
 
 
-										<?php
-										$sql=$connect->query('SELECT * from categories');
-										
-										?>
+										<?php $sql = $connect->query('SELECT * from categories'); ?>
 
-											<?php $category=$sql->fetch(PDO::FETCH_ASSOC);
-											// print_r($category) ;
-											 ?>
+											<?php $category = $sql->fetch(PDO::FETCH_ASSOC);
+// print_r($category) ;
+?>
 											<div class="wall-col col-md-6 col-sm-12 title-in product-category-wall" >
 												
-												<a href="./shop.php?category=<?php echo $category['category_id']?>">
+												<a href="./shop.php?category=<?php echo $category['category_id']; ?>">
 													<div class="product-category-grid-item">
 														<div class="product-category-grid-item-wrap">
 															<div class="product-category-grid-featured-wrap">
-																<div class="product-category-grid-featured bg-1" style="background-image: url(../images/categories/<?php echo $category['image'] ?>)"></div>
+																<div class="product-category-grid-featured bg-1" style="background-image: url(../images/categories/<?php echo $category[
+                    'image'
+                ]; ?>)"></div>
 															</div>
 															<div class="product-category-grid-featured-summary  ">
-																<h3><?php echo $category['category_name'];  ?> <small><?php echo $category['extra'];  ?></small></h3>
+																<h3><?php echo $category['category_name']; ?> <small><?php echo $category[
+     'extra'
+ ]; ?></small></h3>
 															</div>
 														</div>
 													</div>
 												</a>
 											</div>
 
-											<?php $category=$sql->fetch(PDO::FETCH_ASSOC); ?>
+											<?php $category = $sql->fetch(PDO::FETCH_ASSOC); ?>
 											<div class="wall-col col-md-6 col-sm-12 title-out product-category-wall">
 												<a href="#">
 													<div class="product-category-grid-item">
 														<div class="product-category-grid-item-wrap">
 															<div class="product-category-grid-featured-wrap">
-																<div class="product-category-grid-featured bg-2" style="background-image: url(../images/categories/<?php echo $category['image'] ?>)"></div>
+																<div class="product-category-grid-featured bg-2" style="background-image: url(../images/categories/<?php echo $category[
+                    'image'
+                ]; ?>)"></div>
 															</div>
 															<div class="product-category-grid-featured-summary">
 																<h3>
-                                                                <?php echo $category['category_name']  ?> <small><?php echo $category['extra']  ?></small>
+                                                                <?php echo $category[
+                                                                    'category_name'
+                                                                ]; ?> <small><?php echo $category[
+     'extra'
+ ]; ?></small>
 																</h3>
 															</div>
 														</div>
 													</div>
 												</a>
 											</div>
-											<?php $category=$sql->fetch(PDO::FETCH_ASSOC); ?>
+											<?php $category = $sql->fetch(PDO::FETCH_ASSOC); ?>
 											<div class="wall-col col-md-6 col-sm-12 title-out product-category-wall">
 												<a href="#">
 													<div class="product-category-grid-item">
 														<div class="product-category-grid-item-wrap">
 															<div class="product-category-grid-featured-wrap">
-																<div class="product-category-grid-featured bg-3" style="background-image: url(../images/categories/<?php echo $category['image'] ?>)"></div>
+																<div class="product-category-grid-featured bg-3" style="background-image: url(../images/categories/<?php echo $category[
+                    'image'
+                ]; ?>)"></div>
 															</div>
 															<div class="product-category-grid-featured-summary">
-																<h3><?php echo $category['category_name']  ?> <small><?php echo $category['extra']  ?></small></h3>
+																<h3><?php echo $category['category_name']; ?> <small><?php echo $category[
+     'extra'
+ ]; ?></small></h3>
 															</div>
 														</div>
 													</div>
@@ -118,50 +130,64 @@ require './connection.php'; ?>
 										<div class="product-category-wall wall-row">
 
 
-										<?php $category=$sql->fetch(PDO::FETCH_ASSOC); ?>
+										<?php $category = $sql->fetch(PDO::FETCH_ASSOC); ?>
 											<div class="wall-col col-sm-4 title-out height-auto product-category-wall">
 												<a href="#">
 													<div class="product-category-grid-item">
 														<div class="product-category-grid-item-wrap">
 															<div class="product-category-grid-featured-wrap">
-																<div class="product-category-grid-featured bg-4" style="background-image: url(../images/categories/<?php echo $category['image'] ?>)"></div>
+																<div class="product-category-grid-featured bg-4" style="background-image: url(../images/categories/<?php echo $category[
+                    'image'
+                ]; ?>)"></div>
 															</div>
 															<div class="product-category-grid-featured-summary">
-																<h3><?php echo $category['category_name']  ?> <small><?php echo $category['extra']  ?></small></h3>
+																<h3><?php echo $category['category_name']; ?> <small><?php echo $category[
+     'extra'
+ ]; ?></small></h3>
 															</div>
 														</div>
 													</div>
 												</a>
 											</div>
 
-	    									<?php $category=$sql->fetch(PDO::FETCH_ASSOC); ?>
+	    									<?php $category = $sql->fetch(PDO::FETCH_ASSOC); ?>
 											<div class="wall-col col-sm-4 title-out height-auto product-category-wall">
 												<a href="#">
 													<div class="product-category-grid-item">
 														<div class="product-category-grid-item-wrap">
 															<div class="product-category-grid-featured-wrap">
-																<div class="product-category-grid-featured bg-5" style="background-image: url(../images/categories/<?php echo $category['image'] ?>)"></div>
+																<div class="product-category-grid-featured bg-5" style="background-image: url(../imgs/<?php echo $category[
+                    'image'
+                ]; ?>)"></div>
 															</div>
 															<div class="product-category-grid-featured-summary">
 																<h3>
-																<?php echo $category['category_name']  ?> <small><?php echo $category['extra']  ?></small>
+																<?php echo $category['category_name']; ?> <small><?php echo $category[
+     'extra'
+ ]; ?></small>
 																</h3>
 															</div>
 														</div>
 													</div>
 												</a>
 											</div>
-											<?php $category=$sql->fetch(PDO::FETCH_ASSOC); ?>
+											<?php $category = $sql->fetch(PDO::FETCH_ASSOC); ?>
 											<div class="wall-col col-sm-4 title-out height-auto product-category-wall">
 												<a href="#">
 													<div class="product-category-grid-item">
 														<div class="product-category-grid-item-wrap">
 															<div class="product-category-grid-featured-wrap">
-																<div class="product-category-grid-featured bg-6" style="background-image: url(../images/categories/<?php echo $category['image'] ?>)"></div>
+																<div class="product-category-grid-featured bg-6" style="background-image: url(../imgs<?php echo $category[
+                    'image'
+                ]; ?>)"></div>
 															</div>
 															<div class="product-category-grid-featured-summary">
 																<h3>
-                                                                <?php echo $category['category_name']  ?> <small><?php echo $category['extra']  ?></small>
+                                                                <?php echo $category[
+                                                                    'category_name'
+                                                                ]; ?> <small><?php echo $category[
+     'extra'
+ ]; ?></small>
 																</h3>
 															</div>
 														</div>
@@ -198,17 +224,19 @@ require './connection.php'; ?>
 									<ul class="products columns-3" data-columns="3">
 
 									<?php
-										$sql1 = $connect->query("SELECT * FROM products WHERE new_arrive='1' ");
-    									while ($prod = $sql1->fetch(PDO::FETCH_ASSOC)) {
-    								    
-    								    ?>
+         $sql1 = $connect->query(
+             "SELECT * FROM products WHERE new_arrive='1' "
+         );
+         while ($prod = $sql1->fetch(PDO::FETCH_ASSOC)) { ?>
 										<li class="product">
 											<div class="product-container">
 												<figure>
 													<div class="product-wrap">
 														<div class="product-images">
 															<div class="shop-loop-thumbnail">
-																<img width="300" height="350" src="../images/product/<?php echo $prod['image1']; ?>" alt="Product-2"/>
+																<img width="300" height="350" src="../imgs/<?php echo $prod[
+                    'image1'
+                ]; ?>" alt="Product-2"/>
 															</div>
 															<div class="yith-wcwl-add-to-wishlist">
 																<div class="yith-wcwl-add-button">
@@ -226,12 +254,16 @@ require './connection.php'; ?>
 													<figcaption>
 														<div class="shop-loop-product-info">
 															<div class="info-title">
-																<h3 class="product_title"><a href="#"><?php echo $prod['product_name']; ?></a></h3>
+																<h3 class="product_title"><a href="./product_page.php?prod_id=<?php echo $prod[
+                    'product_id'
+                ]; ?>"><?php echo $prod['product_name']; ?></a></h3>
 																</div>
 															<div class="info-meta">
 																<div class="info-price">
 																	<span class="price">
-																		<span class="amount">&#36;<?php echo $prod['price']; ?></span>&ndash;<span class="amount">&#36;150</span>
+																		<span class="amount">&#36;<?php echo $prod[
+                      'price'
+                  ]; ?></span>&ndash;<span class="amount">&#36;150</span>
 																	</span>
 																</div>
 																<div class="loop-add-to-cart">
@@ -243,7 +275,8 @@ require './connection.php'; ?>
 												</figure>
 											</div>
 										</li>
-										<?php }?>
+										<?php }
+         ?>
 
 								</div>
 								<a href="#" class="caroufredsel-prev"></a>
@@ -270,17 +303,17 @@ require './connection.php'; ?>
 								<div class="shop shop-lookbok columns-3">
 									<ul class="products columns-3" data-columns="3">
 									<?php
-										$sql1 = $connect->query("SELECT * FROM products  WHERE offers='1' ");
-    									while ($prod = $sql1->fetch(PDO::FETCH_ASSOC)) {
-    								    
-    								    ?>
+         $sql1 = $connect->query("SELECT * FROM products  WHERE offers='1' ");
+         while ($prod = $sql1->fetch(PDO::FETCH_ASSOC)) { ?>
 										<li class="product">
 											<div class="product-container">
 												<figure>
 													<div class="product-wrap">
 														<div class="product-images">
 															<div class="shop-loop-thumbnail">
-																<img width="300" height="350" src="../images/product/<?php echo $prod['image1']; ?>" alt="Product-2"/>
+																<img width="300" height="350" src="../imgs/<?php echo $prod[
+                    'image1'
+                ]; ?>" alt="Product-2"/>
 															</div>
 															<div class="yith-wcwl-add-to-wishlist">
 																<div class="yith-wcwl-add-button">
@@ -298,12 +331,16 @@ require './connection.php'; ?>
 													<figcaption>
 														<div class="shop-loop-product-info">
 															<div class="info-title">
-																<h3 class="product_title"><a href="#"><?php echo $prod['product_name']; ?></a></h3>
+																<h3 class="product_title"><a href="./product_page.php?prod_id=<?php echo $prod[
+                    'product_id'
+                ]; ?>"><?php echo $prod['product_name']; ?></a></h3>
 																</div>
 															<div class="info-meta">
 																<div class="info-price">
 																	<span class="price">
-																		<span class="amount">&#36;<?php echo $prod['price']; ?></span>&ndash;<span class="amount">&#36;150</span>
+																		<span class="amount">&#36;<?php echo $prod[
+                      'price'
+                  ]; ?></span>&ndash;<span class="amount">&#36;150</span>
 																	</span>
 																</div>
 																<div class="loop-add-to-cart">
@@ -315,7 +352,8 @@ require './connection.php'; ?>
 												</figure>
 											</div>
 										</li>
-										<?php }?>
+										<?php }
+         ?>
 
 								</div>
 								<a href="#" class="caroufredsel-prev"></a>
@@ -346,17 +384,19 @@ require './connection.php'; ?>
 									<ul class="products columns-3" data-columns="3">
 
 									<?php
-										$sql1 = $connect->query("SELECT * FROM products  WHERE discount!='0' ");
-    									while ($prod = $sql1->fetch(PDO::FETCH_ASSOC)) {
-    								    
-    								    ?>
+         $sql1 = $connect->query(
+             "SELECT * FROM products  WHERE discount!='0' "
+         );
+         while ($prod = $sql1->fetch(PDO::FETCH_ASSOC)) { ?>
 										<li class="product">
 											<div class="product-container">
 												<figure>
 													<div class="product-wrap">
 														<div class="product-images">
 															<div class="shop-loop-thumbnail">
-																<img width="300" height="350" src="../images/product/<?php echo $prod['image1']; ?>" alt="Product-2"/>
+																<img width="300" height="350" src="../imgs/<?php echo $prod[
+                    'image1'
+                ]; ?>" alt="Product-2"/>
 															</div>
 															<div class="yith-wcwl-add-to-wishlist">
 																<div class="yith-wcwl-add-button">
@@ -374,12 +414,16 @@ require './connection.php'; ?>
 													<figcaption>
 														<div class="shop-loop-product-info">
 															<div class="info-title">
-																<h3 class="product_title"><a href="#"><?php echo $prod['product_name']; ?></a></h3>
+																<h3 class="product_title"><a href="./product_page.php?prod_id=<?php echo $prod[
+                    'product_id'
+                ]; ?>"><?php echo $prod['product_name']; ?></a></h3>
 																</div>
 															<div class="info-meta">
 																<div class="info-price">
 																	<span class="price">
-																		<span class="amount">&#36;<?php echo $prod['price']; ?></span>&ndash;<span class="amount">&#36;150</span>
+																		<span class="amount">&#36;<?php echo $prod[
+                      'price'
+                  ]; ?></span>&ndash;<span class="amount">&#36;150</span>
 																	</span>
 																</div>
 																<div class="loop-add-to-cart">
@@ -391,7 +435,8 @@ require './connection.php'; ?>
 												</figure>
 											</div>
 										</li>
-										<?php }?>
+										<?php }
+         ?>
 
 								</div>
 								<a href="#" class="caroufredsel-prev"></a>

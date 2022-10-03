@@ -9,7 +9,10 @@
 // define('DB_NAME', 'e-commerce');
 try {
     $connect = new PDO(
-        "mysql:host=localhost;dbname=e-commerce", 'root','root');
+        'mysql:host=localhost;dbname=e-commerce',
+        'root',
+        'root'
+    );
     $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // ECHO "CONNECT SUCCESSFULLY" ;
 } catch (PDOException $e) {
