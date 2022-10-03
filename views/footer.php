@@ -109,17 +109,13 @@
 					<div class="form-group">
 						<label>Username</label>
 						<input type="text" name="name" required class="form-control" value="" placeholder="Username">
-						<span class="error">* <?php if (isset($_POST['register'])) {
-          echo $nameErr;
-      } ?></span>
+						<span class="error">* <?php  if(isset($_POST['register'])) echo $nameErr;?></span>
 
 					</div>
 					<div class="form-group">
 						<label for="user_email">Email</label>
 						<input type="email" id="user_email" name="email" required class="form-control" value="" placeholder="Email">
-						<span class="error">* <?php if (isset($_POST['register'])) {
-          echo $emailErr;
-      } ?></span>
+						<span class="error">* <?php  if(isset($_POST['register'])) echo $emailErr;?></span>
 
 					</div>
 
@@ -127,9 +123,7 @@
 					<div class="form-group">
 						<label>Phone</label>
 						<input type="text" name="phone" required class="form-control" value="" placeholder="Phone">
-						<span class="error">* <?php if (isset($_POST['register'])) {
-          echo $phoneErr;
-      } ?></span>
+						<span class="error">* <?php  if(isset($_POST['register'])) echo $phoneErr;?></span>
 
 					</div>
 
@@ -137,9 +131,7 @@
 					<div class="form-group">
 						<label>Address</label>
 						<input type="text" name="address" required class="form-control" value="" placeholder="Address">
-						<span class="error">* <?php if (isset($_POST['register'])) {
-          echo $addressEr;
-      } ?></span>
+						<span class="error">* <?php  if(isset($_POST['register'])) echo $addressEr;?></span>
 
 					</div>
 
@@ -147,9 +139,7 @@
 					<div class="form-group">
 						<label>City</label>
 						<input type="text" name="city" required class="form-control" value="" placeholder="City">
-						<span class="error">* <?php if (isset($_POST['register'])) {
-          echo $cityEr;
-      } ?></span>
+						<span class="error">* <?php  if(isset($_POST['register'])) echo $cityEr;?></span>
 
 					</div>
 
@@ -161,17 +151,13 @@
 					<div class="form-group">
 						<label for="user_password">Password</label>
 						<input type="password" id="user_password" required value="" name="password" class="form-control" placeholder="Password">
-						<span class="error">* <?php if (isset($_POST['register'])) {
-          echo $passErr;
-      } ?></span>
+						<span class="error">* <?php  if(isset($_POST['register'])) echo $passErr;?></span>
 
 					</div>
 					<div class="form-group">
 						<label for="user_password">Retype password</label>
 						<input type="password" id="cuser_password" required value="" name="cuser_password" class="form-control" placeholder="Retype password">
-						<span class="error">* <?php if (isset($_POST['register'])) {
-          echo $cpassErr;
-      } ?></span>
+						<span class="error">* <?php  if(isset($_POST['register'])) echo $cpassErr;?></span>
 
 					</div>
 					
@@ -388,6 +374,7 @@
 		<script type='text/javascript' src='../js/jquery-ui-touch-punch.min.js'></script>
 		<script type='text/javascript' src='../js/price-slider.js'></script>
 		<script type='text/javascript' src='../js/custom.js'></script>
+
 		<script type='text/javascript' src='../js/jquery.magnific-popup.min.js'></script>
 		<!-- <script type='text/javascript' src='../js/jquery.js'></script> -->
 		<script type='text/javascript' src='../js/jquery.cookie.min.js'></script>
