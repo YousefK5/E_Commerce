@@ -1,5 +1,10 @@
 <?php require_once "connection.php"; ?>
 <?php require 'header.php'; ?>
+<?php
+  
+session_start();
+  
+?>
 
 <!-- //////////////////////////////////////////////////// -->
 
@@ -36,7 +41,6 @@ if (isset($_POST['filter'])) {
 
     $products = $query->fetchAll(PDO::FETCH_OBJ);
     // print_r($products);
-
 } else {
 
     $query = "SELECT * from `products`";
@@ -44,7 +48,7 @@ if (isset($_POST['filter'])) {
     $query->execute();
 
     $products = $query->fetchAll(PDO::FETCH_OBJ);
-    // print_r($products);
+   
 }
 
 
