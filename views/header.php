@@ -165,9 +165,9 @@
 
 											<!-- logo image  -->
 											<a class="navbar-brand" href="./">
-												<img class="logo" alt="The DMCS" src="../images/logo-transparent.png">
-												<img class="logo-fixed" alt="The DMCS" src="../images/logo-fixed.png">
-												<img class="logo-mobile" alt="The DMCS" src="../images/logo-mobile.png">
+												<img class="logo" alt="The DMCS" src="../images/ltr.png">
+												<img class="logo-fixed" alt="The DMCS" src="../images/ltrblack.png">
+												<img class="logo-mobile" alt="The DMCS" src="../images/ltrblack.png">
 											</a>
 										</div>
 										<nav class="collapse navbar-collapse primary-navbar-collapse">
@@ -179,25 +179,46 @@
 
 												</li>
 												<li class="menu-item-has-children megamenu megamenu-fullwidth dropdown">
-													<a href="shop.html" class="dropdown-hover">
+													<a href="shop.php" class="dropdown-hover">
 														<span class="underline">Shop</span> <span class="caret"></span>
 													</a>
 													<ul class="dropdown-menu">
 														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
 															<h3 class="megamenu-title">
-																Women
+																1
 															</h3>
 
 														</li>
 														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
 															<h3 class="megamenu-title">
-																Brands
+																2
+															</h3>
+
+														</li>
+														</li>
+														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
+															<h3 class="megamenu-title">
+																3
+															</h3>
+
+														</li>
+														</li>
+														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
+															<h3 class="megamenu-title">
+																4
+															</h3>
+
+														</li>
+														</li>
+														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
+															<h3 class="megamenu-title">
+																5
 															</h3>
 
 														</li>
 														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
 															<h3 class="megamenu-title">
-																Collections
+																6
 															</h3>
 
 														</li>
@@ -272,7 +293,6 @@ $productsInCart = $query->fetchAll(PDO::FETCH_OBJ);
 														</div>
 													</div>
 												</li>
-<<<<<<< HEAD
 
 
 <?php }else{?>
@@ -325,8 +345,6 @@ $productsInCart = $query->fetchAll(PDO::FETCH_OBJ);
 													</li>
 <?php } ?>
 
-=======
->>>>>>> b391bb76fb0820e34d465965afbe72f318644a78
 												<!-- cart and boxes -->
 											</ul>
 
