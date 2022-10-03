@@ -5,7 +5,7 @@
 
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_PASS', 'root');
 define('DB_NAME', 'e-commerce');
 try {
     $connect = new PDO(
@@ -17,13 +17,4 @@ try {
     // ECHO "CONNECT SUCCESSFULLY" ;
 } catch (PDOException $e) {
     echo 'connection falid ' . $e->getMessage();
-}
-
-function getAllUsers()
-{
-    $users = $connect->query('SELECT * FROM users');
-
-    $users = $users->fetchAll();
-
-    return $users;
 }
