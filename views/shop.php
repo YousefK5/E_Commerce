@@ -155,6 +155,12 @@ $categories = $query->fetchAll(PDO::FETCH_OBJ);
     $categorie->category_name
 ); ?>"><?php echo ucfirst($categorie->category_name); ?></a>
                                     </li>
+                                    <script>
+                                        console.log(document.querySelector(".selected"));
+                                        window.onload = function() {
+                                            document.querySelector(".selected").click();
+                                        }
+                                    </script>
                                 <?php } ?>
 
                             </ul>
@@ -257,6 +263,8 @@ $categories = $query->fetchAll(PDO::FETCH_OBJ);
     let categ=document.getElementsByClassName("filterCat");
     let curCateg=document.querySelector(".selected");
     let curCat = (curCateg.id).slice(2);
+    let leftPrice=document.getElementById("minPrice");
+    let rightPrice=document.getElementById("maxPrice");
     console.log(curCat);
 
     [...categ].forEach(element => {
@@ -284,8 +292,7 @@ $categories = $query->fetchAll(PDO::FETCH_OBJ);
         })
     });
 
-    let leftPrice=document.getElementById("minPrice");
-    let rightPrice=document.getElementById("maxPrice");
+    
 
     leftPrice.addEventListener("input", function() {
         console.log(curCat);
