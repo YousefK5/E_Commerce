@@ -6,7 +6,7 @@
 				<div class="col-md-12 text-center">
 					<div class="footer-info-logo">
 						<!-- logo image -->
-						<a href="#"><img alt="The DMCS" src="../images/footer-logo.png"></a>
+						<img alt="logo" src="../images/ltrblack.png" style="max-width: 25%;">
 					</div>
 					<div class="copyright text-center">Copyright right © 2022 Gruop4. All Rights Reserved.</div>
 					<div class="footer-social">

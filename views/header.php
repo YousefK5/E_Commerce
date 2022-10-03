@@ -137,8 +137,8 @@
 				</div>
 			</div>
 			<div class="navbar-container">
-				<div class="navbar navbar-default  navbar-scroll-fixed">
-					<div class="navbar-default-wrap">
+				<div class="navbar navbar-default  navbar-scroll-fixed" style="background-color: #1e1e1ea8;">
+					<div class="navbar-default-wrap" >
 						<div class="container">
 							<div class="row">
 								<div class="col-md-12 navbar-default-col">
@@ -165,9 +165,9 @@
 
 											<!-- logo image  -->
 											<a class="navbar-brand" href="./">
-												<img class="logo" alt="The DMCS" src="../images/logo-transparent.png">
-												<img class="logo-fixed" alt="The DMCS" src="../images/logo-fixed.png">
-												<img class="logo-mobile" alt="The DMCS" src="../images/logo-mobile.png">
+												<img class="logo" alt="The DMCS" src="../images/ltr.png">
+												<img class="logo-fixed" alt="The DMCS" src="../images/ltrblack.png">
+												<img class="logo-mobile" alt="The DMCS" src="../images/ltrblack.png">
 											</a>
 										</div>
 										<nav class="collapse navbar-collapse primary-navbar-collapse">
@@ -179,38 +179,52 @@
 
 												</li>
 												<li class="menu-item-has-children megamenu megamenu-fullwidth dropdown">
-													<a href="shop.html" class="dropdown-hover">
+													<a href="shop.php" class="dropdown-hover">
 														<span class="underline">Shop</span> <span class="caret"></span>
 													</a>
 													<ul class="dropdown-menu">
 														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
 															<h3 class="megamenu-title">
-																Women
+																1
 															</h3>
 
 														</li>
 														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
 															<h3 class="megamenu-title">
-																Brands
+																2
+															</h3>
+
+														
+														</li>
+														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
+															<h3 class="megamenu-title">
+																3
+															</h3>
+
+														
+														</li>
+														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
+															<h3 class="megamenu-title">
+																4
 															</h3>
 
 														</li>
 														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
 															<h3 class="megamenu-title">
-																Collections
+																5
 															</h3>
 
 														</li>
+														
 														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
 															<h3 class="megamenu-title">
-																Woo
+																6
 															</h3>
 
-
 														</li>
+
 													</ul>
 												</li>
-												<li><a href="collection.html"><span class="underline">Collections</span></a></li>
 
 												<li class="menu-item-has-children dropdown">
 
@@ -219,9 +233,9 @@
 														<span class="underline">Pages</span> <span class="caret"></span>
 													</a>
 													<ul class="dropdown-menu">
-														<li><a href="about-us.html">About us</a></li>
-														<li><a href="contact-us.html">Contact Us</a></li>
-														<li><a href="faq.html">FAQ</a></li>
+														<li><a href="about-us.php">About us</a></li>
+														<li><a href="contact-us.php">Contact Us</a></li>
+														
 													</ul>
 												</li>
 												<!-- search desktop icon -->

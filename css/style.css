@@ -3634,7 +3634,8 @@ input[type="button"].btn-block {
   position: relative;
 }
 .navbar-fixed-top {
-  background: #ffffff;
+  background-color: #ffffff !important;
+  /* background: #ffffff; */
   height: 60px;
 }
 .navbar-fixed-top .navbar-nav.primary-nav > li > a {
