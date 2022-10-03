@@ -1,7 +1,7 @@
 <?php require_once "connection.php"; ?>
 
 <?php
-  require "header.php";
+  require "header2.php";
 ?>
 <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
@@ -12,7 +12,7 @@
 	
 //get cart info 
 
-$query = "SELECT * from `cart`";
+$query = "SELECT * from `orders`";
 $query = $connect->prepare($query);
 $query->execute();
 $productsInCart = $query->fetchAll(PDO::FETCH_OBJ);

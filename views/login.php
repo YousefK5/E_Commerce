@@ -1,6 +1,6 @@
 <?php
 require_once "connection.php";
-
+session_start();
 
 if (isset($_POST['login'])) {
 	$password = $_POST['password'];
@@ -18,14 +18,15 @@ if (isset($_POST['login'])) {
 
 	if (!empty($user)) {
 		if($password==$user->password)
-		{echo "<script>swal({ icon: 'success',});</script>";}
+		{echo "<script>swal({ icon: 'success',});</script>";
+	$_SESSION['userid']=2;}//$user->user_id;}
 		else{	echo "<script>alert('incorrect password ');</script>";}
 		// header("Location: index.php");
 	} else echo "<script>alert('It looks like you’re used incorrect email try login. Please ');</script>";
 
 }
 
-
+$_SESSION['userid']=2;
 
 ?>
 
