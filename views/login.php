@@ -26,7 +26,7 @@ if (isset($_POST['login'])) {
 
 }
 
-$_SESSION['userid']=2;
+
 
 ?>
 
