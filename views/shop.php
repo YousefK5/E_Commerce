@@ -88,42 +88,31 @@ $categories = $query->fetchAll(PDO::FETCH_OBJ);
                     <div class="widget shop widget_products">
                         <h4 class="widget-title"><span>Best Sellers</span></h4>
                         <ul class="product_list_widget">
+                        <?php
+                        $products = $connect->query(
+                            'SELECT * FROM products LIMIT 5'
+                        );
+                        while (
+                            $product = $products->fetch(PDO::FETCH_ASSOC)
+                        ) { ?>
                             <li>
-                                <a href="#" title="Donec tincidunt justo">
-                                    <img width="100" height="150" src="../images/product/product-13.jpg" alt="Product-13" />
-                                    <span class="product-title">Donec tincidunt justo</span>
+                                <a href="./product_page.php?prod_id=<?php echo $product[
+                                    'product_id'
+                                ]; ?>" title="Donec tincidunt justo">
+                                    <img width="100" height="150" src="../imgs/<?php echo $product[
+                                        'image1'
+                                    ]; ?>" alt="Product-13" />
+                                    <span class="product-title"><?php echo $product[
+                                        'product_name'
+                                    ]; ?></span>
                                 </a>
-                                <del><span class="amount">&#36;20.50</span></del>
-                                <ins><span class="amount">&#36;19.00</span></ins>
+                                <span class="amount"><?php echo $product[
+                                    'price'
+                                ]; ?> JD</span>
+                                <!-- <ins><span class="amount">&#36;19.00</span></ins> -->
                             </li>
-                            <li>
-                                <a href="#" title="Nunc lacus sem">
-                                    <img width="100" height="150" src="../images/product/product-11.jpg" alt="Product-11" />
-                                    <span class="product-title">Nunc lacus sem</span>
-                                </a>
-                                <span class="amount">&#36;10.95</span>
-                            </li>
-                            <li>
-                                <a href="#" title="Mauris egestas">
-                                    <img width="100" height="150" src="../images/product/product-10.jpg" alt="Product-10" />
-                                    <span class="product-title">Mauris egestas</span>
-                                </a>
-                                <span class="amount">&#36;14.95</span>
-                            </li>
-                            <li>
-                                <a href="#" title="Morbi fermentum">
-                                    <img width="100" height="150" src="../images/product/product-9.jpg" alt="Product-9" />
-                                    <span class="product-title">Morbi fermentum</span>
-                                </a>
-                                <span class="amount">&#36;17.45</span>
-                            </li>
-                            <li>
-                                <a href="#" title="Morbi fermentum">
-                                    <img width="100" height="150" src="../images/product/product-8.jpg" alt="Product-8" />
-                                    <span class="product-title">Morbi fermentum</span>
-                                </a>
-                                <span class="amount">&#36;23.00</span>
-                            </li>
+                            <?php }
+                        ?>
                         </ul>
                     </div>
 
@@ -180,6 +169,12 @@ $categories = $query->fetchAll(PDO::FETCH_OBJ);
     $categorie->category_name
 ); ?>"><?php echo ucfirst($categorie->category_name); ?></a>
                                     </li>
+                                    <script>
+                                        console.log(document.querySelector(".selected"));
+                                        window.onload = function() {
+                                            document.querySelector(".selected").click();
+                                        }
+                                    </script>
                                 <?php } ?>
 
                             </ul>
@@ -228,7 +223,7 @@ $categories = $query->fetchAll(PDO::FETCH_OBJ);
                                             <figcaption>
                                                 <div class="shop-loop-product-info">
                                                     <div class="info-title">
-                                                        <h3 class="product_title"><a href="#"><?php echo $product->product_name; ?></a></h3>
+                                                        <h3 class="product_title"><a href="./product_page.php?prod_id=<?php echo $product->product_id; ?>"><?php echo $product->product_name; ?></a></h3>
                                                     </div>
                                                     <div class="info-meta">
                                                         <div class="info-price">
@@ -237,7 +232,7 @@ $categories = $query->fetchAll(PDO::FETCH_OBJ);
                                                             </span>
                                                         </div>
                                                         <div class="loop-add-to-cart">
-                                                            <a href="#">Select options</a>
+                                                            <a href="./add_to_cart.php?ad=<?php echo $product->product_id; ?>&from=shop">Add To Cart</a>
                                                         </div>
                                                     </div>
                                                 </div>
