@@ -35,18 +35,23 @@
 											<div class="row offers">
 												<div class="col-sm-6">
 													<div class="content_element align_center">
-														<div class="single_image-wrapper box_border_grey" id="editimg" >
-															<img width="571" height="485" src="../images/contactus/6.png.png" alt="home-bg"/>
-														</div>
+														<!-- <div class="single_image-wrapper box_border_grey" id="editimg" >
+															<img width="571" height="485" src="../images/aboutus/" alt="home-bg"/>
+														</div> -->
 													</div>
+ <video width="500" height="500" controls autoplay>
+  <source src="../images/aboutus/456c0ce9c1d14f5954923c9bc9457702 (1).mov" type="video/mp4">
+  <source src="../images/aboutus/456c0ce9c1d14f5954923c9bc9457702 (1).mov" type="video/ogg">
+  Your browser does not support the video tag.
+</video> 
+			
 												</div>
 												<div class="col-sm-6 offer-text" id="edittext" >
 													<h2 class="custom_heading">who are we</h2>
 													
 													<div class="content_element">
 														<p>
-															Tortor quisque lacinia sollicitudin interdum tincidunt justo sociosqu metus, tristique porta semper consequat laoreet curabitur erat, orci venenatis ac phasellus non pulvinar ullamcorper neque dapibus conubia sed faucibus ornare, mauris lorem lectus augue himenaeos diam, donec nam metus vitae duis tincidunt platea praesent nunc praesent maecenas vehicula urna eros integer massa.
-														</p>
+We offer you a distinguished service to display the best types of sleeping supplies from different pillows, blankets and liners for the yacht. Our goal is to provide you with the best services with the highest quality and the lowest prices.														</p>
 													</div>
 													<button class="btn btn-black-outline btn-lg btn-align-left" type="button">
 														<span>Read More</span>
@@ -74,8 +79,7 @@
 												</div>
 												<div class="content_element">
 													<p>
-														Because we believe in making things that are high quality and low maintenance.
-													</p>
+Our goal is to provide suitable products for everyone at the best prices													</p>
 												</div>
 												<div class="icon_element icon_element-outer icon_element-align-center">
 													<div class="icon_element-inner icon_element-color-black icon_element-size-lg icon_element-style- icon_element-background-color-grey">
@@ -84,8 +88,7 @@
 												</div>
 												<div class="content_element">
 													<p>
-														Because we believe in making things that are high quality and low maintenance.
-													</p>
+Because your satisfaction with our products is our privilege													</p>
 												</div>
 												<div class="icon_element icon_element-outer icon_element-align-center">
 													<div class="icon_element-inner icon_element-color-black icon_element-size-lg icon_element-style- icon_element-background-color-grey">
