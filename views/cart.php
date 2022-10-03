@@ -1,18 +1,15 @@
-<?php require_once "connection.php"; ?>
+<?php require_once 'connection.php'; ?>
 
-<?php
-  require "header.php";
-?>
+<?php require 'header2.php'; ?>
 <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-<?php 
-	
-	$delevery=0;
-	$sub=0;
-	
-//get cart info 
+<?php
+$delevery = 0;
+$sub = 0;
 
-$query = "SELECT * from `cart`";
+//get cart info
+
+$query = 'SELECT * from `cart`';
 $query = $connect->prepare($query);
 $query->execute();
 $productsInCart = $query->fetchAll(PDO::FETCH_OBJ);
@@ -20,15 +17,13 @@ $productsInCart = $query->fetchAll(PDO::FETCH_OBJ);
 
 //
 if (isset($_POST['qunatity_by_js'])) {
-
-	$query ="UPDATE `cart` SET `quantity` = ? WHERE `cart_id` = ?" ;
-	$query = $connect->prepare($query);
-	$query->execute([intval($_POST['qunatity_by_js']),$_POST['cart_id']]);
-print_r($qunatity);
-	
+    $query = 'UPDATE `cart` SET `quantity` = ? WHERE `cart_id` = ?';
+    $query = $connect->prepare($query);
+    $query->execute([intval($_POST['qunatity_by_js']), $_POST['cart_id']]);
+    print_r($qunatity);
 }
 
-//add to cart 
+//add to cart
 // if (isset($_POST['update_cart'])) {
 
 // 	// $query ="UPDATE `cart` SET `quantity` =? WHERE `cart_id` = ?";
@@ -36,39 +31,35 @@ print_r($qunatity);
 // 	// $query->execute([ intval($_POST['qunatity1']),$_POST['id_c']]);
 
 // 	// $sub=intval($_POST['qunatity1'])*intval($_POST['price']);
-	
+
+
 // }
 
-
 //coupon
-if(isset($_POST['apply_coupon'])){
-$coupon=$_POST['coupon_code'];
-$query = "SELECT * from `coupons` where name=?";
-$query = $connect->prepare($query);
-$query->execute([$coupon]);
+if (isset($_POST['apply_coupon'])) {
+    $coupon = $_POST['coupon_code'];
+    $query = 'SELECT * from `coupons` where coupon_name=?';
+    $query = $connect->prepare($query);
+    $query->execute([$coupon]);
 
-$coupon_saved = $query->fetch(PDO::FETCH_OBJ);
+    $coupon_saved = $query->fetch(PDO::FETCH_OBJ);
 
-if(!empty($coupon_saved)){
-if (intval($coupon_saved->count) > 0){
-   $sub_total=isset( $sub_total)?$sub_total*($coupon_saved->discount/100):1;
-	 $query ="UPDATE `coupons` SET `count` =? WHERE `coupon_id` = ?";
-	 $query = $connect->prepare($query);
-	 $coupon_saved->count-=1;
-	 $query->execute([ $coupon_saved->count,$coupon_saved->coupon_id]);
+    if (!empty($coupon_saved)) {
+        if (intval($coupon_saved->count) > 0) {
+            $sub_total = isset($sub_total)
+                ? $sub_total * ($coupon_saved->discount / 100)
+                : 1;
+            $query = 'UPDATE `coupons` SET `count` =? WHERE `coupon_id` = ?';
+            $query = $connect->prepare($query);
+            $coupon_saved->count -= 1;
+            $query->execute([$coupon_saved->count, $coupon_saved->coupon_id]);
+        } else {
+            echo "<script>alert('invalid coupon')</script>";
+        }
+    } else {
+        echo "<script>alert('invalid coupon')</script>";
+    }
 }
-else{
-
-	echo "<script>alert('invalid coupon')</script>";
-
-}
-
-}else 
-echo "<script>alert('invalid coupon')</script>";
-}
-
-
-
 
 ?>
 
@@ -102,61 +93,81 @@ echo "<script>alert('invalid coupon')</script>";
 												</tr>
 											</thead>
 											<tbody>
-                                                    <?php 
-													$total=0;
-													$item_count=0;
-                                                    foreach ($productsInCart as $cart){
-														//product
-														$query = "SELECT * from `products` where product_id=? ";
-														$query = $connect->prepare($query);
-														$query->execute([$cart->product_id]);
-														$product= $query->fetch(PDO::FETCH_OBJ);
-                                                       
-														//categories
-														$query = "SELECT categories.name from `categories` where category_id=? ";
-														$query = $connect->prepare($query);
-														$query->execute([$product->category_id]);
-														$category_name= $query->fetch(PDO::FETCH_OBJ);
-														
-														//
-														$qunatity =$cart->quantity;
-												        $sub_total=$product->price*$qunatity;
+                                                    <?php
+                                                    $total = 0;
+                                                    $item_count = 0;
+                                                    foreach (
+                                                        $productsInCart
+                                                        as $cart
+                                                    ) {
 
+                                                        //product
+                                                        $query =
+                                                            'SELECT * from `products` where product_id=? ';
+                                                        $query = $connect->prepare(
+                                                            $query
+                                                        );
+                                                        $query->execute([
+                                                            $cart->product_id,
+                                                        ]);
+                                                        $product = $query->fetch(
+                                                            PDO::FETCH_OBJ
+                                                        );
 
-							
-														?>
+                                                        //categories
+                                                        $query =
+                                                            'SELECT category_name from `categories` where category_id=? ';
+                                                        $query = $connect->prepare(
+                                                            $query
+                                                        );
+                                                        $query->execute([
+                                                            $product->category_id,
+                                                        ]);
+                                                        $category_name = $query->fetch(
+                                                            PDO::FETCH_OBJ
+                                                        );
+
+                                                        //
+                                                        $qunatity =
+                                                            $cart->quantity;
+                                                        $sub_total =
+                                                            $product->price *
+                                                            $qunatity;
+                                                        ?>
                                                         <tr class="cart_item">
 													<td class="product-remove hidden-xs">
-														<input type="hidden" value="<?php echo $cart->cart_id?>" name="id_c" id="cart_id<?php echo $cart->cart_id?>">
-														<a href="?del=<?php echo $cart->cart_id?>" class="remove" title="Remove this item">&times;</a>
+														<input type="hidden" value="<?php echo $cart->cart_id; ?>" name="id_c" id="cart_id<?php echo $cart->cart_id; ?>">
+														<a href="?del=<?php echo $cart->cart_id; ?>" class="remove" title="Remove this item">&times;</a>
 													</td>
 													<td class="product-thumbnail hidden-xs">
 														<a href="#">
-															<img width="100" height="150" src="../images/product/<?php echo $product->image1 ?>" alt="Product-1"/>
+															<img width="100" height="150" src="../imgs/<?php echo $product->image1; ?>" alt="Product-1"/>
 														</a>
 													</td>
 													<td class="product-name">
-														<a href="#" data-rel="quickViewModal" data-original-title="" title=""><?php echo $product->name?></a>
+														<a href="#" data-rel="quickViewModal" data-original-title="" title=""><?php echo $product->product_name; ?></a>
 														<dl class="variation">
 															<dt class="variation-Size">category:</dt>
-															<dd class="variation-Size"><p><?php echo $category_name->name ?></p></dd>
+															<dd class="variation-Size"><p><?php echo $category_name->category_name; ?></p></dd>
 														</dl>
 													</td>
 													<td class="product-price text-center">
-													<input type="hidden" value="<?php echo $product->price;?>" name="price">
-                                                    <span class="amount">JD <?php echo $product->price;?></span>
+													<input type="hidden" value="<?php echo $product->price; ?>" name="price">
+                                                    <span class="amount">JD <?php echo $product->price; ?></span>
+
 													</td>
 													<td class="product-quantity text-center">
 														<div class="quantity">
 
-										           <input type="number" step="1" min="0" id="qunatity/<?php echo $cart->cart_id?>/<?php echo $product->price;?>" class="breakdown" name="qunatity<?php echo $cart->product_id?>" value="<?php echo $qunatity?>" title="Qty" class="input-text qty text" size="4"/>
+										           <input type="number" step="1" min="0" id="qunatity/<?php echo $cart->cart_id; ?>/<?php echo $product->price; ?>" class="breakdown" name="qunatity<?php echo $cart->product_id; ?>" value="<?php echo $qunatity; ?>" title="Qty" class="input-text qty text" size="4"/>
 														
 									
 									           </div>
 													</td>
 													
 													<td class="product-subtotal hidden-xs text-center">
-														<span class="amount" id="subTotal">JD <?php echo $product->price * $cart->quantity ?></span>
+														<span class="amount" id="subTotal">JD <?php echo $product->price *
+                  $cart->quantity; ?></span>
 													</td>
 												</tr>
 												<div class="modal fade shop product-quickview" tabindex="-1" role="dialog" aria-hidden="true">
@@ -270,9 +281,9 @@ echo "<script>alert('invalid coupon')</script>";
 		</div>
 	</div>
 </div>
-												<?php
-												//   $item_count = $qunatity;
-												  $total+=$sub_total; } ?>
+<?php $total += $sub_total;
+                                                    }
+                                                    ?>
 
                 
 												<tr>
@@ -290,24 +301,30 @@ echo "<script>alert('invalid coupon')</script>";
 											</tbody>
 										</table>
 									</form>
-									<?php 
-													
-													  ?>
+									<?php  ?>
 									<div class="cart-collaterals">
 										<div class="cart_totals">
 											<h2>Cart Totals</h2>
 											<table>
 												<tr class="cart-subtotal">
 													<th>Subtotal</th>
-													<td><span class="amount">JD <?php echo $total ?></span></td>
+													<td><span class="amount">JD <?php echo $total; ?></span></td>
 												</tr>
 												<tr class="shipping">
 													<th>Discount</th>
-													<td><span class="amount"> <?php if( isset($_POST['apply_coupon'])) { echo $coupon_saved->discount ." %";} else echo "0";?></span></td>
+													<td><span class="amount"> <?php if (isset($_POST['apply_coupon'])) {
+                 echo $coupon_saved->discount . ' %';
+             } else {
+                 echo '0';
+             } ?></span></td>
 												</tr>
 												<tr class="order-total">
 													<th>Total</th>
-													<td><strong><span class="amount">JD <?php if( isset($_POST['apply_coupon'])) {echo $total-$total*($coupon_saved->discount/100); }else echo $total  ?></span></strong></td>
+													<td><strong><span class="amount">JD <?php if (isset($_POST['apply_coupon'])) {
+                 echo $total - $total * ($coupon_saved->discount / 100);
+             } else {
+                 echo $total;
+             } ?></span></strong></td>
 												</tr>
 											</table>
 											<div class="wc-proceed-to-checkout">
@@ -322,7 +339,8 @@ echo "<script>alert('invalid coupon')</script>";
 					</div>
 				</div>
 			</div>
-<?php	require_once "footer.php"?>
+
+<?php require_once 'footer.php'; ?>
 
 <script>
     document.body.classList.add("shop-account");
@@ -353,6 +371,4 @@ echo "<script>alert('invalid coupon')</script>";
 		<script type='text/javascript' src='../js/jquery-ui-touch-punch.min.js'></script>
 		<script type='text/javascript' src='../js/price-slider.js'></script>
 
-
-
-		<script src="cart.js"></script>
+		<script src="cart.js"></script> 
