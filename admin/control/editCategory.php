@@ -44,7 +44,7 @@ try {
             <div class="page-header">
               <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white me-2">
-                  <i class="mdi mdi-contacts menu-icon"></i>
+                  <i class="mdi mdi-format-list-bulleted menu-icon"></i>
                 </span> Category
               </h3>
               <nav aria-label="breadcrumb">
@@ -72,6 +72,11 @@ try {
                     value = "C:\Apache24\htdocs\E_Commerce\imgs\<?php echo $category[
                         'image'
                     ]; ?>" required>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="extra" name='extra'
+                     value = "<?php echo $category['extra']; ?>" required>
+                    <label for="floatingInput">Additional information</label>
                 </div>
                 <div>
                     <input type="submit" class="btn btn-lg btn-outline-primary" value="Update Category" name='updateCategory'>

@@ -9,9 +9,10 @@ try {
         $tempname = $_FILES['uploadimg']['tmp_name'];
         $folder = '../../imgs/' . $filename;
         $name = $_POST['name'];
+        $extra = $_POST['extra'];
 
-        $sql = $connect->query("INSERT INTO categories (category_name,image)
-        VALUES ('$name','$filename')");
+        $sql = $connect->query("INSERT INTO categories (category_name,image,extra)
+        VALUES ('$name','$filename','$extra')");
 
         if ($sql) {
             move_uploaded_file($tempname, $folder);
@@ -38,7 +39,7 @@ try {
             <div class="page-header">
               <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white me-2">
-                  <i class="mdi mdi-contacts menu-icon"></i>
+                  <i class="mdi mdi-format-list-bulleted menu-icon"></i>
                 </span> Category
               </h3>
               <nav aria-label="breadcrumb">
@@ -59,15 +60,16 @@ try {
                 </div>
                 <label for="floatingInput">Image</label>
                 <div class="form-floating mb-3">
-                    <input type="file" class="form-control" id="floatingInput" placeholder="Add Image For Category" name='uploadimg' required>
+                  <input type="file" class="form-control" id="floatingInput" placeholder="Add Image For Category" name='uploadimg' required>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="extra" name='extra' required>
+                    <label for="floatingInput">Additional information</label>
                 </div>
                 
-                <!-- <div class="form-floating mb-3">
-                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                    <label for="floatingTextarea2">Comments</label>
-                </div> -->
+
                 <div>
-                    <input type="submit" class="btn btn-lg btn-outline-primary" value="Add User" name='addCategory'>
+                    <input type="submit" class="btn btn-lg btn-outline-primary" value="Add Category" name='addCategory'>
                 </div>
 </form>
 </div>  

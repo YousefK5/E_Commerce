@@ -5,7 +5,7 @@ require_once '../../views/connection.php';
 $categories = $connect->query('SELECT * FROM categories');
 $categories = $categories->fetchAll();
 
-try {
+// try {
     $success = 0;
     if (isset($_POST['addProduct'])) {
         $filename1 = $_FILES['uploadimg1']['name'];
@@ -29,9 +29,12 @@ try {
         $price = $_POST['price'];
         $desc = $_POST['desc'];
         $categoryID = $_POST['category'];
+        $discount = $_POST['discount'];
+        $offer = $_POST['offer']?1:0;
+        $newarrive = $_POST['newarrival']?1:0;
 
-        $sql = $connect->query("INSERT INTO products (product_name,price,description,image1,image2,image3,category_id)
-        VALUES ('$name','$price' ,'$desc','$filename1','$filename2','$filename3','$categoryID')");
+        $sql = $connect->query("INSERT INTO products (product_name,price,description,image1,image2,image3,category_id,discount,offers,new_arrive)
+        VALUES ('$name','$price' ,'$desc','$filename1','$filename2','$filename3','$categoryID','$discount','$offer','$newarrive')");
 
         if ($sql) {
             move_uploaded_file($tempname1, $folder1);
@@ -45,8 +48,8 @@ try {
             header('Refresh: 3; url=../views/products.php');
         }
     }
-} catch (Exception $e) {
-}
+// } catch (Exception $e) {
+// }
 ?>
 
 <?php require '../views/header.php'; ?>
@@ -57,14 +60,14 @@ try {
 
           <?php if ($success) {
               echo "<div class='alert alert-success' role='alert'>
-            Success , You Added New Product
+            Success , A New Product Is Added
             </div>";
           } ?>
           <div class="content-wrapper">
             <div class="page-header">
               <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white me-2">
-                  <i class="mdi mdi-contacts menu-icon"></i>
+                  <i class="uil uil-archive menu-icon"></i>
                 </span> Products
               </h3>
               <nav aria-label="breadcrumb">
@@ -110,12 +113,26 @@ try {
                         <option value="<?php echo $category[
                             'category_id'
                         ]; ?>"><?php echo $category[
-    'category_name'
-]; ?></option>
+                         'category_name'
+                        ]; ?></option>
                     <?php } ?>
                     </select>
                     <label for="floatingSelect">Category Name</label>
                 </div>
+                
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="floatingInput" placeholder="0-100%" value="0" name='discount' required>
+                    <label for="floatingInput">discount %</label>
+                </div>
+                
+                <div class="form-floating mb-3">
+                        <!-- <label for="offer">On offer</label> -->
+                        <input type="checkbox" id="offer" name="offer" >On offer<br>
+                        <!-- <label for="newarrival">New arrival</label> -->
+                        <input type="checkbox" id="newarrival" name="newarrival" >New arrival
+                        
+                </div>
+
                 <div>
                     <input type="submit" class="btn btn-lg btn-outline-primary" value="Add Product" name='addProduct'>
                 </div>

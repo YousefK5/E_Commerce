@@ -15,7 +15,7 @@ $categories = $categories->fetchAll();
             <div class="page-header">
               <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white me-2">
-                  <i class="mdi mdi-contacts menu-icon"></i>
+                  <i class="mdi mdi-format-list-bulleted menu-icon"></i>
                 </span> Categories
               </h3>
               <nav aria-label="breadcrumb">
@@ -45,6 +45,7 @@ $categories = $categories->fetchAll();
                         <th>#</th>
                         <th>Name</th>						
                         <th>Image</th>			
+                        <th>Additional information</th>			
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -53,9 +54,8 @@ $categories = $categories->fetchAll();
                     <tr>
                         <td><?php echo $category['category_id']; ?></td>
                         <td><?php echo $category['category_name']; ?></td>
-                        <td><img src="../../imgs/<?php echo $category[
-                            'image'
-                        ]; ?>"></td>
+                        <td><img src="../../imgs/<?php echo $category['image']; ?>"></td>
+                        <td><?php echo $category['extra']; ?></td>
                         <td>
                             <a href="../control/editCategory.php?id=<?php echo $category[
                                 'category_id'

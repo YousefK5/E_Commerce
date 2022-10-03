@@ -17,7 +17,7 @@ $products = $products->fetchAll(PDO::FETCH_ASSOC);
             <div class="page-header">
               <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white me-2">
-                  <i class="mdi mdi-contacts menu-icon"></i>
+                  <i class="uil uil-archive menu-icon"></i>
                 </span> Products
               </h3>
               <nav aria-label="breadcrumb">
@@ -50,6 +50,9 @@ $products = $products->fetchAll(PDO::FETCH_ASSOC);
                         <th>Description</th>			
                         <th>Images</th>						
                         <th>Category</th>					
+                        <th>Discount</th>
+                        <th>Offers</th>
+                        <th>New arrivals</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -75,6 +78,14 @@ $products = $products->fetchAll(PDO::FETCH_ASSOC);
                         <?php } ?>
                         </td>
                         <td><?php echo $product['category_name']; ?></td>
+
+
+                        <td><?php echo $product['discount']; ?></td>
+                        <td><?php echo $product['offers']?"yes":"No"; ?></td>
+                        <td><?php echo $product['new_arrive']?"yes":"No"; ?></td>
+
+
+
                         <td>
                             <a href="../control/editProduct.php?id=<?php echo $product[
                                 'product_id'
@@ -87,7 +98,7 @@ $products = $products->fetchAll(PDO::FETCH_ASSOC);
                             <div class="modal-content">
                                 <form>
                                     <div class="modal-header">						
-                                        <h4 class="modal-title">Delete Employee</h4>
+                                        <h4 class="modal-title">Delete Product</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                     </div>
                                     <div class="modal-body">					
