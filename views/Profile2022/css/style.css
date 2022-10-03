@@ -3333,6 +3333,12 @@ footer .bottom-footer .row .col .social-holder img {
     width: 100vw;
 }
 
+@media screen and (min-width:900px) {
+    .my-profile {
+    margin: 100px auto 0;
+    }
+}
+
 .mega-container .grid-column-2 .flex-item {
     width: 30vw;
 }
@@ -6198,7 +6204,7 @@ footer .bottom-footer .row .col .social-holder img {
 }
 
 .button-group button:last-child {
-    background-color: ##fe6367;
+    background-color: #fe6367;
     color: white;
     font-weight: bold;
 }

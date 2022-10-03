@@ -14,3 +14,7 @@ try {
 } catch (PDOException $e) {
     echo 'connection falid ' . $e->getMessage();
 }
+
+session_start();
+
+$_SESSION['userid'] = 13;

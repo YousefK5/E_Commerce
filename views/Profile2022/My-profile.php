@@ -1,229 +1,387 @@
-<?php require_once("../connection.php");?> 
+<?php require_once '../connection.php'; ?> 
+
+<!doctype html>
 
 
-<!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
     <title> My Profile</title>
-    <link rel="icon" type="image/png" href="Images/carts.png">
+	<link rel="shortcut icon" href="images/favicon.png">
+
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+	<link rel='stylesheet' href='../../css/settings.css' type='text/css' media='all' />
+	<link rel='stylesheet' href='../../css/swatches-and-photos.css' type='text/css' media='all' />
+	<link rel='stylesheet' href='../../css/font-awesome.min.css' type='text/css' media='all' />
+	<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Montserrat%3A400%2C700&#038;' type='text/css' media='all' />
+	<link rel='stylesheet' href='../../css/elegant-icon.css' type='text/css' media='all' />
+	<link rel='stylesheet' href='../../css/style.css' type='text/css' media='all' />
+	<link rel='stylesheet' href='../../css/shop.css' type='text/css' media='all' />
+	<link rel='stylesheet' href='../../css/magnific-popup.css' type='text/css' media='all' />
+    <link rel="icon" type="image/png" href="Images/carts.png">
 </head>
 
 <body>
+	<div class="contain"></div>
+	<div class="offcanvas open">
+		<div class="offcanvas-wrap">
+			<div class="offcanvas-user clearfix">
+				<a class="offcanvas-user-wishlist-link" href="wishlist.html">
+					<i class="fa fa-heart-o"></i> My Wishlist
+				</a>
+				<a class="offcanvas-user-account-link" href="my-account.html">
+					<i class="fa fa-user"></i> Login
+				</a>
+			</div>
+			<nav class="offcanvas-navbar">
+				<ul class="offcanvas-nav" >
+					<li> <a href="index.html">Home <span class="caret"></span></a></li>
+			
+					<li class="menu-item-has-children dropdown">
+						<a href="shop.html" class="dropdown-hover">Shop <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li id="menu-item-10433">
+								<a href="shop-by-category.html">Women <span class="caret"></span></a>
+								
+							</li>
+							<li>
+								<a href="shop-by-category.html">Brands <span class="caret"></span></a>
+							
+							</li>
+							<li>
+								<a href="shop-by-collection.html">Conllections <span class="caret"></span></a>
+						
+							</li>
+							<li>
+								<a href="#">Woo </span></a>
+				
+							</li>
+						</ul>
+					</li>
+					<li><a href="collection.html">Collections</a></li>
+			
+					<li class="menu-item-has-children dropdown">
+						<a href="#" class="dropdown-hover">Pages <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="about-us.html">About us</a></li>
+							<li><a href="contact-us.html">Contact Us</a></li>
+							<li><a href="faq.html">FAQ</a></li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+			<div class="offcanvas-widget">
+				<div class="widget social-widget">
+					<div class="social-widget-wrap social-widget-none">
+						<a href="https://www.facebook.com" title="Facebook">
+							<i class="fa fa-facebook"></i>
+						</a>
+						<a href="https://www.twitter.com" title="Twitter">
+							<i class="fa fa-behance"></i>
+						</a>
+						<a href="https://www.instgram.com" title="Instagram">
+							<i class="fa fa-instagram instagram-bg-hover"></i>
+						</a>
+						<a href="https://www.pinterest.com" title="Pinterest">
+							<i class="fa fa-pinterest"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="wrapper" class="wide-wrap">
+		<div class="offcanvas-overlay"></div>
+		<header class="header-type-classic header-absolute header-transparent">
+			<div class="topbar">
+				<div class="container topbar-wap">
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="left-topbar">
+								<div class="topbar-social">
+									<a href="https://www.facebook.com" title="Facebook">
+										<i class="fa fa-facebook"></i>
+									</a>
+									<a href="https://www.twitter.com" title="Twitter">
+										<i class="fa fa-behance"></i>
+									</a>
+									<a href="https://www.instgram.com" title="Instagram">
+										<i class="fa fa-instagram instagram-bg-hover"></i>
+									</a>
+									<a href="https://www.pinterest.com" title="Pinterest">
+										<i class="fa fa-pinterest"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="right-topbar">
+								<div class="user-wishlist">
+									<a href="wishlist.html"><i class="fa fa-heart-o"></i> My Wishlist</a>
+								</div>
+								<div class="user-login">
+									<ul class="nav top-nav">
+										<li class="menu-item">
+											<a data-rel="loginModal" href="#"><i class="fa fa-user"></i> Login</a>
+										</li>
+									</ul>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="navbar-container">
+				<div class="navbar navbar-default  navbar-scroll-fixed" style="background-color: #1e1e1ea8;">
+					<div class="navbar-default-wrap" >
+						<div class="container">
+							<div class="row">
+								<div class="col-md-12 navbar-default-col">
+									<div class="navbar-wrap">
+										<div class="navbar-header">
+											<button type="button" class="navbar-toggle">
+												<span class="sr-only">Toggle navigation</span>
+												<span class="icon-bar bar-top"></span>
+												<span class="icon-bar bar-middle"></span>
+												<span class="icon-bar bar-bottom"></span>
+											</button>
+											<a class="navbar-search-button search-icon-mobile" href="#">
+												<i class="fa fa-search"></i>
+											</a>
+
+
+
+
+											<a class="cart-icon-mobile" href="#">
+												<!-- count of cart  -->
+												<i class="elegant_icon_bag"></i><span>0</span>
+											</a>
+
+
+											<!-- logo image  -->
+											<a class="navbar-brand" href="./">
+												<img class="logo" alt="The DMCS" src="../images/ltr.png">
+												<img class="logo-fixed" alt="The DMCS" src="../images/ltrblack.png">
+												<img class="logo-mobile" alt="The DMCS" src="../images/ltrblack.png">
+											</a>
+										</div>
+										<nav class="collapse navbar-collapse primary-navbar-collapse">
+											<ul class="nav navbar-nav primary-nav">
+												<li class="menu-item-has-children dropdown">
+													<a href="./" class="dropdown-hover">
+														<span class="underline">Home</span> </span>
+													</a>
+
+												</li>
+												<li class="menu-item-has-children megamenu megamenu-fullwidth dropdown">
+													<a href="shop.php" class="dropdown-hover">
+														<span class="underline">Shop</span> <span class="caret"></span>
+													</a>
+													<ul class="dropdown-menu">
+														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
+															<h3 class="megamenu-title">
+																1
+															</h3>
+
+														</li>
+														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
+															<h3 class="megamenu-title">
+																2
+															</h3>
+
+														
+														</li>
+														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
+															<h3 class="megamenu-title">
+																3
+															</h3>
+
+														
+														</li>
+														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
+															<h3 class="megamenu-title">
+																4
+															</h3>
+
+														</li>
+														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
+															<h3 class="megamenu-title">
+																5
+															</h3>
+
+														</li>
+														
+														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
+															<h3 class="megamenu-title">
+																6
+															</h3>
+
+														</li>
+
+													</ul>
+												</li>
+
+												<li class="menu-item-has-children dropdown">
+
+													<!-- Pages link -->
+													<a href="#" class="dropdown-hover">
+														<span class="underline">Pages</span> <span class="caret"></span>
+													</a>
+													<ul class="dropdown-menu">
+														<li><a href="about-us.php">About us</a></li>
+														<li><a href="contact-us.php">Contact Us</a></li>
+														
+													</ul>
+												</li>
+												<!-- search desktop icon -->
+
+												<li class="navbar-search">
+													<a class="navbar-search-button" href="#">
+														<i class="fa fa-search"></i>
+													</a>
+												</li>
+
+
+												<!-- cart and boxes start -->
+	<?php
+ if (isset($_GET['del'])) {
+     $cart_id = $_GET['del'];
+
+     $query = $connect->prepare('DELETE  FROM `cart` Where cart_id=? ');
+     $query->execute([$cart_id]);
+ }
+
+ $query = 'SELECT * from `cart`';
+ $query = $connect->prepare($query);
+ $query->execute();
+ $productsInCart = $query->fetchAll(PDO::FETCH_OBJ);
+
+ if (empty($productsInCart)) { ?>
+												<li class="navbar-minicart navbar-minicart-nav">
+													<a class="minicart-link" href="#">
+														<span class="minicart-icon">
+															<i class="minicart-icon-svg elegant_icon_bag"></i>
+															<span><?php echo count($productsInCart); ?></span>
+														</span>
+													</a>
+
+													<div class="minicart">
+														<div class="minicart-header no-items show">
+															Your shopping bag is empty.
+														</div>
+
+														<div class="minicart-footer">
+															<div class="minicart-actions clearfix">
+																<a class="button" href="./shop.php">
+																	<span class="text">Go to the shop</span>
+																</a>
+															</div>
+														</div>
+													</div>
+												</li>
+
+
+<?php } else { ?>
+
+
+
+
+
+
+												<li class="navbar-minicart navbar-minicart-nav">
+														<a class="minicart-link" href="#">
+															<span class="minicart-icon has-item">
+																<i class="minicart-icon-svg elegant_icon_bag"></i> <span><?php echo count(
+                    $productsInCart
+                ); ?></span>
+															</span>
+														</a>
+														<div class="minicart" style="display:none">
+															<div class="minicart-header"><?php echo count(
+                   $productsInCart
+               ); ?> items in the shopping cart</div>
+															<div class="minicart-body">
+																<?php foreach ($productsInCart as $pInCart) {
+
+                    $query = "SELECT * from `products` WHERE product_id= '$pInCart->product_id'";
+                    $query = $connect->prepare($query);
+                    $query->execute();
+                    $product = $query->fetch(PDO::FETCH_OBJ);
+                    ?>
+																<div class="cart-product clearfix">
+																	<div class="cart-product-image">
+																		<a class="cart-product-img" href="#">
+																			<img width="100" height="150" src="../imgs/<?php echo $product->image1; ?>" alt="Product-1"/>
+																		</a>
+																	</div>
+																	<div class="cart-product-details">
+																		<div class="cart-product-title">
+																			<a href="#"><?php echo $product->product_name; ?></a>
+																		</div>
+																		<div class="cart-product-quantity-price">
+																			<?php echo $pInCart->quantity; ?> x <span class="amount">&#36;<?php echo $product->price; ?></span>
+																		</div>
+																	</div>
+																	<a href="?del=<?php echo $pInCart->cart_id; ?>" class="remove" title="Remove this item">&times;</a>
+																</div>
+																<?php
+                } ?>
+															</div>
+															<div class="minicart-footer">
+																<div class="minicart-actions clearfix">
+																	<a class="checkout-button button" href="./cart.php">
+																		<span class="text">View Cart</span>
+																	</a>
+																</div>
+															</div>
+														</div>
+													</li>
+<?php }
+ ?>
+												<!-- cart and boxes -->
+											</ul>
+
+											<!--desktop nav end -->
+										</nav>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- search open box -->
+					<div class="header-search-overlay hide">
+						<div class="container">
+							<div class="header-search-overlay-wrap">
+								<!-- search form -->
+								<form class="searchform">
+									<input type="search" class="searchinput" name="s" value="" placeholder="Search..." />
+									<input type="submit" class="searchsubmit hidden" name="submit" value="Search" />
+								</form>
+								<button type="button" class="close">
+									<span aria-hidden="true" class="fa fa-times"></span>
+									<span class="sr-only">Close</span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
 
 <?php
- $stmt = $connect->query("SELECT * FROM users Where user_id=user_id");
- 
- $user = $stmt->fetch();
- 
- ?>
+$curUser = $_SESSION['userid'];
+$stmt = $connect->query("SELECT * FROM users Where user_id='$curUser'");
+$user = $stmt->fetch();
+?>
 
 
-    <header>
-        <!-- <div class="top-header" role='top header' id="back-to-top">
-            <div class="social-img-holder" role='image holder'>
-                <img src="Images/facebook.png" alt="facebook-icon" role='icon' aria-label='facebook icon'>
-                <img src="Images/youtube.png" alt="youtube-icon" role='icon' aria-label='youtube icon'>
-                <img src="Images/Twitter.png" alt="twitter-icon" role='icon' aria-label='twitter icon'>
-            </div>
-            <div class="search-box" role='search' id="search-box">
-                <input type="search" name="searchbox" role="form" id="searchbox"
-                    placeholder="Search Products and Brands" aria-labelledby="search-box">
-                <img src="Images/magglass.png" alt="search-icon" role='icon' aria-label='magnifying glass icon'>
-            </div>
-            <div class="information-tab" role="info container">
-                <img src="Images/call.png" id='call-icon' alt="call-icon" role='icon' aria-label='Phone icon'>
-                <a id='ph-number' href="" role='link'>+91 9838203708</a>
-                <a href="Seller-page.html" role='link'>Sell on Company</a>
-                <a href="#" role='link'>Download App</a>
-                <img src="Images/langicon.png" id="flag-icon" alt="lang-icon" role='icon' aria-label='language icon'>
-                <form action="#" aria-label='form'>
-                    <select name="lang-select" id="lang-select" aria-labelledby="select box">
-                        <option value="India" role="option" aria-labelledby="Option1">India</option>
-                        <option value="UK" role="option" aria-labelledby="Option1">UK</option>
-                        <option value="Canada" role="option" aria-labelledby="Option2">Canada</option>
-                        <option value="Germany" role="option" aria-labelledby="Option3">Germany</option>
-                    </select>
-                </form>
-            </div>
-        </div>
-        <!-- End of Top Bar -->
-
-        <!-- Start of Bottom Header -->
-        <div class="bottom-header" id="bottom-head">
-            <div class="sticky-bar-wrapper bg-white" id="sticky-section">
-                <nav class="navbar navbar-expand-lg navbar-light bg-white" id="bottom-header-navbar">
-                    <div class="container-fluid">
-                        <a class="navbar-brand" href="index.html"><img id="logo_img" src="Images/logo.png" alt="logo" role="img"
-                                aria-label=" website logo"></a>
-                        <div class="input-group d-xl-none d-lg-none" id="search-box-container">
-                            <input type="search" id="search-box-hidden" class="form-control"
-                                placeholder="Search products and Brands" aria-label="search box"
-                                aria-describedby="basic-addon1">
-                            <span id="basic-addon1"><img src="Images/magglass.png" alt="search-icon" role="icon"
-                                    aria-labelledby="magnifying glass icon"></span>
-                        </div>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                            <ul class="navbar-nav mr-auto mt-2 ml-xl-5 ml-lg-5 ml-md-0 mt-lg-0 text-center">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.html">Home</a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link drop-btn" href="Product-list.html">Categories</a>
-                                    <div class="dropdown-content mt-2">
-                                        <a href="Product-list.html">Men</a>
-                                        <a href="Product-list.html">Women</a>
-                                        <a href="Product-list.html">Ethnic</a>
-                                      </div>
-                                </li>
-                                <li class="nav-item dropdown2">
-                                    <a class="nav-link drop-btn2" href="my-order.html">Orders</a>
-                                    <div class="dropdown-content2 mt-2">
-                                        <a href="my-order.html">My Orders</a>
-                                        <a href="Track-order.html">Track Orders</a>
-                                        <a href="Return-order.html">Return Orders</a>
-                                      </div>
-                                </li>
-                                <li class="nav-item wishlist">
-                                    <a class="nav-link" href="Wishlist.html">Wishlist</a>
-                                    <span class="badge" id="wishlist-badge">0</span>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active ml-xl-3 ml-md-0" href="My-profile.html">Profile</a>
-                                </li>
-                                <li class="nav-item notification">
-                                    <a class="nav-link" href="Cart-page.html">Cart</a>
-                                    <span class="badge" id="cart-badge">0</span>
-                                </li>
-                            </ul>
-                            <form class="form-inline my-2 my-lg-0 d-flex flex-column align-items-stretch justify-content-start">
-                                <button class="btn btn-orange my-2 my-sm-0" id="signin" type="button" data-toggle="modal"
-                                data-target="#exampleModalCenter" aria-labelledby='sign-in-btn'>SIGN IN</button>
-                            </form>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-            <!-- LOGIN MODAL -->
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                aria-label="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header d-flex flex-column align-items-center">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <img src="Images/logo.png" alt="modal logo">
-                        </div>
-                        <div class="modal-body">
-                            <!-- Addition of Tabs -->
-                            <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
-                                <li class="nav-item">
-                                    <a href="#login" id="tab1" class='nav-link active' style="border-color: white;" aria-controls="login"
-                                        aria-selected='true' role="tab" tabindex=1 data-toggle='tab'>LOGIN</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#create-account" id="tab2" class='nav-link' style="border-color: white;" aria-controls="create-account"
-                                        aria-selected='false' role="tab" tabindex=0 data-toggle='tab'>CREATE ACCOUNT</a>
-                                </li>
-                            </ul>
-                            <div class="tab-content mt-3" id="myTabContent">
-                                <div class="tab-pane active" id="login" role="tabpanel" aria-labelledby="tab1"
-                                    aria-hidden='false'>
-                                    <!-- Addition of Form 1 -->
-                                    <form class="d-flex flex-column">
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Email address <span
-                                                    class='required'>*</span></label>
-                                            <input type="email" class="form-control" id="exampleInputEmail1"
-                                                role="email" placeholder="Enter email">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputPassword1">Password <span
-                                                    class='required'>*</span></label>
-                                            <div class="input-group d-flex flex-row">
-                                                <input type="password" class="form-control" id="exampleInputPassword1"
-                                                    placeholder="Password">
-                                                <div class="input-group-append">
-                                                    <div class="input-group-text">
-                                                        <i class='bi bi-eye-fill ml-2'></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button type="submit" class="btn btn-orange rounded-0">SIGN
-                                            IN</button><br>
-                                        <button type="submit" class="btn btn-default2 rounded-0">FORGOT YOUR
-                                            PASSWORD?</button>
-                                    </form>
-                                </div>
-                                <div class="tab-pane" id="create-account" role="tabpanel" aria-labelledby="tab2"
-                                    aria-hidden='true'>
-                                    <!-- Addition of Form 2 -->
-                                    <form class="d-flex flex-column">
-                                        <div class="form-group">
-                                            <label for="exampleInputUsername2">Username <span
-                                                    class='required'>*</span></label>
-                                            <input type="text" class="form-control" id="exampleInputUsername2"
-                                                role="username" placeholder="Enter Username">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail2">Email address <span
-                                                    class='required'>*</span></label>
-                                            <input type="email" class="form-control" id="exampleInputEmail2"
-                                                role="email" placeholder="Enter email">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputPassword2">Password <span
-                                                    class='required'>*</span></label>
-                                            <div class="input-group d-flex flex-row">
-                                                <input type="password" class="form-control" id="exampleInputPassword2"
-                                                    placeholder="Password">
-                                                <div class="input-group-append">
-                                                    <div class="input-group-text">
-                                                        <i class='bi bi-eye-fill ml-2'></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button type="submit"
-                                            class="btn btn-default btn-hover btn-orange rounded-0">CREATE
-                                            ACCOUNT</button><br>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End of Tabs -->
-                        <!-- Start of Modal Footer -->
-                        <div class="modal-footer d-flex flex-column justify-items-center">
-                            <span>Or Login With</span>
-                            <div class="modal-social-btn">
-                                <a class="btn text-white" style="background-color: #3b5998" href="#!"
-                                    role="button"><span class="bi bi-facebook">FACEBOOK</span></a>
-                                <a class="btn text-white" style="background-color: #55acee" href="#!"
-                                    role="button"><span class="bi bi-twitter">TWITTER</span></a>
-                                <a class="btn text-white" style="background-color: #dd4b39" href="#!"
-                                    role="button"><span class="bi bi-google">GOOGLE</span></a>
-                            </div>
-                        </div>
-                        <!-- Start of Modal Footer -->
-                    </div>
-                </div>
-            </div>
-            <!-- LOGIN MODAL -->
-        </div>
-    </header>
     <a class='back-to-top-btn float-right' id="scroll-btn" role='button' aria-label='back to top button'>
         <img src="Images/up-green.png" alt="goto top" role="icon" aria-label='back to top image'>
     </a>
@@ -245,28 +403,17 @@
             <div class="profile mb-4 d-flex flex-column justify-content-center align-items-start">
                 <h6 class="font-weight-bold my-account-heading">MY ACCOUNT</h6>
                 <img src="https://th.bing.com/th/id/R.17f2c2b13373bd4048fa4c080448ed25?rik=EMhK7I2caY2%2bAw&riu=http%3a%2f%2fwww.colegiodepadua.com.br%2fimg%2fuser.png&ehk=QKwFrUE%2fGegwZb1KOz9FS5U0rT4ZUGhr%2bMjaR2jdDeo%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1" width="40%" alt="Profile picture">
-                <p class='mb-0 mt-2'><?php  print_r($user['name']) ?></p>
-                <p><?php  print_r($user['email']) ?></p>
+                <p class='mb-0 mt-2'><?php echo $user['first_name'] .
+                    ' ' .
+                    $user['last_name']; ?></p>
+                <p><?php echo $user['email']; ?></p>
             </div>
             <div class="orders mb-4">
                 <h6 class="font-weight-bold">ORDERS</h6>
                 <div class="list-group border-0">
-                    <a href="my-order.html" class="list-items">My Order</a>
+                    <a href="../order_history.php" class="list-items">My Order</a>
                     <!-- <a href="Return-order.html" class="list-items">Return Order</a> -->
                 </div>
-            </div>
-            <div class="account mb-4">
-                <h6 class="font-weight-bold">ACCOUNT</h6>
-                <div class="list-group">
-                    <a href="My-profile.php" class="list-items list-item-active font-weight-bold">Profile</a>
-                    <!-- <a href="My-profile.php" class="list-items">Saved Addresses</a> -->
-                    <!-- <a href="My-profile.php" class="list-items">Saved Cards</a> -->
-                    <a href="My-profile.php" class="list-items">Change Password</a>
-                </div>
-            </div>
-             <div class="payment mb-4">
-                <h6 class="font-weight-bold"><a href="../index.php" style> Home </a></h6>
-                
             </div>
             <div class="payment mb-4">
                 <h6 class="font-weight-bold"><a href="../logout.php"> Logout<a></h6>
@@ -284,88 +431,6 @@
         </div>
     </section>
 
-
-  
-
-
-    <!-- End of Payments and Help -->
-
-    <!-- Start of Footer -->
-    <!-- <footer class="mt-5">
-        <div class="container-fluid w-75">
-            <div class="row">
-                <div
-                    class="col col-xl-2 col-lg-3 col-md-3 col-sm-4 d-flex flex-column align-items-start justify-content-start">
-                    <h3>POLICY INFO</h3>
-                    <a href="#" role='link'>Privacy Policy</a>
-                    <a href="#" role='link'>Terms of Sale</a>
-                    <a href="#" role='link'>Terms of Use</a>
-                    <a href="#" role='link'>Report Abuse and Takedown Policy</a>
-                </div>
-                <div class="col col-xl-2 col-lg-3 col-md-2 col-sm-3 d-flex flex-column align-items-start">
-                    <h3>COMPANY</h3>
-                    <a href="#" role='link'>About Us</a>
-                    <a href="#" role='link'>Core Values</a>
-                    <a href="#" role='link'>Careers</a>
-                    <a href="#" role='link'>Blog</a>
-                    <a href="#" role='link'>Site Map</a>
-                </div>
-                <div class="col col-xl-3 col-lg-3 col-md-4 col-sm-5 d-flex flex-column align-items-start">
-                    <h3>SNAPDEAL BUSINESS</h3>
-                    <a href="#" role='link'>Shopping App</a>
-                    <a href="#" role='link'>Sell on Snapdeal</a>
-                    <a href="#" role='link'>Advertise on Snapdeal</a>
-                    <a href="#" role='link'>Media Enquiries</a>
-                    <a href="#" role='link'>Be an Affiliate</a>
-                </div>
-                <div
-                    class="col col-xl-2 col-lg-3 col-md-3 col-sm-4 mt-md-0 mt-sm-5 d-flex flex-column align-items-start">
-                    <h3>NEED HELP ?</h3>
-                    <a href="#" role='link'>Contact Us</a>
-                    <a href="FAQ.html" role='link'>FAQ</a>
-                    <a href="#" role='link'>Online Shopping</a>
-                </div>
-                <div class="col col-xl-3 col-lg-5 col-md-6 col-sm-7 mt-xl-0 mt-lg-5 mt-md-5 mt-sm-5">
-                    <h3>SUBSCRIBE</h3>
-                    <div class="input-group mb-2 d-flex justify-content-center align-items-center">
-                        <input type="text" class="form-control" placeholder="Your Email Address"
-                            aria-label="Recipient's username" aria-describedby="button-addon2">
-                        <button class="btn btn-outline-secondary d-flex align-items-center" type="button"
-                            id="button-addon2">Search</button>
-                    </div>
-                    <small>Register now to get updates on promotions and coupons.<br> Or <a href="#">Download
-                            App</a></small>
-                </div>
-            </div>
-        </div>
-        <hr>
-        <div class="bottom-footer container-fluid w-75">
-            <div class="row">
-                <div class="col d-flex flex-row justify-content-between">
-                    <div class="box-1">
-                        <h3>PAYMENT</h3>
-                        <div class="card-holder">
-                            <img src="Images/card1.png" alt="card1" role="icon" aria-label='card image'>
-                            <img src="Images/card2.png" alt="card2" role="icon" aria-label='card image'>
-                            <img src="Images/card3.png" alt="card3" role="icon" aria-label='card image'>
-                            <img src="Images/card4.png" alt="card4" role="icon" aria-label='card image'>
-                            <img src="Images/card2.png" alt="cod" role="icon" aria-label='card image'>
-                            <img src="Images/card1.png" alt="netbanking" role="icon" aria-label='card image'>
-                        </div>
-                    </div>
-                    <div class="box-2">
-                        <h3>SOCIAL</h3>
-                        <div class="social-holder">
-                            <img src="Images/facebook.png" alt="facebook" role="icon" aria-label='facebook icon'>
-                            <img src="Images/tw-footer.png" alt="twitter" role="icon" aria-label='twitter icon'>
-                            <img src="Images/yt-footer.png" alt="youtube" role="icon" aria-label='youtube icon'>
-                            <img src="Images/ins-footer.png" alt="instagram" role="icon" aria-label='instagram icon'>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer> -->
     <script src="Javascript/index.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
@@ -381,41 +446,35 @@
        
         // parsing info from local storage for my profile page
         let returnedHTML = " ";
-        returnedHTML += `<div class="flex-item flex-item-1 d-flex justify-content-between">
+        returnedHTML += `
+        <div class="flex-item flex-item-2 d-flex justify-content-between">
+        <p class='key'>Name</p>
+            <?php echo $user['first_name'] . ' '; ?>
+            <?php echo $user['last_name']; ?>
+
+        </div>
+        <br>
+        <div class="flex-item flex-item-1 d-flex justify-content-between">
                 <p class='key'>Phone</p>
-               <?php  print_r($user['phone']);?>
+               <?php print_r($user['phone']); ?>
               
             </div>
             <br>
-            <div class="flex-item flex-item-2 d-flex justify-content-between">
-                <p class='key'>Name</p>
-                              <?php  print_r($user['name']);?>
-
+            <div class="flex-item flex-item-3 d-flex justify-content-between">
+                <p class='key'>Email</p>
+                <?php print_r($user['email']); ?>
             </div>
             <br>
-            <div class="flex-item flex-item-3 d-flex justify-content-between">
-                <p class='key'>Email ID</p>
-                               <?php  print_r($user['email']);?>
+            <div class="flex-item flex-item-5 d-flex justify-content-between">
+                <p class='key'>City</p>
+                <?php print_r($user['city']); ?>
 
-               
             </div>
             <br>
             <div class="flex-item flex-item-4 d-flex justify-content-between">
                 <p class='key'>Addres</p>
-                              <?php  print_r($user['address']);?>
+                <?php print_r($user['address']); ?>
 
-            </div>
-            <br>
-            <div class="flex-item flex-item-5 d-flex justify-content-between">
-                <p class='key'>city</p>
-                              <?php  print_r($user['city']);?>
-
-            </div>
-            <br>
-            <div class="flex-item flex-item-6 d-flex justify-content-between">
-                <p class='key'>password</p>
-               <?php  print_r($user['password']);?>
-               
             </div>
             <br>
           
@@ -462,7 +521,271 @@
     </section>
 
 
-    <br><br><br>
-            <?php require_once("../footer.php");?> 
+    <footer id="footer" class="footer">
+	<div class="footer-info">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<div class="footer-info-logo">
+						<!-- logo image -->
+						<a href="#"><img alt="The DMCS" src="../images/footer-logo.png"></a>
+					</div>
+					<div class="copyright text-center">Copyright right © 2022 Gruop4. All Rights Reserved.</div>
+					<div class="footer-social">
+						<a href="https://www.facebook.com" title="Facebook">
+							<i class="fa fa-facebook"></i>
+						</a>
+						<a href="https://www.twitter.com" title="Twitter">
+							<i class="fa fa-behance"></i>
+						</a>
+						<a href="https://www.instgram.com" title="Instagram">
+							<i class="fa fa-instagram instagram-bg-hover"></i>
+						</a>
+						<a href="https://www.pinterest.com" title="Pinterest">
+							<i class="fa fa-pinterest"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+</div>
+
+
+
+
+<!-- login model  -->
+<div class="modal fade user-login-modal" id="userloginModal" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form id="userloginModalForm" method="post" action="login.php">
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title">Login</h4>
+				</div>
+
+				<div class="modal-body">
+					<!-- <div class="user-login-facebook">
+								<button class="btn-login-facebook" type="button">
+									<i class="fa fa-facebook"></i>Sign in with Facebook
+								</button>
+							</div>
+							<div class="user-login-or"><span>or</span></div> -->
+
+
+					<!-- login form input  -->
+					<div class="form-group">
+						<label>Email</label>
+						<input type="text" id="username" name="email" required class="form-control" value="" placeholder="Email">
+					</div>
+					<div class="form-group">
+						<label for="password">Password</label>
+						<input type="password" id="password" required value="" name="password" class="form-control" placeholder="Password">
+					</div>
+					<div class="checkbox clearfix">
+						<div class="form-flat-checkbox pull-left">
+							<input type="checkbox" name="rememberme" id="rememberme" value="forever"><i></i>&nbsp;Remember Me
+						</div>
+						<span class="lostpassword-modal-link pull-right">
+							<a href="#lostpasswordModal" data-rel="lostpasswordModal">Lost your password?</a>
+						</span>
+					</div>
+				</div>
+
+				<div class="modal-footer">
+					<span class="user-login-modal-register pull-left">
+						<a data-rel="registerModal" href="#">Not a Member yet?</a>
+					</span>
+					<button type="submit" name="login" class="btn btn-default btn-outline">Sign in</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+<!-- register modal -->
+<div class="modal fade user-register-modal" id="userregisterModal" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form id="userregisterModalForm" action="signup.php" method="post">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title">Register account</h4>
+				</div>
+				<div class="modal-body">
+					<!-- <div class="user-login-facebook">
+								<button class="btn-login-facebook" type="button">
+									<i class="fa fa-facebook"></i>Sign in with Facebook
+								</button>
+							</div>
+							<div class="user-login-or"><span>or</span></div> -->
+
+					<!-- register input  -->
+					<div class="form-group">
+						<label>Username</label>
+						<input type="text" name="name" required class="form-control" value="" placeholder="Username">
+						<span class="error">* <?php if (isset($_POST['register'])) {
+          echo $nameErr;
+      } ?></span>
+
+					</div>
+					<div class="form-group">
+						<label for="user_email">Email</label>
+						<input type="email" id="user_email" name="email" required class="form-control" value="" placeholder="Email">
+						<span class="error">* <?php if (isset($_POST['register'])) {
+          echo $emailErr;
+      } ?></span>
+
+					</div>
+
+
+					<div class="form-group">
+						<label>Phone</label>
+						<input type="text" name="phone" required class="form-control" value="" placeholder="Phone">
+						<span class="error">* <?php if (isset($_POST['register'])) {
+          echo $phoneErr;
+      } ?></span>
+
+					</div>
+
+
+					<div class="form-group">
+						<label>Address</label>
+						<input type="text" name="address" required class="form-control" value="" placeholder="Address">
+						<span class="error">* <?php if (isset($_POST['register'])) {
+          echo $addressEr;
+      } ?></span>
+
+					</div>
+
+
+					<div class="form-group">
+						<label>City</label>
+						<input type="text" name="city" required class="form-control" value="" placeholder="City">
+						<span class="error">* <?php if (isset($_POST['register'])) {
+          echo $cityEr;
+      } ?></span>
+
+					</div>
+
+
+
+
+
+
+					<div class="form-group">
+						<label for="user_password">Password</label>
+						<input type="password" id="user_password" required value="" name="password" class="form-control" placeholder="Password">
+						<span class="error">* <?php if (isset($_POST['register'])) {
+          echo $passErr;
+      } ?></span>
+
+					</div>
+					<div class="form-group">
+						<label for="user_password">Retype password</label>
+						<input type="password" id="cuser_password" required value="" name="cuser_password" class="form-control" placeholder="Retype password">
+						<span class="error">* <?php if (isset($_POST['register'])) {
+          echo $cpassErr;
+      } ?></span>
+
+					</div>
+					
+
+
+
+
+
+
+
+				</div>
+				<div class="modal-footer">
+					<span class="user-login-modal-link pull-left">
+						<a data-rel="loginModal" href="#loginModal">Already have an account?</a>
+					</span>
+					<input type="submit" name="register" class="btn btn-default btn-outline" value="Register">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+	
+<div class="modal fade user-lostpassword-modal" id="userlostpasswordModal" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form id="userlostpasswordModalForm">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title">Forgot Password</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label>Username or E-mail:</label>
+						<input type="text" name="user_login" required class="form-control" value="" placeholder="Username or E-mail">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<span class="user-login-modal-link pull-left">
+						<a data-rel="loginModal" href="#loginModal">Already have an account?</a>
+					</span>
+					<button type="submit" class="btn btn-default btn-outline">try in</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<!-- product-quickview -->
+
+
+
+
+<script type='text/javascript' src='http://code.jquery.com/jquery-1.11.3.min.js'></script>
+		<script type='text/javascript' src='../../js/jquery-migrate.min.js'></script>
+		<script type='text/javascript' src='../../js/jquery.themepunch.tools.min.js'></script>
+		<script type='text/javascript' src='../../js/jquery.themepunch.revolution.min.js'></script>
+		<script type='text/javascript' src='../../js/easing.min.js'></script>
+		<script type='text/javascript' src='../../js/imagesloaded.pkgd.min.js'></script>
+		<script type='text/javascript' src='../../js/bootstrap.min.js'></script>
+		<script type='text/javascript' src='../../js/superfish-1.7.4.min.js'></script>
+		<script type='text/javascript' src='../../js/jquery.appear.min.js'></script>
+		<script type='text/javascript' src='../../js/script.js'></script>
+		<script type='text/javascript' src='../../js/swatches-and-photos.js'></script>
+		<script type='text/javascript' src='../../js/jquery.prettyPhoto.min.js'></script>
+		<script type='text/javascript' src='../../js/jquery.prettyPhoto.init.min.js'></script>
+		<script type='text/javascript' src='../../js/jquery.selectBox.min.js'></script>
+		<script type='text/javascript' src='../../js/jquery.parallax.js'></script>
+		<script type='text/javascript' src='../../js/jquery.touchSwipe.min.js'></script>
+		<script type='text/javascript' src='../../js/jquery.transit.min.js'></script>
+		<script type='text/javascript' src='../../js/jquery.carouFredSel.min.js'></script>
+		<script type='text/javascript' src='../../js/isotope.pkgd.min.js'></script>
+		<script type='text/javascript' src='../../js/core.min.js'></script>
+		<script type='text/javascript' src='../../js/widget.min.js'></script>
+		<script type='text/javascript' src='../../js/mouse.min.js'></script>
+		<script type='text/javascript' src='../../js/slider.min.js'></script>
+		<script type='text/javascript' src='../../js/jquery-ui-touch-punch.min.js'></script>
+		<script type='text/javascript' src='../../js/price-slider.js'></script>
+		<script type='text/javascript' src='../../js/custom.js'></script>
+
+		<script type='text/javascript' src='../../js/jquery.magnific-popup.min.js'></script>
+		<!-- <script type='text/javascript' src='../js/jquery.js'></script> -->
+		<script type='text/javascript' src='../../js/jquery.cookie.min.js'></script>
+
+
+
+<!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+
+
 </body>
+
 </html>

@@ -1,12 +1,12 @@
 
-<?php require_once "header.php";?>
+<?php require_once 'header.php'; ?>
 
 <div class="content-container no-padding" >
 				<div class="container-full" >
 					<div class="row">
 						<div class="col-md-12 main-wrap">
 							<div class="main-content" >
-								<div class="row banner-fullwidth row-o-full-height row-o-content-middle">
+								<div class="row banner-fullwidth row-o-full-height row-o-content-middle" style="background-image: url(../imgs/h4.jpg)">
 									<div class="col-sm-2"></div>
 									<div class="col-sm-8" >
 										<div class="about-banner-text " >
@@ -17,20 +17,6 @@
 									</div>
 									<div class="col-sm-2"></div>
 								</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  											<div class="container"  id="imgaboutus">
 											<div class="row offers">
 												<div class="col-sm-6">
@@ -60,12 +46,7 @@ We offer you a distinguished service to display the best types of sleeping suppl
 											</div>
 										</div>
 									</div>
-								</div>
-
-
-
-
-
+</div>
 								
 								<div class="row about-content">
 									<div class="col-sm-3"></div>
@@ -112,4 +93,4 @@ Because your satisfaction with our products is our privilege													</p>
 			</div>
 
 
-<?php require_once "footer.php";?>
+<?php require_once 'footer.php'; ?>
