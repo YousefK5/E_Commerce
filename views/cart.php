@@ -1,5 +1,3 @@
-<?php require_once 'connection.php'; ?>
-
 <?php require 'header2.php'; ?>
 <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
@@ -13,7 +11,6 @@ $query = 'SELECT * from `cart`';
 $query = $connect->prepare($query);
 $query->execute();
 $productsInCart = $query->fetchAll(PDO::FETCH_OBJ);
-
 
 //
 if (isset($_POST['qunatity_by_js'])) {
@@ -31,7 +28,6 @@ if (isset($_POST['qunatity_by_js'])) {
 // 	// $query->execute([ intval($_POST['qunatity1']),$_POST['id_c']]);
 
 // 	// $sub=intval($_POST['qunatity1'])*intval($_POST['price']);
-
 
 // }
 
@@ -60,7 +56,6 @@ if (isset($_POST['apply_coupon'])) {
         echo "<script>alert('invalid coupon')</script>";
     }
 }
-
 ?>
 
 
@@ -328,7 +323,13 @@ if (isset($_POST['apply_coupon'])) {
 												</tr>
 											</table>
 											<div class="wc-proceed-to-checkout">
-												<a href="checkout.php?price=<?php echo $total; ?>&c=<?php if(isset($coupon_saved->id_coupon)) { echo $coupon_saved->id_coupon;}else  " " ;?>" class="checkout-button button alt wc-forward">Proceed to Checkout</a>
+												<a href="checkout.php?price=<?php echo $total; ?>&c=<?php if (
+    isset($coupon_saved->id_coupon)
+) {
+    echo $coupon_saved->id_coupon;
+} else {
+    ' ';
+} ?>" class="checkout-button button alt wc-forward">Proceed to Checkout</a>
 											</div>
 										</div>
 							

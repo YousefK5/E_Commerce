@@ -43,4 +43,13 @@ function isAdmin()
     }
 }
 
-// $_SESSION['userid'] = 13;
+function curUserId()
+{
+    if (isset($_SESSION['userid'])) {
+        return $_SESSION['userid'];
+    } else {
+        return 0;
+    }
+}
+
+?>
