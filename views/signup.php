@@ -241,7 +241,12 @@ if (isset($_POST['register'])) {
                 $Singup->getPassword(),
                 $Singup->getCity(),
             ]);
-            $_SESSION['userid']++;
+            $emailUser = $Singup->getEmail();
+            $lastUser = $connect->query(
+                "SELECT * FROM users WHERE email='$emailUser'"
+            );
+            $lastUser = $lastUser->fetch();
+            $_SESSION['userid'] = $lastUser['user_id'];
             header('location:index.php');
         }
     } else {
