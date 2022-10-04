@@ -7,10 +7,20 @@ $sub = 0;
 
 //get cart info
 
-$query = 'SELECT * from `cart`';
-$query = $connect->prepare($query);
-$query->execute();
-$productsInCart = $query->fetchAll(PDO::FETCH_OBJ);
+$fromDB = 0;
+$fromSS = 0;
+
+if (isset($_SESSION['userid'])) {
+    $fromDB = 1;
+    $curId = $_SESSION['userid'];
+    $query = $connect->query("SELECT * from `cart` WHERE user_id='$curId'");
+    $productsInCart = $query->fetchAll(PDO::FETCH_OBJ);
+} else {
+    $fromSS = 1;
+    if (isset($_SESSION['cartVisitor'])) {
+        $productsInCart = $_SESSION['cartVisitor'];
+    }
+}
 
 //
 if (isset($_POST['qunatity_by_js'])) {
