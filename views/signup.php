@@ -241,6 +241,7 @@ if (isset($_POST['register'])) {
                 $Singup->getPassword(),
                 $Singup->getCity(),
             ]);
+            $_SESSION['userid']++;
             header('location:index.php');
         }
     } else {

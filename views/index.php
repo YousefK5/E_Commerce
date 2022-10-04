@@ -173,7 +173,7 @@
 													<div class="product-category-grid-item">
 														<div class="product-category-grid-item-wrap">
 															<div class="product-category-grid-featured-wrap">
-																<div class="product-category-grid-featured bg-6" style="background-image: url(../imgs<?php echo $category[
+																<div class="product-category-grid-featured bg-6" style="background-image: url(../imgs/<?php echo $category[
                     'image'
                 ]; ?>)"></div>
 															</div>
@@ -248,7 +248,7 @@
 																	<span class="price">
 																		<span class="amount">&#36;<?php echo $prod[
                       'price'
-                  ]; ?></span>&ndash;<span class="amount">&#36;150</span>
+                  ]; ?></span>&ndash;<span class="amount"></span>
 																	</span>
 																</div>
 																<div class="loop-add-to-cart">
@@ -302,17 +302,7 @@
                     'image1'
                 ]; ?>" alt="Product-2"/>
 															</div>
-															<div class="yith-wcwl-add-to-wishlist">
-																<div class="yith-wcwl-add-button">
-																	<a href="#" class="add_to_wishlist">
-																		Add to Wishlist
-																	</a>
-																</div>
-															</div>
-															<div class="clear"></div>
-															<div class="shop-loop-quickview">
-																<a href="#" data-rel="quickViewModal"><i class="fa fa-plus"></i></a>
-															</div>
+															
 														</div>
 													</div>
 													<figcaption>
@@ -327,11 +317,13 @@
 																	<span class="price">
 																		<span class="amount">&#36;<?php echo $prod[
                       'price'
-                  ]; ?></span>&ndash;<span class="amount">&#36;150</span>
+                  ]; ?></span>&ndash;<span class="amount"></span>
 																	</span>
 																</div>
 																<div class="loop-add-to-cart">
-																	<a href="#">Select options</a>
+																<a href="add_to_cart.php?ad=<?php echo $prod[
+                    'product_id'
+                ]; ?>&from=index">Add To Cart</a>
 																</div>
 															</div>
 														</div>
@@ -385,17 +377,7 @@
                     'image1'
                 ]; ?>" alt="Product-2"/>
 															</div>
-															<div class="yith-wcwl-add-to-wishlist">
-																<div class="yith-wcwl-add-button">
-																	<a href="#" class="add_to_wishlist">
-																		Add to Wishlist
-																	</a>
-																</div>
-															</div>
-															<div class="clear"></div>
-															<div class="shop-loop-quickview">
-																<a href="#" data-rel="quickViewModal"><i class="fa fa-plus"></i></a>
-															</div>
+															
 														</div>
 													</div>
 													<figcaption>
@@ -410,11 +392,13 @@
 																	<span class="price">
 																		<span class="amount">&#36;<?php echo $prod[
                       'price'
-                  ]; ?></span>&ndash;<span class="amount">&#36;150</span>
+                  ]; ?></span>&ndash;<span class="amount"></span>
 																	</span>
 																</div>
 																<div class="loop-add-to-cart">
-																	<a href="#">Select options</a>
+																<a href="add_to_cart.php?ad=<?php echo $prod[
+                    'product_id'
+                ]; ?>&from=index">Add To Cart</a>
 																</div>
 															</div>
 														</div>

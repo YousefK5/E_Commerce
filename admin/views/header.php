@@ -64,20 +64,24 @@ $curUser = $curUser->fetch();
                 </div>
               </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="../../views/profile/My-profile.php">
                   <i class="mdi mdi-cached me-2 text-success"></i> Profile </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="logout.php">
+                <a class="dropdown-item" href="../../views/profile/logout.php">
                   <i class="mdi mdi-logout me-2 text-primary"></i> Signout </a>
               </div>
             </li>
             <li class="nav-item d-none d-lg-block full-screen-link">
-            <a href="../../views/profile/logout.php" class="nav-link"> Logout</a>
+            <a class="nav-link">
+                <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+              </a>
+
             </li>
             
 
             <li class="nav-item nav-logout d-none d-lg-block">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="../../views/profile/logout.php">
+                Logout
                 <i class="mdi mdi-power"></i>
               </a>
             </li>

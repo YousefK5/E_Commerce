@@ -1,25 +1,19 @@
-<?php require_once "connection.php"; ?>
+<?php require_once 'connection.php'; ?>
 
-<?php
-  require "header2.php";
-?>
+<?php require 'header2.php'; ?>
 <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-<?php 
-	
-	$delevery=0;
-	$sub=0;
-	
-//get cart info 
+<?php
+$delevery = 0;
+$sub = 0;
 
-$query = "SELECT * from `orders` where user_id =?";
+//get cart info
+
+$query = 'SELECT * from `orders` where user_id =?';
 $query = $connect->prepare($query);
-$_SESSION['user_id']=13;
+$_SESSION['user_id'] = 13;
 $query->execute([$_SESSION['user_id']]);
 $orders = $query->fetchAll(PDO::FETCH_OBJ);
-
-
-
 ?>
 
 
@@ -58,73 +52,100 @@ $orders = $query->fetchAll(PDO::FETCH_OBJ);
 												</tr>
 											</thead>
 											<tbody>
-                                                    <?php 
-													
-                                                    foreach ($orders as $order){
-														//product
-														$query = "SELECT * from `order_details` where order_id=? ";
-														$query = $connect->prepare($query);
-														$query->execute([$order->order_id]);
-														$details= $query->fetch(PDO::FETCH_OBJ);
-                                                       
-														//categories
-														$query = "SELECT * from `products` where product_id=? ";
-														$query = $connect->prepare($query);
-														$query->execute([$details->product_id]);
-														$product = $query->fetch(PDO::FETCH_OBJ);
+                                                    <?php foreach (
+                                                        $orders
+                                                        as $order
+                                                    ) {
 
-														$query = "SELECT coupon_name from `coupons` where coupon_id=? ";
-														$query = $connect->prepare($query);
-														$query->execute([$order->coupon_id]);
-														$coupon_name = $query->fetch(PDO::FETCH_OBJ);
-														
-														//
-														// $qunatity =$details->quantity;
-												        // $unitPrice=$product->price;
+                                                        //product
+                                                        $query =
+                                                            'SELECT * from `order_details` where order_id=? ';
+                                                        $query = $connect->prepare(
+                                                            $query
+                                                        );
+                                                        $query->execute([
+                                                            $order->order_id,
+                                                        ]);
+                                                        $details = $query->fetch(
+                                                            PDO::FETCH_OBJ
+                                                        );
 
+                                                        //categories
+                                                        $query =
+                                                            'SELECT * from `products` where product_id=? ';
+                                                        $query = $connect->prepare(
+                                                            $query
+                                                        );
+                                                        $query->execute([
+                                                            $details->product_id,
+                                                        ]);
+                                                        $product = $query->fetch(
+                                                            PDO::FETCH_OBJ
+                                                        );
 
-							
-														?>
+                                                        $query =
+                                                            'SELECT coupon_name from `coupons` where coupon_id=? ';
+                                                        $query = $connect->prepare(
+                                                            $query
+                                                        );
+                                                        $query->execute([
+                                                            $order->coupon_id,
+                                                        ]);
+                                                        $coupon_name = $query->fetch(
+                                                            PDO::FETCH_OBJ
+                                                        );
+
+                                                        //
+                                                        // $qunatity =$details->quantity;
+                                                        // $unitPrice=$product->price;
+                                                        ?>
                                                         <tr class="cart_item">
 													<td class="product-remove hidden-xs">
-													<span class="amount" id="subTotal"># <?php echo $order->order_id ?></span>
+													<span class="amount" id="subTotal"># <?php echo $order->order_id; ?></span>
 
 													</td>
 													<td class="product-thumbnail hidden-xs">
-													<?php echo $order->order_date ?>
+													<?php echo $order->order_date; ?>
 													</td>
 
 													<td class="product-price text-center">
-                                                    <span class="amount"> <?php echo $order->total_price	;?> JD</span>
+                                                    <span class="amount"> <?php echo $order->total_price; ?> JD</span>
 													</td>
 
 													<td class="product-price text-center">
-                                                    <span class="amount"> <?php echo $order->order_phone;?> JD</span>
+                                                    <span class="amount"> <?php echo $order->order_phone; ?> JD</span>
 													</td>
 													<td class="product-price text-center">
-                                                    <span class="amount"> <?php echo $order->order_address.",". $order->order_city ."/" .$order->postal_code ;?> JD</span>
+                                                    <span class="amount"> <?php echo $order->order_address .
+                                                        ',' .
+                                                        $order->order_city .
+                                                        '/' .
+                                                        $order->postal_code; ?> JD</span>
 													</td>
-													<td class="product-price text-center">
+													<!-- <td class="product-price text-center">
 												
-                                                    <span class="amount"><?php  echo $coupon_name->coupon_name;?></span>
+                                                    <span class="amount"><?php//  echo $coupon_name->coupon_name;?></span>
 													</td>
 
 													<td class="product-name">
-														<?php echo $product->product_name?></a>
+														<?php
+                                                        //echo $product->product_name
+                                                        ?></a>
 														<dl class="variation">
 															<dt class="variation-Size">unit_price:</dt>
-															<dd class="variation-Size"><p><?php echo $details->unit_price ?></p></dd>
+															<dd class="variation-Size"><p><?php echo $details->unit_price; ?></p></dd>
 														</dl>
 														<dl class="variation">
 															<dt class="variation-Size">quantity:</dt>
-															<dd class="variation-Size"><p><?php echo $details->quantity ?></p></dd>
+															<dd class="variation-Size"><p><?php echo $details->quantity; ?></p></dd>
 														</dl>
-													</td>
+													</td> -->
 													
 												
 												</tr>
 
-										<?php }?>
+										<?php
+                                                    } ?>
 											</tbody>
 										</table>
 									</form>
@@ -138,7 +159,7 @@ $orders = $query->fetchAll(PDO::FETCH_OBJ);
 					</div>
 				</div>
 			</div>
-<?php	require_once "footer.php"?>
+<?php require_once 'footer.php'; ?>
 
 
 		<script src="cart.js"></script>
