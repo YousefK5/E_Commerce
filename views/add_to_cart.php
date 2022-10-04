@@ -11,7 +11,7 @@
                                                                                     ) {
                                                                                         $_SESSION[
                                                                                             'userid'
-                                                                                        ] = 14;
+                                                                                        ] = 13;
                                                                                         $qunatity = 1;
                                                                                         $insert = $connect->prepare(
                                                                                             'INSERT INTO cart (quantity,product_id,user_id) VALUES (?,?,?)'
@@ -42,19 +42,23 @@
                                                                                             );
                                                                                         }
                                                                                     }
+                                                                                    ?>
+
+																				<?php
+                    require_once 'connection.php';
+
+                    if (isset($_GET['ad'])) {
+                        $_SESSION['userid'] = 14;
+                        $qunatity = 1;
+                        $insert = $connect->prepare(
+                            'INSERT INTO cart (quantity,product_id,user_id) VALUES (?,?,?)'
+                        );
+                        $insert->execute([
+                            $qunatity,
+                            $_GET['ad'],
+                            $_SESSION['userid'],
+                        ]);
+                    }
 
 
 ?>
-
-																				<?php
-                                                                                require_once 'connection.php';
-
-
-                                                                                if (isset($_GET['ad'])) {
-
-                                                                                    $_SESSION['userid'] = 14;
-                                                                                    $qunatity = 1;
-                                                                                    $insert = $connect->prepare("INSERT INTO cart (quantity,product_id,user_id) VALUES (?,?,?)");
-                                                                                    $insert->execute([$qunatity,$_GET['ad'], $_SESSION['userid']]);
-                                                                                }
-                                                                                ?>

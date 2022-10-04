@@ -478,7 +478,7 @@
 }
 
 .active {
-    color: #FD6E00 !important;
+    color: black !important;
     font-weight: bold !important;
 }
 
@@ -2629,12 +2629,12 @@ footer .bottom-footer .row .col .social-holder img {
 }
 
 .mega-container .grid-column-1 .list-item-active {
-    color: #ff6a6a;
+    color: black;
     background-color: rgb(226, 226, 226);
 }
 
 .mega-container .grid-column-2 h3 {
-    color: #F38282;
+    color: black;
     font-size: 2vw;
 }
 
@@ -6198,7 +6198,7 @@ footer .bottom-footer .row .col .social-holder img {
 }
 
 .button-group button:last-child {
-    background-color: ##fe6367;
+    background-color: #fe6367;
     color: white;
     font-weight: bold;
 }

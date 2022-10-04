@@ -156,9 +156,6 @@
 						</div>
 						<div class="col-sm-6">
 							<div class="right-topbar">
-								<div class="user-wishlist">
-									<a href="wishlist.html"><i class="fa fa-heart-o"></i> My Wishlist</a>
-								</div>
 								<div class="user-login">
 									<ul class="nav top-nav">
 										<li class="menu-item">

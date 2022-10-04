@@ -55,15 +55,12 @@ $categories = $query->fetchAll(PDO::FETCH_OBJ);
 																</div>
 															</div> -->
                                                     <div class="clear"></div>
-                                                    <div class="shop-loop-quickview">
-                                                        <a href="#" data-rel="quickViewModal"><i class="fa fa-plus"></i></a>
-                                                    </div>
                                                 </div>
                                             </div>
                                             <figcaption>
                                                 <div class="shop-loop-product-info">
                                                     <div class="info-title">
-                                                        <h3 class="product_title"><a href="#"><?php echo $product->product_name; ?></a></h3>
+                                                        <h3 class="product_title"><a href="./product_page.php?prod_id=<?php echo $product->product_id; ?>"><?php echo $product->product_name; ?></a></h3>
                                                     </div>
                                                     <div class="info-meta">
                                                         <div class="info-price">
@@ -72,7 +69,7 @@ $categories = $query->fetchAll(PDO::FETCH_OBJ);
                                                             </span>
                                                         </div>
                                                         <div class="loop-add-to-cart">
-                                                            <a href="#">Select options</a>
+                                                        <a href="add_to_cart.php?ad=<?php echo $product->product_id; ?>&from=index">Add To Cart</a>
                                                         </div>
                                                     </div>
                                                 </div>

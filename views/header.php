@@ -120,13 +120,15 @@
 						</div>
 						<div class="col-sm-6">
 							<div class="right-topbar">
-								<div class="user-wishlist">
-									<a href="wishlist.html"><i class="fa fa-heart-o"></i> My Wishlist</a>
-								</div>
 								<div class="user-login">
 									<ul class="nav top-nav">
 										<li class="menu-item">
+											<?php if (isset($_SESSION['userid'])) { ?> 
+											<a href='./profile/My-profile.php'><?php echo $user['first_name'] .
+               ' ' .
+               $user['last_name'];} else { ?></a>
 											<a data-rel="loginModal" href="#"><i class="fa fa-user"></i> Login</a>
+											<?php } ?>
 										</li>
 									</ul>
 								</div>
@@ -182,48 +184,6 @@
 													<a href="shop.php" class="dropdown-hover">
 														<span class="underline">Shop</span> <span class="caret"></span>
 													</a>
-													<ul class="dropdown-menu">
-														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
-															<h3 class="megamenu-title">
-																1
-															</h3>
-
-														</li>
-														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
-															<h3 class="megamenu-title">
-																2
-															</h3>
-
-														
-														</li>
-														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
-															<h3 class="megamenu-title">
-																3
-															</h3>
-
-														
-														</li>
-														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
-															<h3 class="megamenu-title">
-																4
-															</h3>
-
-														</li>
-														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
-															<h3 class="megamenu-title">
-																5
-															</h3>
-
-														</li>
-														
-														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
-															<h3 class="megamenu-title">
-																6
-															</h3>
-
-														</li>
-
-													</ul>
 												</li>
 
 												<li class="menu-item-has-children dropdown">
@@ -235,7 +195,6 @@
 													<ul class="dropdown-menu">
 														<li><a href="about-us.php">About us</a></li>
 														<li><a href="contact-us.php">Contact Us</a></li>
-														
 													</ul>
 												</li>
 												<!-- search desktop icon -->
