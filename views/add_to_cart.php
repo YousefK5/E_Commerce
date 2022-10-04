@@ -10,7 +10,7 @@ if (isset($_GET['q'])) {
     $qunatity = 1;
 }
 
-if (!isset($_SESSION['userid'])) {
+if (!isset($_SESSION['userid']) && !isset($_GET['newQ'])) {
     if (isset($_SESSION['cartVisitor'])) {
         $inCart = 0;
         for ($i = 0; $i < count($_SESSION['cartVisitor']); $i++) {
@@ -25,7 +25,7 @@ if (!isset($_SESSION['userid'])) {
     } else {
         $_SESSION['cartVisitor'] = [[$prodId, $qunatity]];
     }
-} else {
+} elseif (isset($_SESSION['userid'])) {
     $curId = $_SESSION['userid'];
     $cart = $connect->query("SELECT * FROM cart WHERE user_id='$curId'");
     $cart = $cart->fetchAll();
@@ -61,6 +61,20 @@ if (isset($_GET['from'])) {
     } else {
         header('location: ./cart.php');
     }
+}
+
+if (isset($_GET['newQ'])) {
+    $inCart = 0;
+    for ($i = 0; $i < count($_SESSION['cartVisitor']); $i++) {
+        if ($_SESSION['cartVisitor'][$i][0] == $prodId) {
+            $_SESSION['cartVisitor'][$i][1] = $_GET['newQ'];
+            $inCart = 1;
+        }
+    }
+    if (!$inCart) {
+        array_push($_SESSION['cartVisitor'], [$prodId, $qunatity]);
+    }
+    // print_r($_SESSION);
 }
 
 // print_r($_SESSION);

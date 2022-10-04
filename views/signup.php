@@ -161,12 +161,7 @@ if (isset($_POST['register'])) {
             $Singup->setPhone(test_input($Singup->getPhone()));
 
             // check if name only contains letters and whitespace
-            if (
-                !preg_match(
-                    '/^\+?\d{3}[- ]?\d{3}[- ]?\d{6}$/',
-                    $Singup->getPhone()
-                )
-            ) {
+            if (!preg_match('/^\d{10}$/', $Singup->getPhone())) {
                 $phoneErr = 'Invalid phone number format';
                 echo "<script>alert(   '$phoneErr') </script>";
             } else {
@@ -229,7 +224,7 @@ if (isset($_POST['register'])) {
         ) {
             $q =
                 'INSERT INTO users (first_name,last_name, address, phone, email, password,city) VALUES (?,?,?,?,?,?,?)';
-            echo "<script> alert( 'test')  </script>";
+            // echo "<script> alert( 'test')  </script>";
 
             $stmt = $connect->prepare($q);
             $stmt->execute([
@@ -247,7 +242,23 @@ if (isset($_POST['register'])) {
             );
             $lastUser = $lastUser->fetch();
             $_SESSION['userid'] = $lastUser['user_id'];
-            header('location:index.php');
+            if (isset($_GET['from'])) {
+                $cartInVisitor = $_SESSION['cartVisitor'];
+                foreach ($cartInVisitor as $cart) {
+                    $userId = $_SESSION['userid'];
+                    $sql = $connect->query("INSERT INTO cart (user_id, product_id , quantity)
+					VALUES ('$userId','$cart[0]','$cart[1]')");
+                }
+                unset($_SESSION['cartVisitor']);
+                $total = $_POST['totalPrice'];
+                if (isset($_POST['coupon'])) {
+                    $coupon = $_POST['coupon'];
+                    header("location: ./checkout.php?price=$total&c=$coupon");
+                }
+                header("location: ./checkout.php?price=$total&c=' '");
+            } else {
+                header('location:index.php');
+            }
         }
     } else {
         $emailErr = 'It looks like you’re connected try login. Please ';
