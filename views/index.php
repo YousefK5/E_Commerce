@@ -246,9 +246,9 @@
 															<div class="info-meta">
 																<div class="info-price">
 																	<span class="price">
-																		<span class="amount">&#36;<?php echo $prod[
+																		<span class="amount"><?php echo $prod[
                       'price'
-                  ]; ?></span>&ndash;<span class="amount"></span>
+                  ]; ?></span> JD<span class="amount"></span>
 																	</span>
 																</div>
 																<div class="loop-add-to-cart">
@@ -315,9 +315,9 @@
 															<div class="info-meta">
 																<div class="info-price">
 																	<span class="price">
-																		<span class="amount">&#36;<?php echo $prod[
+																		<span class="amount"><?php echo $prod[
                       'price'
-                  ]; ?></span>&ndash;<span class="amount"></span>
+                  ]; ?></span> JD<span class="amount"></span>
 																	</span>
 																</div>
 																<div class="loop-add-to-cart">
@@ -390,9 +390,9 @@
 															<div class="info-meta">
 																<div class="info-price">
 																	<span class="price">
-																		<span class="amount">&#36;<?php echo $prod[
+																		<span class="amount"><?php echo $prod[
                       'price'
-                  ]; ?></span>&ndash;<span class="amount"></span>
+                  ]; ?></span> JD<span class="amount"></span>
 																	</span>
 																</div>
 																<div class="loop-add-to-cart">
@@ -417,38 +417,6 @@
 					</div>
 				</div>
 			</div>
-
-		<div class="footer-services">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-4 footer-service-item">
-						<a class="footer-service-item-i" href="#">
-							<i class="footer-service-icon fa fa-send-o"></i>
-							<h3 class="footer-service-title">Shipping & Returns</h3>
-							<span class="footer-service-text">
-								World wide shipping to selected countries
-							</span>
-						</a>
-					</div>
-					<div class="col-sm-4 footer-service-item">
-						<a class="footer-service-item-i" href="#">
-							<i class="footer-service-icon fa fa-life-bouy"></i>
-							<h3 class="footer-service-title">FAQ</h3>
-							<span class="footer-service-text">
-								Answers to frequently asked questions
-							</span>
-						</a>
-					</div>
-					<div class="col-sm-4 footer-service-item">
-						<a class="footer-service-item-i" href="#">
-							<i class="footer-service-icon fa fa-home"></i>
-							<h3 class="footer-service-title">Stores</h3>
-							<span class="footer-service-text">Find our retail locations</span>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
 	</div>
 </div>
 

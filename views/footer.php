@@ -9,20 +9,6 @@
 						<img alt="logo" src="../images/ltrblack.png" style="max-width: 25%;">
 					</div>
 					<div class="copyright text-center">Copyright right © 2022 Gruop4. All Rights Reserved.</div>
-					<div class="footer-social">
-						<a href="https://www.facebook.com" title="Facebook">
-							<i class="fa fa-facebook"></i>
-						</a>
-						<a href="https://www.twitter.com" title="Twitter">
-							<i class="fa fa-behance"></i>
-						</a>
-						<a href="https://www.instgram.com" title="Instagram">
-							<i class="fa fa-instagram instagram-bg-hover"></i>
-						</a>
-						<a href="https://www.pinterest.com" title="Pinterest">
-							<i class="fa fa-pinterest"></i>
-						</a>
-					</div>
 				</div>
 			</div>
 		</div>

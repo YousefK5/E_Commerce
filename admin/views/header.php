@@ -80,6 +80,11 @@ $curUser = $curUser->fetch();
             
 
             <li class="nav-item nav-logout d-none d-lg-block">
+              <a class="nav-link" href="../../views/index.php">
+                Home
+              </a>
+            </li>
+            <li class="nav-item nav-logout d-none d-lg-block">
               <a class="nav-link" href="../../views/profile/logout.php">
                 Logout
                 <i class="mdi mdi-power"></i>
