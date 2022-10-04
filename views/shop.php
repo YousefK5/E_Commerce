@@ -83,9 +83,9 @@ $categories = $query->fetchAll(PDO::FETCH_OBJ);
                         </form> -->
                         <div>
                             <input type="range" id="minPrice" name="min_price" data-min="0" value="0" placeholder="Min price" />
-                            <span id="spanMin">Min Price : 10</span>
-                            <input type="range" id="maxPrice" name="max_price" data-max="100" value="100" placeholder="Max price" /> 
-                            <span id="spanMax">Max Price : 100</span>       
+                            <span id="spanMin">Min Price : 0</span>
+                            <input type="range" id="maxPrice" name="max_price" data-max="1000" value="1000" placeholder="Max price" /> 
+                            <span id="spanMax">Max Price : 1000</span>       
                         </div>
 
                     </div>

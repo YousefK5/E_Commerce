@@ -177,9 +177,7 @@ require './connection.php';
 													<div class="product-category-grid-item">
 														<div class="product-category-grid-item-wrap">
 															<div class="product-category-grid-featured-wrap">
-																<div class="product-category-grid-featured bg-6" style="background-image: url(../imgs<?php echo $category[
-                    'image'
-                ]; ?>)"></div>
+																<div class="product-category-grid-featured bg-6" style="background-image: url(../imgs/<?php echo $category['image']; ?>)"></div>
 															</div>
 															<div class="product-category-grid-featured-summary">
 																<h3>
