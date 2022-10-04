@@ -1,10 +1,22 @@
+<?php require_once '../../views/connection.php'; ?>
+
+<?php
+if (isAdmin() == 0) {
+    header('location:../../views/index.php');
+}
+$curId = $_SESSION['userid'];
+
+$curUser = $connect->query("SELECT * FROM users WHERE user_id='$curId'");
+$curUser = $curUser->fetch();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Purple Admin</title>
+    <title>Admin Panel</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../assets/css/users.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -34,8 +46,8 @@
       <!-- partial:partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-          <a class="navbar-brand brand-logo" href="index.php"><img src="../assets/images/logo.svg" alt="logo" /></a>
-          <a class="navbar-brand brand-logo-mini" href="index.php"><img src="../assets/images/logo-mini.svg" alt="logo" /></a>
+          <a class="navbar-brand brand-logo" href="index.php"><img src="../../images/ltrblack.png" alt="logo" /></a>
+          <a class="navbar-brand brand-logo-mini" href="index.php"><img src="../../images/ltrblack.png" alt="logo" /></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -46,7 +58,9 @@
               <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
 
                 <div class="nav-profile-text">
-                  <p class="mb-1 text-black">David Greymaax</p>
+                  <p class="mb-1 text-black"><?php echo $curUser['first_name'] .
+                      ' ' .
+                      $curUser['last_name']; ?></p>
                 </div>
               </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
@@ -58,9 +72,7 @@
               </div>
             </li>
             <li class="nav-item d-none d-lg-block full-screen-link">
-              <a class="nav-link">
-                <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
-              </a>
+            <a href="../../views/profile/logout.php" class="nav-link"> Logout</a>
             </li>
             
 

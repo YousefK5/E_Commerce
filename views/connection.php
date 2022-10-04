@@ -20,5 +20,27 @@ try {
 }
 
 session_start();
+if (isset($_SESSION['userid'])) {
+    $curUser = $_SESSION['userid'];
+    $user = $connect->query("SELECT * from users WHERE user_id='$curUser'");
+    $user = $user->fetch();
+}
 
-$_SESSION['userid'] = 13;
+function isAdmin()
+{
+    if (isset($_SESSION['userid'])) {
+        global $connect;
+        $curUser = $_SESSION['userid'];
+        $user = $connect->query("SELECT * from users WHERE user_id='$curUser'");
+        $user = $user->fetch();
+        if ($user['is_admin']) {
+            return 1;
+        } else {
+            return 0;
+        }
+    } else {
+        return 0;
+    }
+}
+
+// $_SESSION['userid'] = 13;

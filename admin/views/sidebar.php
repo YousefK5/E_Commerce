@@ -7,7 +7,11 @@
               <a href="#" class="nav-link">
                 
                 <div class="nav-profile-text d-flex flex-column">
-                  <span class="font-weight-bold mb-2">David Grey. H</span>
+                  <span class="font-weight-bold mb-2"><?php echo $curUser[
+                      'first_name'
+                  ] .
+                      ' ' .
+                      $curUser['last_name']; ?></span>
                 </div>
               </a>
             </li>

@@ -26,8 +26,7 @@
     <link rel="icon" type="image/png" href="Images/carts.png">
 </head>
 
-<body>
-	<div class="contain"></div>
+<body class="shop">
 	<div class="offcanvas open">
 		<div class="offcanvas-wrap">
 			<div class="offcanvas-user clearfix">
@@ -39,32 +38,68 @@
 				</a>
 			</div>
 			<nav class="offcanvas-navbar">
-				<ul class="offcanvas-nav" >
-					<li> <a href="index.html">Home <span class="caret"></span></a></li>
-			
+				<ul class="offcanvas-nav">
+					<li class="menu-item-has-children dropdown">
+						<a href="./" class="dropdown-hover">Home <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="home-lookbook.html">Home Lookbook</a></li>
+							<li><a href="home-instagram.html">Home Instagram</a></li>
+							<li><a href="home-product-slider.html">Home Product Slider</a></li>
+							<li><a href="home-default.html">Home Default</a></li>
+						</ul>
+					</li>
 					<li class="menu-item-has-children dropdown">
 						<a href="shop.html" class="dropdown-hover">Shop <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li id="menu-item-10433">
+							<li id="menu-item-10433" class="menu-item-has-children dropdown-submenu">
 								<a href="shop-by-category.html">Women <span class="caret"></span></a>
-								
+								<ul class="dropdown-menu">
+									<li><a href="shop-by-category.html">Nulla</a></li>
+									<li><a href="shop-by-category.html">Maecenas</a></li>
+									<li><a href="shop-by-category.html">Aliquam</a></li>
+									<li><a href="shop-by-category.html">Donec</a></li>
+								</ul>
 							</li>
-							<li>
+							<li class="menu-item-has-children dropdown-submenu">
 								<a href="shop-by-category.html">Brands <span class="caret"></span></a>
-							
+								<ul class="dropdown-menu">
+									<li><a href="shop-by-category.html">Adesso</a></li>
+									<li><a href="shop-by-category.html">Barbour</a></li>
+									<li><a href="shop-by-category.html">Carvela</a></li>
+									<li><a href="shop-by-category.html">Crocs</a></li>
+									<li><a href="shop-by-category.html">Evans</a></li>
+								</ul>
 							</li>
-							<li>
+							<li class="menu-item-has-children dropdown-submenu">
 								<a href="shop-by-collection.html">Conllections <span class="caret"></span></a>
-						
+								<ul class="dropdown-menu">
+									<li><a href="shop-by-collection.html">Spring/Summer 2014</a></li>
+									<li><a href="shop-by-collection.html">Sweet Summer</a></li>
+									<li><a href="shop-by-collection.html">Winter 2015</a></li>
+								</ul>
 							</li>
-							<li>
-								<a href="#">Woo </span></a>
-				
+							<li class="menu-item-has-children dropdown-submenu">
+								<a href="#">Woo <span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="shop-masonry.html">Shop Masonry</a></li>
+									<li><a href="shop-detail.html">Shop Detail</a></li>
+									<li><a href="my-account.html">My Account</a></li>
+									<li><a href="cart.html">Cart</a></li>
+									<li><a href="cart-empty.html">Empty Cart</a></li>
+								</ul>
 							</li>
 						</ul>
 					</li>
 					<li><a href="collection.html">Collections</a></li>
-			
+					<li class="menu-item-has-children dropdown">
+						<a href="#" class="dropdown-hover">Blog <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="blog-default.html">Blog Default</a></li>
+							<li><a href="blog-center.html">Blog Center</a></li>
+							<li><a href="blog-masonry.html">Blog Masonry</a></li>
+							<li><a href="blog-detail.html">Blog Detail</a></li>
+						</ul>
+					</li>
 					<li class="menu-item-has-children dropdown">
 						<a href="#" class="dropdown-hover">Pages <span class="caret"></span></a>
 						<ul class="dropdown-menu">
@@ -78,16 +113,16 @@
 			<div class="offcanvas-widget">
 				<div class="widget social-widget">
 					<div class="social-widget-wrap social-widget-none">
-						<a href="https://www.facebook.com" title="Facebook">
+						<a href="#" title="Facebook" target="_blank">
 							<i class="fa fa-facebook"></i>
 						</a>
-						<a href="https://www.twitter.com" title="Twitter">
-							<i class="fa fa-behance"></i>
+						<a href="#" title="Twitter" target="_blank">
+							<i class="fa fa-twitter"></i>
 						</a>
-						<a href="https://www.instgram.com" title="Instagram">
-							<i class="fa fa-instagram instagram-bg-hover"></i>
+						<a href="#" title="Google+" target="_blank">
+							<i class="fa fa-google-plus"></i>
 						</a>
-						<a href="https://www.pinterest.com" title="Pinterest">
+						<a href="#" title="Pinterest" target="_blank">
 							<i class="fa fa-pinterest"></i>
 						</a>
 					</div>
@@ -97,24 +132,30 @@
 	</div>
 	<div id="wrapper" class="wide-wrap">
 		<div class="offcanvas-overlay"></div>
-		<header class="header-type-classic header-absolute header-transparent">
+		<header class="header-type-classic">
 			<div class="topbar">
 				<div class="container topbar-wap">
 					<div class="row">
 						<div class="col-sm-6">
 							<div class="left-topbar">
 								<div class="topbar-social">
-									<a href="https://www.facebook.com" title="Facebook">
-										<i class="fa fa-facebook"></i>
+									<a href="#" title="Facebook" target="_blank">
+										<i class="fa fa-facebook facebook-bg-hover"></i>
 									</a>
-									<a href="https://www.twitter.com" title="Twitter">
-										<i class="fa fa-behance"></i>
+									<a href="#" title="Twitter" target="_blank">
+										<i class="fa fa-twitter twitter-bg-hover"></i>
 									</a>
-									<a href="https://www.instgram.com" title="Instagram">
+									<a href="#" title="Google+" target="_blank">
+										<i class="fa fa-google-plus google-plus-bg-hover"></i>
+									</a>
+									<a href="#" title="Pinterest" target="_blank">
+										<i class="fa fa-pinterest pinterest-bg-hover"></i>
+									</a>
+									<a href="#" title="RSS" target="_blank">
+										<i class="fa fa-rss rss-bg-hover"></i>
+									</a>
+									<a href="#" title="Instagram" target="_blank">
 										<i class="fa fa-instagram instagram-bg-hover"></i>
-									</a>
-									<a href="https://www.pinterest.com" title="Pinterest">
-										<i class="fa fa-pinterest"></i>
 									</a>
 								</div>
 							</div>
@@ -131,15 +172,14 @@
 										</li>
 									</ul>
 								</div>
-
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="navbar-container">
-				<div class="navbar navbar-default  navbar-scroll-fixed" style="background-color: #1e1e1ea8;">
-					<div class="navbar-default-wrap" >
+				<div class="navbar navbar-default  navbar-scroll-fixed">
+					<div class="navbar-default-wrap">
 						<div class="container">
 							<div class="row">
 								<div class="col-md-12 navbar-default-col">
@@ -154,115 +194,114 @@
 											<a class="navbar-search-button search-icon-mobile" href="#">
 												<i class="fa fa-search"></i>
 											</a>
-
-
-
-
 											<a class="cart-icon-mobile" href="#">
-												<!-- count of cart  -->
 												<i class="elegant_icon_bag"></i><span>0</span>
 											</a>
-
-
-											<!-- logo image  -->
 											<a class="navbar-brand" href="./">
-												<img class="logo" alt="The DMCS" src="../images/ltr.png">
-												<img class="logo-fixed" alt="The DMCS" src="../images/ltrblack.png">
-												<img class="logo-mobile" alt="The DMCS" src="../images/ltrblack.png">
+												<img class="logo" alt="The DMCS" src="../../images/ltrblack.png">
+												<img class="logo-fixed" alt="The DMCS" src="../../images/ltrblack.png">
+												<img class="logo-mobile" alt="The DMCS" src="../../images/ltrblack.png">
 											</a>
 										</div>
 										<nav class="collapse navbar-collapse primary-navbar-collapse">
 											<ul class="nav navbar-nav primary-nav">
 												<li class="menu-item-has-children dropdown">
-													<a href="./" class="dropdown-hover">
-														<span class="underline">Home</span> </span>
+													<a href="../index.php" class="dropdown-hover">
+														<span class="underline">Home</span> <span class="caret"></span>
 													</a>
-
 												</li>
 												<li class="menu-item-has-children megamenu megamenu-fullwidth dropdown">
-													<a href="shop.php" class="dropdown-hover">
+													<a href="shop.html" class="dropdown-hover">
 														<span class="underline">Shop</span> <span class="caret"></span>
 													</a>
 													<ul class="dropdown-menu">
 														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
 															<h3 class="megamenu-title">
-																1
+																Women <span class="caret"></span>
 															</h3>
-
+															<ul class="dropdown-menu">
+																<li><a href="shop-by-category.html">Nulla</a></li>
+																<li><a href="shop-by-category.html">Maecenas</a></li>
+																<li><a href="shop-by-category.html">Aliquam</a></li>
+																<li><a href="shop-by-category.html">Donec</a></li>
+															</ul>
 														</li>
 														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
 															<h3 class="megamenu-title">
-																2
+																Brands <span class="caret"></span>
 															</h3>
-
-														
+															<ul class="dropdown-menu">
+																<li><a href="shop-by-category.html">Adesso</a></li>
+																<li><a href="shop-by-category.html">Barbour</a></li>
+																<li><a href="shop-by-category.html">Carvela</a></li>
+																<li><a href="shop-by-category.html">Crocs</a></li>
+																<li><a href="shop-by-category.html">Evans</a></li>
+															</ul>
 														</li>
 														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
 															<h3 class="megamenu-title">
-																3
+																Collections <span class="caret"></span>
 															</h3>
-
-														
+															<ul class="dropdown-menu">
+																<li><a href="shop-by-collection.html">Spring/Summer 2014</a></li>
+																<li><a href="shop-by-collection.html">Sweet Summer</a></li>
+																<li><a href="shop-by-collection.html">Winter 2015</a></li>
+															</ul>
 														</li>
 														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
 															<h3 class="megamenu-title">
-																4
+																Woo <span class="caret"></span>
 															</h3>
-
+															<ul class="dropdown-menu">
+																<li><a href="shop-masonry.html">Shop Masonry</a></li>
+																<li><a href="shop-detail.html">Shop Detail</a></li>
+																<li><a href="my-account.html">My Account</a></li>
+																<li><a href="cart.html">Cart</a></li>
+																<li><a href="cart-empty.html">Empty Cart</a></li>
+															</ul>
 														</li>
-														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
-															<h3 class="megamenu-title">
-																5
-															</h3>
-
-														</li>
-														
-														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
-															<h3 class="megamenu-title">
-																6
-															</h3>
-
-														</li>
-
 													</ul>
 												</li>
-
+												<li><a href="collection.html"><span class="underline">Collections</span></a></li>
 												<li class="menu-item-has-children dropdown">
-
-													<!-- Pages link -->
+													<a href="#" class="dropdown-hover">
+														<span class="underline">Blog</span> <span class="caret"></span>
+													</a>
+													<ul class="dropdown-menu">
+														<li><a href="blog-default.html">Blog Default</a></li>
+														<li><a href="blog-center.html">Blog Center</a></li>
+														<li><a href="blog-masonry.html">Blog Masonry</a></li>
+														<li><a href="blog-detail.html">Blog Detail</a></li>
+													</ul>
+												</li>
+												<li class="menu-item-has-children dropdown">
 													<a href="#" class="dropdown-hover">
 														<span class="underline">Pages</span> <span class="caret"></span>
 													</a>
 													<ul class="dropdown-menu">
-														<li><a href="about-us.php">About us</a></li>
-														<li><a href="contact-us.php">Contact Us</a></li>
-														
+														<li><a href="about-us.html">About us</a></li>
+														<li><a href="contact-us.html">Contact Us</a></li>
+														<li><a href="faq.html">FAQ</a></li>
 													</ul>
 												</li>
-												<!-- search desktop icon -->
-
 												<li class="navbar-search">
 													<a class="navbar-search-button" href="#">
 														<i class="fa fa-search"></i>
 													</a>
 												</li>
-
-
-												<!-- cart and boxes start -->
-	<?php
- if (isset($_GET['del'])) {
-     $cart_id = $_GET['del'];
-
-     $query = $connect->prepare('DELETE  FROM `cart` Where cart_id=? ');
-     $query->execute([$cart_id]);
- }
-
- $query = 'SELECT * from `cart`';
- $query = $connect->prepare($query);
- $query->execute();
- $productsInCart = $query->fetchAll(PDO::FETCH_OBJ);
-
- if (empty($productsInCart)) { ?>
+												<?php
+            if (isset($_GET['del'])) {
+                $cart_id = $_GET['del'];
+                $query = $connect->prepare(
+                    'DELETE  FROM `cart` Where cart_id=? '
+                );
+                $query->execute([$cart_id]);
+            }
+            $query = 'SELECT * from `cart`';
+            $query = $connect->prepare($query);
+            $query->execute();
+            $productsInCart = $query->fetchAll(PDO::FETCH_OBJ);
+            if (empty($productsInCart)) { ?>
 												<li class="navbar-minicart navbar-minicart-nav">
 													<a class="minicart-link" href="#">
 														<span class="minicart-icon">
@@ -343,23 +382,17 @@
 														</div>
 													</li>
 <?php }
- ?>
-												<!-- cart and boxes -->
+            ?>
 											</ul>
-
-											<!--desktop nav end -->
 										</nav>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-
-					<!-- search open box -->
 					<div class="header-search-overlay hide">
 						<div class="container">
 							<div class="header-search-overlay-wrap">
-								<!-- search form -->
 								<form class="searchform">
 									<input type="search" class="searchinput" name="s" value="" placeholder="Search..." />
 									<input type="submit" class="searchsubmit hidden" name="submit" value="Search" />
@@ -391,7 +424,6 @@ $user = $stmt->fetch();
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a class="text-dark" href="index.html">Home</a></li>
           <center>  <li class="breadcrumb-item active" aria-current="page">My Profile</li><center>
         </ol>
     </nav>
@@ -416,7 +448,7 @@ $user = $stmt->fetch();
                 </div>
             </div>
             <div class="payment mb-4">
-                <h6 class="font-weight-bold"><a href="../logout.php"> Logout<a></h6>
+                <h6 class="font-weight-bold"><a href="logout.php">Logout<a></h6>
                 
             </div>
 
@@ -477,51 +509,23 @@ $user = $stmt->fetch();
 
             </div>
             <br>
-          
+            <div class="flex-item flex-item-4 d-flex justify-content-between">
+                <p class='key'>Role</p>
+                <?php echo $user['is_admin'] ? 'Admin' : 'Member'; ?>
+            </div>
+            
             <br>
             <div class="flex-item flex-item-8 d-flex justify-content-between">
                
             </div>`
-        document.getElementById('profile-info').innerHTML += returnedHTML;         
+        document.getElementById('profile-info').innerHTML += returnedHTML;  
     </script>
 
 
 
 
 <br><br>
- <section class='payment-help mt-5' aria-label='payments and help section'>
-        <div class="container-fluid w-75">
-            <div class="row">
-                <div
-                    class="col col-xl-3 col-lg-3 col-md-6 col-sm-12 d-flex flex-column align-items-center justify-content-center text-center">
-                    <img src="Images/secure-pay.png" alt="securepay" role="img" aria-label='secure pay image'>
-                    <h2>free delivery</h2>
-                    <p>Free delivery for our special customers</p>
-                </div>
-                <div
-                    class="col col-xl-3 col-lg-3 col-md-6 col-sm-12 d-flex flex-column align-items-center justify-content-center text-center">
-                    <img src="Images/trust-pay.png" alt="trustpay" role="img" aria-label='trust pay image'>
-                    <h2>TRUST PAY</h2>
-                    <p>The safest way to pay and get a tax exemption for submitting an order</p>
-                </div>
-                <div
-                    class="col col-xl-3 col-lg-3 col-md-6 col-sm-12 d-flex flex-column align-items-center justify-content-center text-center">
-                    <img src="Images/help-center.png" alt="helpcenter" role="img" aria-label='help center image'>
-                    <h2>HELP CENTER</h2>
-                    <p>Get fast technical support at all times</p>
-                </div>
-                <div
-                    class="col col-xl-3 col-lg-3 col-md-6 col-sm-12 d-flex flex-column align-items-center justify-content-center text-center">
-                    <img src="Images/shop-on-go.png" alt="shopongo" role="img" aria-label='shop on go image'>
-                    <h2>SHOP ON THE GO</h2>
-                    <p>Shop freely and get the best benefits in terms of convenience and ease, in addition to tax exemptions</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <footer id="footer" class="footer">
+<footer id="footer" class="footer">
 	<div class="footer-info">
 		<div class="container">
 			<div class="row">
@@ -530,7 +534,7 @@ $user = $stmt->fetch();
 						<!-- logo image -->
 						<a href="#"><img alt="The DMCS" src="../images/footer-logo.png"></a>
 					</div>
-					<div class="copyright text-center">Copyright right © 2022 Gruop4. All Rights Reserved.</div>
+					<div class="copyright text-center">Copyright right © 2022 Cloud Masters. All Rights Reserved.</div>
 					<div class="footer-social">
 						<a href="https://www.facebook.com" title="Facebook">
 							<i class="fa fa-facebook"></i>
@@ -550,7 +554,6 @@ $user = $stmt->fetch();
 		</div>
 	</div>
 </footer>
-</div>
 
 
 
