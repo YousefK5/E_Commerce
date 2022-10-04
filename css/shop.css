@@ -4661,7 +4661,7 @@ textarea.shop form .form-row textarea {
     top: 0;
     z-index: 1;
     position: absolute;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.07);
   }
 }
 .lookbooks .lookbook-info-wrap:after {
@@ -4737,29 +4737,30 @@ textarea.shop form .form-row textarea {
 .product-categories-grid-wrap .wall-col .product-category-grid-featured {
   -webkit-transition: all 1s;
   -o-transition: all 1s;
-  transition: all 1s;
+  transition: all 0.6s;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   backface-visibility: hidden;
 }
-.product-categories-grid-wrap .wall-col .product-category-grid-featured.bg-1 {
-  background-image: url(../images/categories/category-1.jpg);
+/* .product-categories-grid-wrap .wall-col .product-category-grid-featured.bg-1 {
+  background-image: url(../images/categories/blankets.PNG);
+  
 }
 .product-categories-grid-wrap .wall-col .product-category-grid-featured.bg-2 {
-  background-image: url(../images/categories/category-2.jpg);
+  background-image: url(../images/categories/mattresses.PNG);
 }
 .product-categories-grid-wrap .wall-col .product-category-grid-featured.bg-3 {
-  background-image: url(../images/categories/category-10.jpg);
+  background-image: url(../images/categories/duvetcover.webp);
 }
 .product-categories-grid-wrap .wall-col .product-category-grid-featured.bg-4 {
-  background-image: url(../images/categories/category-11.jpg);
+  background-image: url(../images/categories/duvet.png);
 }
 .product-categories-grid-wrap .wall-col .product-category-grid-featured.bg-5 {
-  background-image: url(../images/categories/category-9.jpg);
+  background-image: url(../images/categories/sheets.png);
 }
 .product-categories-grid-wrap .wall-col .product-category-grid-featured.bg-6 {
-  background-image: url(../images/categories/category-6.jpg);
-}
+  background-image: url(../images/categories/pillows.jpg);
+} */
 .product-categories-grid-wrap .wall-col:hover .product-category-grid-featured {
   -webkit-transform: scale3d(1.1, 1.1, 1);
   -ms-transform: scale3d(1.1, 1.1, 1);
@@ -4914,3 +4915,4 @@ textarea.shop form .form-row textarea {
   display: block;
   margin-top: 10px;
 }
+

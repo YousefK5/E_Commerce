@@ -1,3 +1,30 @@
+
+#page-title {
+  margin-bottom: 120px;
+  margin-right: 20px;
+  background-color: #00000078;
+  padding: 30px;
+  border-radius: 20px;
+}
+.error {
+  color: red;
+}
+
+#edittext {
+
+  margin-top: 30px;
+  font-size: 22px;
+
+}
+
+#imgaboutus {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+#editimg {
+  border: 5px solid black;
+}
 /**
 Theme Name: DMCS
 Description: CSS
@@ -49,6 +76,11 @@ Description: CSS
 /*--------------------------------------------------------------
 1.0 - Browser Reset
 --------------------------------------------------------------*/
+.error{
+  color:red;
+}
+
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -1051,7 +1083,7 @@ object {
 }
 @media (min-width: 1200px) {
   .container {
-    width: 1200px;
+    width: 1350px;
   }
 }
 #wrapper {
@@ -3199,7 +3231,7 @@ input[type="button"].btn-block {
 .navbar-brand .logo-mobile {
   max-height: 79px;
   display: none;
-  max-width: 100px;
+  max-width: 140px;
 }
 @media (max-width: 899px) {
   .navbar-brand .logo,
@@ -3602,7 +3634,8 @@ input[type="button"].btn-block {
   position: relative;
 }
 .navbar-fixed-top {
-  background: #ffffff;
+  background-color: #ffffff !important;
+  /* background: #ffffff; */
   height: 60px;
 }
 .navbar-fixed-top .navbar-nav.primary-nav > li > a {
@@ -5269,10 +5302,10 @@ a[data-toggle="tooltip"]:hover {
   z-index: 1;
 }
 .dhslider .slide-bg-1 {
-  background-image:url(../images/slideshow/1.jpg)
+  background-image:url(../images/slideshow/h5.jpg)
 }
 .dhslider .slide-bg-2 {
-  background-image:url(../images/slideshow/home-slide-2.png)
+  background-image:url(../images/slideshow/h3.jpeg)
 }
 .dhslider .slide-bg-3 {
   background-image:url(../images/slideshow/7.jpg)
@@ -6266,6 +6299,8 @@ a[data-toggle="tooltip"]:hover {
   opacity: 1;
   filter: alpha(opacity=100);
   font-size: 14px;
+  -moz-transform: translate(0, -50%);
+  -webkit-filter: alpha(opacity=100);
 }
 @media (max-width: 899px) {
   .header-search-overlay .close {
@@ -6396,7 +6431,7 @@ a[data-toggle="tooltip"]:hover {
 }
 .heading-container .heading-parallax.bg-1 {
   transform: translate3d(0px, 0px, 0px);
-  background-image: url(../images/slideshow/header-bg.jpg);
+  background-image: url(../images//3.png.jpg);
 }
 .heading-container .heading-parallax.bg-2 {
   transform: translate3d(0px, 0px, 0px);
@@ -12022,11 +12057,11 @@ img.grayscale:hover {
   font-size: 0.8em;
 }
 .lookbook-info-wrap {
-  background: url(../images/lookbook/lookbook.jpg) no-repeat scroll center center;
+  background: url(../images/lookbook/1.png) no-repeat scroll center center;
 }
 .lookbook-info-wrap.bg-1 {
-  background: url(../images/lookbook/lookbook-1.jpg) no-repeat scroll center center;
+  background: url(../images/lookbook/w1.jpg) no-repeat scroll center center;
 }
 .lookbook-info-wrap.bg-2 {
-  background: url(../images/lookbook/lookbook-2.jpg) no-repeat scroll center center;
+  background: url(../images/lookbook/25.png) no-repeat scroll center center;
 }
