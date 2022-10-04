@@ -328,7 +328,7 @@ if (isset($_POST['apply_coupon'])) {
 												</tr>
 											</table>
 											<div class="wc-proceed-to-checkout">
-												<a href="#" class="checkout-button button alt wc-forward">Proceed to Checkout</a>
+												<a href="checkout.php?price=<?php echo $total; ?>&c=<?php if(isset($coupon_saved->id_coupon)) { echo $coupon_saved->id_coupon;}else  " " ;?>" class="checkout-button button alt wc-forward">Proceed to Checkout</a>
 											</div>
 										</div>
 							

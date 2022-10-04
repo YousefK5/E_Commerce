@@ -1,13 +1,13 @@
 
 
-<?php require_once "header.php";?>
+<?php require_once 'header.php'; ?>
 
 
 
 
 
 <div class="heading-container heading-resize heading-no-button">
-				<div class="heading-background heading-parallax bg-1">
+				<div class="heading-background heading-parallax bg-1" style = "background-image: url(../imgs/h2.jpg)">
 					<div class="container">
 						<div class="row">
 							<div class="col-md-12">
@@ -110,4 +110,4 @@
 			</div>
 
 
-<?php require_once "footer.php";?>
+<?php require_once 'footer.php'; ?>

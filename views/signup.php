@@ -5,16 +5,25 @@ require_once 'connection.php';
 
 class Singup
 {
-    private $name;
+    private $fname;
+    private $lname;
     private $email;
     private $phone;
     private $password;
     private $address;
     private $city;
 
-    function __construct($name, $email, $password, $phone, $address, $city)
-    {
-        $this->name = $name;
+    function __construct(
+        $fname,
+        $lname,
+        $email,
+        $password,
+        $phone,
+        $address,
+        $city
+    ) {
+        $this->fname = $fname;
+        $this->lname = $lname;
         $this->email = $email;
         $this->password = $password;
         $this->address = $address;
@@ -22,9 +31,13 @@ class Singup
         $this->city = $city;
     }
 
-    public function getName()
+    public function getfName()
     {
-        return $this->name;
+        return $this->fname;
+    }
+    public function getlName()
+    {
+        return $this->lname;
     }
     public function getPhone()
     {
@@ -47,9 +60,13 @@ class Singup
         return $this->address;
     }
 
-    public function setName($name)
+    public function setfName($fname)
     {
-        $this->name = $name;
+        $this->fname = $fname;
+    }
+    public function setlName($lname)
+    {
+        $this->lname = $lname;
     }
     public function setPhone($phone)
     {
@@ -86,7 +103,8 @@ if (isset($_POST['register'])) {
     $nameEr = $emailEr = $phoneEr = $passEr = $cpassEr = $addressEr = $cityEr = false;
 
     $Singup = new Singup(
-        $_POST['name'],
+        $_POST['fname'],
+        $_POST['lname'],
         $_POST['email'],
         $_POST['password'],
         $_POST['phone'],
@@ -103,15 +121,15 @@ if (isset($_POST['register'])) {
     print_r($isFound);
 
     if (empty($isFound)) {
-        if (empty($Singup->getName())) {
+        if (empty($Singup->getfName())) {
             $nameErr = 'Name is required';
             echo "<script>alert(   '$nameErr') </script>";
         } else {
-            $Singup->setName(test_input($Singup->getName()));
+            $Singup->setfName(test_input($Singup->getfName()));
             // check if name only contains letters and whitespace
             if (
-                !preg_match('/^[a-zA-Z\s]*$/', $Singup->getName()) &&
-                strlen($Singup->getName()) > 4
+                !preg_match('/^[a-zA-Z\s]*$/', $Singup->getfName()) &&
+                strlen($Singup->getfName()) > 4
             ) {
                 $nameErr = 'Only letters and white space allowed';
                 echo "<script>alert(   '$nameErr') </script>";
@@ -210,18 +228,21 @@ if (isset($_POST['register'])) {
             $addressEr
         ) {
             $q =
-                'INSERT INTO users (name, address, phone, email, password,city) VALUES (?,?,?,?,?,?)';
+                'INSERT INTO users (first_name,last_name, address, phone, email, password,city) VALUES (?,?,?,?,?,?,?)';
             echo "<script> alert( 'test')  </script>";
 
             $stmt = $connect->prepare($q);
             $stmt->execute([
-                $Singup->getName(),
+                $Singup->getfName(),
+                $Singup->getlName(),
                 $Singup->getAddress(),
                 $Singup->getPhone(),
                 $Singup->getEmail(),
                 $Singup->getPassword(),
                 $Singup->getCity(),
             ]);
+            $_SESSION['userid']++;
+            header('location:index.php');
         }
     } else {
         $emailErr = 'It looks like you’re connected try login. Please ';

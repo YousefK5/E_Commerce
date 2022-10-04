@@ -1,6 +1,5 @@
+<?php require 'header.php'; ?>
 <?php
-require_once '../../views/connection.php';
-
 $users = $connect->query('SELECT * FROM users');
 $users = $users->fetchAll();
 $orders = $connect->query('SELECT * FROM orders');
@@ -9,7 +8,6 @@ $products = $connect->query('SELECT * FROM products');
 $products = $products->fetchAll();
 ?>
 
-<?php require 'header.php'; ?>
   <div class="container-fluid page-body-wrapper">
     <?php require 'sidebar.php'; ?>
         <!-- partial -->
