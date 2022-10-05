@@ -1,19 +1,34 @@
 <?php require './connection.php'; ?>
 <?php
-@$total = $_REQUEST['price']; // echo $total;
-$coupon = isset($_GET['c']);
+@$total = $_GET['price']; // echo $total;
+if (isset($_GET['c'])) {
+    if ($_GET['c'] == '0') {
+        $couponNow = 0;
+    } else {
+        $couponNow = $_GET['c'];
+    }
+}
 $userid = $_SESSION['userid'];
 if (isset($_POST['Chekout'])) {
-    $q = "INSERT INTO orders(total_price,user_id,order_address, order_phone, postal_code, order_city,coupon_id) 
-    VALUES (:total1,:user_id1,:address1,:phone1,:postal_code1,:city1,:c)"; // INSERT INTO `orders` (`total_price`, `user_id`, `date`, `address`, `phone`, `postal_code`, `coupon_id`, `city`) VALUES (:total, '9', '2022-10-02 21:10:10.000000', 'مم', '655', '666', NULL, 'sssvv');
+    if ($_POST['c'] == 0) {
+        $q = "INSERT INTO orders(total_price,user_id,order_address, order_phone, postal_code, order_city) 
+        VALUES (:total1,:user_id1,:address1,:phone1,:postal_code1,:city1)"; //  $stmt->execute();
+    } else {
+        $q = "INSERT INTO orders(total_price,user_id,order_address, order_phone, postal_code, order_city,coupon_id) 
+        VALUES (:total1,:user_id1,:address1,:phone1,:postal_code1,:city1,:c)";
+    } // INSERT INTO `orders` (`total_price`, `user_id`, `date`, `address`, `phone`, `postal_code`, `coupon_id`, `city`) VALUES (:total, '9', '2022-10-02 21:10:10.000000', 'مم', '655', '666', NULL, 'sssvv');
     $stmt = $connect->prepare($q);
     $stmt->bindParam(':user_id1', $userid);
-    $stmt->bindParam(':total1', $_REQUEST['price']);
+    $stmt->bindParam(':total1', $_POST['price']);
     $stmt->bindParam(':address1', $_REQUEST['address']);
     $stmt->bindParam(':phone1', $_REQUEST['phone']);
     $stmt->bindParam(':postal_code1', $_REQUEST['postal_code']);
     $stmt->bindParam(':city1', $_REQUEST['city']);
-    $stmt->bindParam(':c', $_REQUEST['c']); //  $stmt->execute();
+    if ($_POST['c'] == 0) {
+        echo 'Good';
+    } else {
+        $stmt->bindParam(':c', $_POST['c']);
+    } //  $stmt->execute();
     $stmt->execute();
     $lastOrder = $connect->lastInsertId();
     $carts = $connect->query("SELECT * from cart WHERE user_id='$userid'");
@@ -37,16 +52,13 @@ $userNow = $query->fetch(PDO::FETCH_OBJ);
 ?>
 
 <!doctype html>
-
-
 <html lang="en-US">
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
-	<title>Shop Detail | HTML Template</title>
+	<title>Cloud Masters</title>
 	<link rel="shortcut icon" href="images/favicon.png">
-
 	<link rel='stylesheet' href='../css/settings.css' type='text/css' media='all' />
 	<link rel='stylesheet' href='../css/swatches-and-photos.css' type='text/css' media='all' />
 	<link rel='stylesheet' href='../css/font-awesome.min.css' type='text/css' media='all' />
@@ -60,105 +72,28 @@ $userNow = $query->fetch(PDO::FETCH_OBJ);
 <body class="shop">
 	<div class="offcanvas open">
 		<div class="offcanvas-wrap">
-			<div class="offcanvas-user clearfix">
-				<a class="offcanvas-user-wishlist-link" href="wishlist.html">
-					<i class="fa fa-heart-o"></i> My Wishlist
-				</a>
-				<a class="offcanvas-user-account-link" href="my-account.html">
-					<i class="fa fa-user"></i> Login
-				</a>
+		<div class="offcanvas-user clearfix">
+			<?php if (isset($_SESSION['userid'])) { ?> 
+											<a href='./profile/My-profile.php'><?php echo $user['first_name'] .
+               ' ' .
+               $user['last_name'];} else { ?></a>
+											<a data-rel="loginModal" href="#"><i class="fa fa-user"></i> Login</a>
+											<?php } ?>
 			</div>
 			<nav class="offcanvas-navbar">
 				<ul class="offcanvas-nav">
 					<li class="menu-item-has-children dropdown">
-						<a href="./" class="dropdown-hover">Home <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="home-lookbook.html">Home Lookbook</a></li>
-							<li><a href="home-instagram.html">Home Instagram</a></li>
-							<li><a href="home-product-slider.html">Home Product Slider</a></li>
-							<li><a href="home-default.html">Home Default</a></li>
-						</ul>
-					</li>
-					<li class="menu-item-has-children dropdown">
-						<a href="shop.html" class="dropdown-hover">Shop <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li id="menu-item-10433" class="menu-item-has-children dropdown-submenu">
-								<a href="shop-by-category.html">Women <span class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="shop-by-category.html">Nulla</a></li>
-									<li><a href="shop-by-category.html">Maecenas</a></li>
-									<li><a href="shop-by-category.html">Aliquam</a></li>
-									<li><a href="shop-by-category.html">Donec</a></li>
-								</ul>
-							</li>
-							<li class="menu-item-has-children dropdown-submenu">
-								<a href="shop-by-category.html">Brands <span class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="shop-by-category.html">Adesso</a></li>
-									<li><a href="shop-by-category.html">Barbour</a></li>
-									<li><a href="shop-by-category.html">Carvela</a></li>
-									<li><a href="shop-by-category.html">Crocs</a></li>
-									<li><a href="shop-by-category.html">Evans</a></li>
-								</ul>
-							</li>
-							<li class="menu-item-has-children dropdown-submenu">
-								<a href="shop-by-collection.html">Conllections <span class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="shop-by-collection.html">Spring/Summer 2014</a></li>
-									<li><a href="shop-by-collection.html">Sweet Summer</a></li>
-									<li><a href="shop-by-collection.html">Winter 2015</a></li>
-								</ul>
-							</li>
-							<li class="menu-item-has-children dropdown-submenu">
-								<a href="#">Woo <span class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="shop-masonry.html">Shop Masonry</a></li>
-									<li><a href="shop-detail.html">Shop Detail</a></li>
-									<li><a href="my-account.html">My Account</a></li>
-									<li><a href="cart.html">Cart</a></li>
-									<li><a href="cart-empty.html">Empty Cart</a></li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-					<li><a href="collection.html">Collections</a></li>
-					<li class="menu-item-has-children dropdown">
-						<a href="#" class="dropdown-hover">Blog <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="blog-default.html">Blog Default</a></li>
-							<li><a href="blog-center.html">Blog Center</a></li>
-							<li><a href="blog-masonry.html">Blog Masonry</a></li>
-							<li><a href="blog-detail.html">Blog Detail</a></li>
-						</ul>
+						<a href="./index.php" class="dropdown-hover">Home <span class="caret"></span></a>
 					</li>
 					<li class="menu-item-has-children dropdown">
 						<a href="#" class="dropdown-hover">Pages <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="about-us.html">About us</a></li>
-							<li><a href="contact-us.html">Contact Us</a></li>
-							<li><a href="faq.html">FAQ</a></li>
+							<li><a href="about-us.php">About us</a></li>
+							<li><a href="contact-us.php">Contact Us</a></li>
 						</ul>
 					</li>
 				</ul>
 			</nav>
-			<div class="offcanvas-widget">
-				<div class="widget social-widget">
-					<div class="social-widget-wrap social-widget-none">
-						<a href="#" title="Facebook" target="_blank">
-							<i class="fa fa-facebook"></i>
-						</a>
-						<a href="#" title="Twitter" target="_blank">
-							<i class="fa fa-twitter"></i>
-						</a>
-						<a href="#" title="Google+" target="_blank">
-							<i class="fa fa-google-plus"></i>
-						</a>
-						<a href="#" title="Pinterest" target="_blank">
-							<i class="fa fa-pinterest"></i>
-						</a>
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
 	<div id="wrapper" class="wide-wrap">
@@ -168,64 +103,34 @@ $userNow = $query->fetch(PDO::FETCH_OBJ);
 				<div class="container topbar-wap">
 					<div class="row">
 						<div class="col-sm-6">
-							<div class="left-topbar">
-								<div class="topbar-social">
-									<a href="#" title="Facebook" target="_blank">
-										<i class="fa fa-facebook facebook-bg-hover"></i>
-									</a>
-									<a href="#" title="Twitter" target="_blank">
-										<i class="fa fa-twitter twitter-bg-hover"></i>
-									</a>
-									<a href="#" title="Google+" target="_blank">
-										<i class="fa fa-google-plus google-plus-bg-hover"></i>
-									</a>
-									<a href="#" title="Pinterest" target="_blank">
-										<i class="fa fa-pinterest pinterest-bg-hover"></i>
-									</a>
-									<a href="#" title="RSS" target="_blank">
-										<i class="fa fa-rss rss-bg-hover"></i>
-									</a>
-									<a href="#" title="Instagram" target="_blank">
-										<i class="fa fa-instagram instagram-bg-hover"></i>
-									</a>
-								</div>
-							</div>
 						</div>
 						<div class="col-sm-6">
-							<div class="right-topbar">
-							<?php if (isset($_SESSION['userid'])) { ?>
+						<div class="right-topbar">
+								<?php if (isset($_SESSION['userid'])) { ?>
 														<div class="user-wishlist">
-															<a href="../views/profile/logout.php"><i class="fa fa-share-square-o
-		
-		
-		"></i>Logout</a>
+															<a href="../views/profile/logout.php"><i class="fa fa-share-square-o"></i>Logout</a>
 														</div>
 													<?php } ?>
-							<?php if (isset($_SESSION['userid'])) { ?>
-												<div class="user-wishlist">
-													<a href="../views/profile/logout.php"><i class="fa fa-down
-"></i> Logout</a>
-												</div>
-											<?php } ?>
-							<div class="right-topbar">
 							<?php if (isAdmin()) { ?>
 												<div class="user-wishlist">
-													<a href="../admin/views/index.php"><i class="fa fa-cog
-"></i> Dashboard</a>
+													<a href="../admin/views/index.php"><i class="fa fa-cog"></i>Dashboard</a>
 												</div>
 											<?php } ?>
 								<div class="user-login">
 									<ul class="nav top-nav">
-									<li class="menu-item">
+										<li class="menu-item">
 											<?php if (isset($_SESSION['userid'])) { ?> 
 											<a href='./profile/My-profile.php'><?php echo $user['first_name'] .
                ' ' .
                $user['last_name'];} else { ?></a>
-											<a data-rel="loginModal" href="#" id="buttonLogin"><i class="fa fa-user"></i> Login</a>
+											<a data-rel="loginModal" href="#"><i class="fa fa-user"></i> Login</a>
 											<?php } ?>
+											
 										</li>
+
 									</ul>
 								</div>
+
 							</div>
 						</div>
 					</div>
@@ -260,107 +165,56 @@ $userNow = $query->fetch(PDO::FETCH_OBJ);
 										<nav class="collapse navbar-collapse primary-navbar-collapse">
 											<ul class="nav navbar-nav primary-nav">
 												<li class="menu-item-has-children dropdown">
-													<a href="./" class="dropdown-hover">
+													<a href="./index.php" class="dropdown-hover">
 														<span class="underline">Home</span> <span class="caret"></span>
 													</a>
-													<ul class="dropdown-menu">
-														<li><a href="home-lookbook.html">Home Lookbook</a></li>
-														<li><a href="home-instagram.html">Home Instagram</a></li>
-														<li><a href="home-product-slider.html">Home Product Slider</a></li>
-														<li><a href="home-default.html">Home Default</a></li>
-													</ul>
 												</li>
 												<li class="menu-item-has-children megamenu megamenu-fullwidth dropdown">
-													<a href="shop.html" class="dropdown-hover">
+													<a href="shop.php" class="dropdown-hover">
 														<span class="underline">Shop</span> <span class="caret"></span>
 													</a>
-													<ul class="dropdown-menu">
-														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
-															<h3 class="megamenu-title">
-																Women <span class="caret"></span>
-															</h3>
-															<ul class="dropdown-menu">
-																<li><a href="shop-by-category.html">Nulla</a></li>
-																<li><a href="shop-by-category.html">Maecenas</a></li>
-																<li><a href="shop-by-category.html">Aliquam</a></li>
-																<li><a href="shop-by-category.html">Donec</a></li>
-															</ul>
-														</li>
-														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
-															<h3 class="megamenu-title">
-																Brands <span class="caret"></span>
-															</h3>
-															<ul class="dropdown-menu">
-																<li><a href="shop-by-category.html">Adesso</a></li>
-																<li><a href="shop-by-category.html">Barbour</a></li>
-																<li><a href="shop-by-category.html">Carvela</a></li>
-																<li><a href="shop-by-category.html">Crocs</a></li>
-																<li><a href="shop-by-category.html">Evans</a></li>
-															</ul>
-														</li>
-														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
-															<h3 class="megamenu-title">
-																Collections <span class="caret"></span>
-															</h3>
-															<ul class="dropdown-menu">
-																<li><a href="shop-by-collection.html">Spring/Summer 2014</a></li>
-																<li><a href="shop-by-collection.html">Sweet Summer</a></li>
-																<li><a href="shop-by-collection.html">Winter 2015</a></li>
-															</ul>
-														</li>
-														<li class="menu-item-has-children mega-col-3 dropdown-submenu">
-															<h3 class="megamenu-title">
-																Woo <span class="caret"></span>
-															</h3>
-															<ul class="dropdown-menu">
-																<li><a href="shop-masonry.html">Shop Masonry</a></li>
-																<li><a href="shop-detail.html">Shop Detail</a></li>
-																<li><a href="my-account.html">My Account</a></li>
-																<li><a href="cart.html">Cart</a></li>
-																<li><a href="cart-empty.html">Empty Cart</a></li>
-															</ul>
-														</li>
-													</ul>
 												</li>
-												<li><a href="collection.html"><span class="underline">Collections</span></a></li>
-												<li class="menu-item-has-children dropdown">
-													<a href="#" class="dropdown-hover">
-														<span class="underline">Blog</span> <span class="caret"></span>
+												<li class="menu-item-has-children megamenu megamenu-fullwidth dropdown">
+													<a href="about-us.php" class="dropdown-hover">
+														<span class="underline">About Us</span> <span class="caret"></span>
 													</a>
-													<ul class="dropdown-menu">
-														<li><a href="blog-default.html">Blog Default</a></li>
-														<li><a href="blog-center.html">Blog Center</a></li>
-														<li><a href="blog-masonry.html">Blog Masonry</a></li>
-														<li><a href="blog-detail.html">Blog Detail</a></li>
-													</ul>
 												</li>
-												<li class="menu-item-has-children dropdown">
-													<a href="#" class="dropdown-hover">
-														<span class="underline">Pages</span> <span class="caret"></span>
-													</a>
-													<ul class="dropdown-menu">
-														<li><a href="about-us.html">About us</a></li>
-														<li><a href="contact-us.html">Contact Us</a></li>
-														<li><a href="faq.html">FAQ</a></li>
-													</ul>
-												</li>
-												<li class="navbar-search">
-													<a class="navbar-search-button" href="#">
-														<i class="fa fa-search"></i>
+												<li class="menu-item-has-children megamenu megamenu-fullwidth dropdown">
+													<a href="contact-us.php" class="dropdown-hover">
+														<span class="underline">Contact Us</span> <span class="caret"></span>
 													</a>
 												</li>
 												<?php
             if (isset($_GET['del'])) {
-                $cart_id = $_GET['del'];
-                $query = $connect->prepare(
-                    'DELETE  FROM `cart` Where cart_id=? '
-                );
-                $query->execute([$cart_id]);
+                if (isset($_SESSION['userid'])) {
+                    $cart_id = $_GET['del'];
+                    $query = $connect->prepare(
+                        'DELETE  FROM `cart` Where cart_id=? '
+                    );
+                    $query->execute([$cart_id]);
+                } else {
+                    $productsInCart = $_SESSION['cartVisitor'];
+                    for ($i = 0; $i < count($productsInCart); $i++) {
+                        if ($productsInCart[$i][0] == $_GET['del']) {
+                            unset($_SESSION['cartVisitor'][$i]);
+                        }
+                    }
+                }
             }
-            $query = 'SELECT * from `cart`';
-            $query = $connect->prepare($query);
-            $query->execute();
-            $productsInCart = $query->fetchAll(PDO::FETCH_OBJ);
+            $fromDB = 0;
+            $fromSS = 0;
+            if (isset($_SESSION['userid'])) {
+                $query = 'SELECT * from `cart`';
+                $query = $connect->prepare($query);
+                $query->execute();
+                $productsInCart = $query->fetchAll(PDO::FETCH_OBJ);
+                $fromDB = 1;
+            } elseif (isset($_SESSION['cartVisitor'])) {
+                $productsInCart = $_SESSION['cartVisitor'];
+                $fromSS = 1;
+            } else {
+                $productsInCart = [];
+            }
             if (empty($productsInCart)) { ?>
 												<li class="navbar-minicart navbar-minicart-nav">
 													<a class="minicart-link" href="#">
@@ -387,12 +241,6 @@ $userNow = $query->fetch(PDO::FETCH_OBJ);
 
 
 <?php } else { ?>
-
-
-
-
-
-
 												<li class="navbar-minicart navbar-minicart-nav">
 														<a class="minicart-link" href="#">
 															<span class="minicart-icon has-item">
@@ -408,7 +256,11 @@ $userNow = $query->fetch(PDO::FETCH_OBJ);
 															<div class="minicart-body">
 																<?php foreach ($productsInCart as $pInCart) {
 
-                    $query = "SELECT * from `products` WHERE product_id= '$pInCart->product_id'";
+                    if ($fromDB) {
+                        $query = "SELECT * from `products` WHERE product_id= '$pInCart->product_id'";
+                    } else {
+                        $query = "SELECT * from `products` WHERE product_id= '$pInCart[0]'";
+                    }
                     $query = $connect->prepare($query);
                     $query->execute();
                     $product = $query->fetch(PDO::FETCH_OBJ);
@@ -424,10 +276,14 @@ $userNow = $query->fetch(PDO::FETCH_OBJ);
 																			<a href="#"><?php echo $product->product_name; ?></a>
 																		</div>
 																		<div class="cart-product-quantity-price">
-																			<?php echo $pInCart->quantity; ?> x <span class="amount">&#36;<?php echo $product->price; ?></span>
+																			<?php echo $fromDB
+                       ? $pInCart->quantity
+                       : $pInCart[1]; ?> x <span class="amount">&#36;<?php echo $product->price; ?></span>
 																		</div>
 																	</div>
-																	<a href="?del=<?php echo $pInCart->cart_id; ?>" class="remove" title="Remove this item">&times;</a>
+																	<a href="?del=<?php echo $fromDB
+                     ? $pInCart->cart_id
+                     : $pInCart[0]; ?>" class="remove" title="Remove this item">&times;</a>
 																</div>
 																<?php
                 } ?>
@@ -443,20 +299,22 @@ $userNow = $query->fetch(PDO::FETCH_OBJ);
 													</li>
 <?php }
             ?>
+												<!-- cart and boxes -->
 											</ul>
+
+											<!--desktop nav end -->
 										</nav>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+
+					<!-- search open box -->
 					<div class="header-search-overlay hide">
 						<div class="container">
 							<div class="header-search-overlay-wrap">
-								<form class="searchform">
-									<input type="search" class="searchinput" name="s" value="" placeholder="Search..." />
-									<input type="submit" class="searchsubmit hidden" name="submit" value="Search" />
-								</form>
+								<!-- search form -->
 								<button type="button" class="close">
 									<span aria-hidden="true" class="fa fa-times"></span>
 									<span class="sr-only">Close</span>
@@ -467,11 +325,28 @@ $userNow = $query->fetch(PDO::FETCH_OBJ);
 				</div>
 			</div>
 		</header>
+
 		
 
 <!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-
+<?php
+$curUserId = $_SESSION['userid'];
+$cart = $connect->query(
+    "SELECT * FROM cart JOIN products ON cart.product_id=products.product_id WHERE cart.user_id='$curUserId'"
+);
+$cart = $cart->fetchAll();
+if ($_GET['c'] != '0') {
+    $idCoupon = $_GET['c'];
+    $coupuns = $connect->query(
+        "SELECT * FROM coupons WHERE coupon_id='$idCoupon'"
+    );
+    $coupon = $coupuns->fetch();
+    $couponDiscount = $coupon['discount'];
+} else {
+    $couponDiscount = 0;
+}
+?>
 
                <div class="heading-container">
 				<div class="container heading-standar">
@@ -531,15 +406,21 @@ $userNow = $query->fetch(PDO::FETCH_OBJ);
 
                                             <p class="form-control-wrap your-name">
                                             <LAbel>Postal Code </LAbel>
-                                            <input type="hidden" name="price" value="<?php echo $total; ?>" size="40" class="form-control text validates-as-required"/>
-                                            <input type="hidden" name="c" value="<?php echo $coupon; ?>" size="40" class="form-control text validates-as-required"/>
+                                            <input type="hidden" name="price" value="<?php echo $couponDiscount
+                                                ? $_GET['price'] -
+                                                    $_GET['price'] *
+                                                        ($couponDiscount / 100)
+                                                : $_GET[
+                                                    'price'
+                                                ]; ?>" size="40" class="form-control text validates-as-required"/>
+                                            <input type="hidden" name="c" value="<?php echo $couponNow; ?>" size="40" class="form-control text validates-as-required"/>
                                                 <input type="text" name="postal_code" value="" size="40" class="form-control text validates-as-required"/>
                                             </p>
                                         </div>
                                     </div>
 
                                 </div>
-                                <input type="submit" name="Chekout" value="Chekout"  class="form-control submit" />
+                                <input type="submit" name="Chekout" value="Checkout"  class="form-control submit" />
                                 </form>
 					            </div>
 								</div>
@@ -559,24 +440,7 @@ $userNow = $query->fetch(PDO::FETCH_OBJ);
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php
-                                        $curUserId = $_SESSION['userid'];
-                                        $cart = $connect->query(
-                                            "SELECT * FROM cart JOIN products ON cart.product_id=products.product_id WHERE cart.user_id='$curUserId'"
-                                        );
-                                        $cart = $cart->fetchAll();
-                                        if ($_GET['c'] != '') {
-                                            $idCoupon = $_GET['c'];
-                                            $coupuns = $connect->query(
-                                                "SELECT * FROM coupons WHERE coupon_id='$idCoupon'"
-                                            );
-                                            $coupon = $coupuns->fetch();
-                                            $couponDiscount =
-                                                $coupon['discount'];
-                                        } else {
-                                            $couponDiscount = 0;
-                                        }
-                                        foreach ($cart as $c) { ?>
+                                        <?php foreach ($cart as $c) { ?>
 
                                         <tr class="woocommerce-table__line-item order_item">
                                         <td class="woocommerce-table__product-name product-name" style="text-align:left">
@@ -594,8 +458,7 @@ $userNow = $query->fetch(PDO::FETCH_OBJ);
                                                 $c['quantity']; ?>
                                         </td>
                                         </tr>
-                                        <?php }
-                                        ?>
+                                        <?php } ?>
                                     </tbody>
                                     <tfoot>
                                         <tr>

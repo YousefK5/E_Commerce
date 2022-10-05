@@ -363,7 +363,7 @@ if (isset($_POST['apply_coupon'])) {
 ) {
     echo $coupon_saved->coupon_id;
 } else {
-    echo ' ';
+    echo '0';
 } ?>" class="checkout-button button alt wc-forward">Proceed to Checkout</a>
 												<?php } else { ?>
 												<a data-rel="loginModal" class="checkout-button button alt wc-forward">Proceed to Checkout</a>
@@ -443,8 +443,8 @@ if (isset($_POST['apply_coupon'])) {
 						<label>Email</label>
 						<input type="text" id="username" name="email" required class="form-control" value="" placeholder="Email">
 						<input type="hidden" id="hiddenPrice" name="totalPrice" required value="<?php echo $total; ?>">
-						<?php if (isset($coupon_saved->id_coupon)) { ?>
-						<input type="hidden" id="hiddenCoupon" name="coupon" required value="<?php echo $coupon_saved->id_coupon; ?>">
+						<?php if (isset($coupon_saved->coupon_id)) { ?>
+						<input type="hidden" id="hiddenCoupon" name="coupon" required value="<?php echo $coupon_saved->coupon_id; ?>">
 						<?php } ?>
 					</div>
 					<div class="form-group">
@@ -478,9 +478,15 @@ if (isset($_POST['apply_coupon'])) {
 				</div>
 				<div class="modal-body">
 					<div class="form-group">
-					<input type="hidden" id="hiddenPrices" name="totalPrice" required value="<?php echo $total; ?>">
-						<?php if (isset($coupon_saved->id_coupon)) { ?>
-						<input type="hidden" id="hiddenCoupons" name="coupon" required value="<?php echo $coupon_saved->id_coupon; ?>">
+					<input type="hidden" id="hiddenPrices" name="totalPrice" required value="<?php if (
+         isset($_POST['apply_coupon'])
+     ) {
+         echo $total - $total * ($coupon_saved->discount / 100);
+     } else {
+         echo $total;
+     } ?>">
+						<?php if (isset($coupon_saved->coupon_id)) { ?>
+						<input type="hidden" id="hiddenCoupons" name="coupon" required value="<?php echo $coupon_saved->coupon_id; ?>">
 						<?php } ?>
 						<label>First Name <span class="error" id="spanFname">* <?php if (
           isset($_POST['register'])
@@ -544,12 +550,6 @@ if (isset($_POST['apply_coupon'])) {
 						
 
 					</div>
-
-
-
-
-
-
 					<div class="form-group">
 						<label for="user_password">Password <span class="error" id="spanPassword">* <?php if (
           isset($_POST['register'])

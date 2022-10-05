@@ -192,7 +192,7 @@ if (isset($_POST['register'])) {
         // form validation for confirm password
         if ($_REQUEST['cuser_password'] != $Singup->getPassword()) {
             $cpassErr = 'Confirm Password doesnot Matche';
-            echo "<script>alert(   '$cpassErr') </script>";
+            echo "<script>alert('$cpassErr') </script>";
         } else {
             $cpassEr = true;
         }
@@ -207,7 +207,7 @@ if (isset($_POST['register'])) {
 
         if (empty($Singup->getCity())) {
             $cityErr = 'city is required';
-            echo "<scrpt>alert(   '$cityErr ') </script>";
+            echo "<script>alert(   '$cityErr ') </script>";
         } else {
             $Singup->setCity(test_input($Singup->getCity()));
             $cityEr = true;
@@ -254,8 +254,9 @@ if (isset($_POST['register'])) {
                 if (isset($_POST['coupon'])) {
                     $coupon = $_POST['coupon'];
                     header("location: ./checkout.php?price=$total&c=$coupon");
+                } else {
+                    header("location: ./checkout.php?price=$total&c='0'");
                 }
-                header("location: ./checkout.php?price=$total&c=' '");
             } else {
                 header('location:index.php');
             }
@@ -265,3 +266,4 @@ if (isset($_POST['register'])) {
         echo "<script>alert(   '$emailErr') </script>";
     }
 }
+?>
