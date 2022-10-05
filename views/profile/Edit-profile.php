@@ -40,9 +40,8 @@ $user = $stmt->fetch();
 
 <title>Edit Profile</title>
     <link rel="icon" type="image/png" href="Images/carts.png">
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-
+	
 	<link rel='stylesheet' href='../../css/settings.css' type='text/css' media='all' />
 	<link rel='stylesheet' href='../../css/swatches-and-photos.css' type='text/css' media='all' />
 	<link rel='stylesheet' href='../../css/font-awesome.min.css' type='text/css' media='all' />
@@ -50,6 +49,7 @@ $user = $stmt->fetch();
 	<link rel='stylesheet' href='../../css/elegant-icon.css' type='text/css' media='all' />
 	<link rel='stylesheet' href='../../css/style.css' type='text/css' media='all' />
 	<link rel='stylesheet' href='../../css/shop.css' type='text/css' media='all' />
+    <link rel="stylesheet" href="css/style.css">
 	<!-- <link rel='stylesheet' href='../css/layout.css' type='text/css' media='all' /> -->
 
 	
@@ -71,13 +71,13 @@ $user = $stmt->fetch();
 			<nav class="offcanvas-navbar">
 				<ul class="offcanvas-nav">
 					<li class="menu-item-has-children dropdown">
-						<a href="./index.php" class="dropdown-hover">Home <span class="caret"></span></a>
+						<a href="../index.php" class="dropdown-hover">Home <span class="caret"></span></a>
 					</li>
 					<li class="menu-item-has-children dropdown">
 						<a href="#" class="dropdown-hover">Pages <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="about-us.php">About us</a></li>
-							<li><a href="contact-us.php">Contact Us</a></li>
+							<li><a href="../about-us.php">About us</a></li>
+							<li><a href="../contact-us.php">Contact Us</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -153,22 +153,22 @@ $user = $stmt->fetch();
 										<nav class="collapse navbar-collapse primary-navbar-collapse">
 											<ul class="nav navbar-nav primary-nav">
 												<li class="menu-item-has-children dropdown">
-													<a href="./index.php" class="dropdown-hover">
+													<a href="../index.php" class="dropdown-hover">
 														<span class="underline">Home</span> <span class="caret"></span>
 													</a>
 												</li>
 												<li class="menu-item-has-children megamenu megamenu-fullwidth dropdown">
-													<a href="shop.php" class="dropdown-hover">
+													<a href="../shop.php" class="dropdown-hover">
 														<span class="underline">Shop</span> <span class="caret"></span>
 													</a>
 												</li>
 												<li class="menu-item-has-children megamenu megamenu-fullwidth dropdown">
-													<a href="about-us.php" class="dropdown-hover">
+													<a href="../about-us.php" class="dropdown-hover">
 														<span class="underline">About Us</span> <span class="caret"></span>
 													</a>
 												</li>
 												<li class="menu-item-has-children megamenu megamenu-fullwidth dropdown">
-													<a href="contact-us.php" class="dropdown-hover">
+													<a href="../contact-us.php" class="dropdown-hover">
 														<span class="underline">Contact Us</span> <span class="caret"></span>
 													</a>
 												</li>
@@ -205,7 +205,7 @@ $user = $stmt->fetch();
             }
             if (empty($productsInCart)) { ?>
 												<li class="navbar-minicart navbar-minicart-nav">
-													<a class="minicart-link" href="#">
+													<a class="minicart-link" href="../cart.php">
 														<span class="minicart-icon">
 															<i class="minicart-icon-svg elegant_icon_bag"></i>
 															<span><?php echo count($productsInCart); ?></span>
@@ -230,7 +230,7 @@ $user = $stmt->fetch();
 
 <?php } else { ?>
 												<li class="navbar-minicart navbar-minicart-nav">
-														<a class="minicart-link" href="#">
+														<a class="minicart-link" href="../cart.php">
 															<span class="minicart-icon has-item">
 																<i class="minicart-icon-svg elegant_icon_bag"></i> <span><?php echo count(
                     $productsInCart
@@ -321,15 +321,6 @@ $user = $stmt->fetch();
 
     
     <!-- Start of my-profile page -->
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a class="text-dark" href="index.html">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Edit Profile</li>
-        </ol>
-    </nav>
-
-    
-
 
      <main class='flex-container grid-column-2'>
              <center>   <h3 class="font-weight-bold">EDIT PROFILE</h3></center>
@@ -341,7 +332,11 @@ $user = $stmt->fetch();
 
    <!-- <img src="https://technosmarter.com/assets/userimgs/logo.png" alt="Techno Smarter" class="logo img-fluid"> <br>   -->
 
-       
+       <style>
+			.form-label {
+				font-size:18px !important;
+			}
+		</style>
          <div class="mb-3">
                 <label class="form-label">First Name</label>
            

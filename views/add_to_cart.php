@@ -58,7 +58,8 @@ if (isset($_GET['from'])) {
     }
     if ($_GET['from'] == 'product') {
         header("location: ./product_page.php?id=$prodId");
-    } else {
+    }
+    if ($_GET['from'] == 'cart') {
         header('location: ./cart.php');
     }
 }

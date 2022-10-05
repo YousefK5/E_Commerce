@@ -11,7 +11,6 @@ $query = 'SELECT * from `orders` where user_id =?';
 $query = $connect->prepare($query);
 $query->execute([$_SESSION['userid']]);
 $orders = $query->fetchAll(PDO::FETCH_OBJ);
-print_r($_SESSION);
 ?>
 
 
@@ -35,8 +34,6 @@ print_r($_SESSION);
 										<table class="table shop_table cart">
 											<thead>
 												<tr>	
-
-													<th class="product-thumbnail hidden-xs">&nbsp;</th>
 													<th class="product-name"> Order Number </th>
 													<th class="product-price text-center">Date </th>
 													<th class="product-quantity text-center">Total Price </th>
@@ -102,51 +99,86 @@ print_r($_SESSION);
                                                         // $unitPrice=$product->price;
                                                         ?>
                                                         <tr class="cart_item">
-													<td class="product-remove hidden-xs">
-													<span class="amount" id="subTotal"></span>
-
-													</td>
-													<td class="product-thumbnail hidden-xs">
-													# <?php echo $order->order_id; ?>
+													<td class="product-thumbnail">
+													<h6 class="amount"># <?php echo $order->order_id; ?></h6>
 					
 													</td>
 
 													<td class="product-price text-center">
-                                                    <span class="amount"><?php echo $order->order_date; ?></span>
+													<h6 class="amount"><?php echo $order->order_date; ?></h6>
 													</td>
 
 													<td class="product-price text-center">
-                                                    <span class="amount"> <?php echo $order->total_price; ?> JD </span>
+													<h6 class="amount"><?php echo $order->total_price; ?> JD</h6>
 													</td>
 													<td class="product-price text-center">
-                                                    <span class="amount"><?php echo $order->order_phone; ?></span>
+                                                    <h6 class="amount"><?php echo $order->order_phone; ?><h6>
 													</td>
 													<td class="product-price text-center">
 														
-														<span class="amount"><?php echo $order->order_address .
+														<h6 class="amount"><?php echo $order->order_address .
                   ',' .
                   $order->order_city .
                   '/' .
-                  $order->postal_code; ?></span>
+                  $order->postal_code; ?></h6>
 													</td>
 													<td class="product-price text-center">
-													<span class="amount"><<?php echo $coupon_name->coupon_name; ?></span>
-													</td><td class="product-name">
-													<?php foreach ($details as $detail) { ?>
-<?php foreach ($products as $product) { ?>			
-														<?php echo $product->product_name; ?></a>
-												
-														<dl class="variation">
+													<h6 class="amount"><<?php echo $coupon_name->coupon_name; ?></h6>
+													</td>
+													<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+													<td class="product-name" style="text-align:center">
+														<button type="button" class="button" id='o<?php echo $order->order_id; ?>'>Details</button>
+														<?php// foreach ($details as $detail) { ?>
+														<?php// foreach ($products as $product) { ?>			
+																
+														<!-- <dl class="variation">
 															<dt class="variation-Size">unit_price:</dt>
-															<dd class="variation-Size"><p><?php echo $detail->unit_price; ?></p></dd>
+															<dd class="variation-Size"><p><?php// echo $detail->unit_price; ?></p></dd>
 														</dl>
 														<dl class="variation">
 															<dt class="variation-Size">quantity:</dt>
-															<dd class="variation-Size"><p><?php echo $detail->quantity; ?></p></dd>
-														</dl>
-												
-														<hr>										
-	<?php } ?>							<?php } ?>			</td>		
+															<dd class="variation-Size"><p><?php// echo $detail->quantity; ?></p></dd>
+														</dl> -->
+														<style>
+															.swl,.swl th,.swl td {
+															border: 1px solid black;
+															padding:10px 4px;
+															}
+
+														</style>
+															<script>
+																window.onload=function() {
+																	document.getElementById("o<?php echo $order->order_id; ?>").onclick= function() {
+																		Swal.fire({
+																		title: 'Order Number: <?php echo $order->order_id; ?>',
+																		html: 	'<table class="swl"><tr><th>Product</th><th>Price</th><th>Quantity</th></tr>' +
+																				'<?php foreach ($details as $detail) { ?>'+
+																				'<?php foreach ($products as $product) { ?>' +
+																				'<tr>' +
+																				'<td><?php echo $product->product_name; ?></td>' +
+																				'<td class="variation">' +
+																					'<?php echo $detail->unit_price; ?>'+
+																				'</td>'+
+																				'<td class="variation">'+
+																					'<?php echo $detail->quantity; ?>'+
+																				'</td>' +
+																				'</tr>' +
+																				'<?php }} ?>' +
+																				'<td colspan="3" style="text-align:center">Total Price : <?php echo $order->total_price; ?></td>'+
+																				'<br>'+
+																				'</table>',
+																		showClass: {
+																			popup: 'animate__animated animate__fadeInDown'
+																		},
+																		hideClass: {
+																			popup: 'animate__animated animate__fadeOutUp'
+																		}
+																		})
+																	}
+																}
+															</script>				
+														<?php// }} ?>			
+											</td>		
 											</tr>
 
 										<?php

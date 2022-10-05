@@ -33,13 +33,13 @@
 			<nav class="offcanvas-navbar">
 				<ul class="offcanvas-nav">
 					<li class="menu-item-has-children dropdown">
-						<a href="./index.php" class="dropdown-hover">Home <span class="caret"></span></a>
+						<a href="../index.php" class="dropdown-hover">Home <span class="caret"></span></a>
 					</li>
 					<li class="menu-item-has-children dropdown">
 						<a href="#" class="dropdown-hover">Pages <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="about-us.php">About us</a></li>
-							<li><a href="contact-us.php">Contact Us</a></li>
+							<li><a href="../about-us.php">About us</a></li>
+							<li><a href="../contact-us.php">Contact Us</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -58,7 +58,7 @@
 						<div class="right-topbar">
 								<?php if (isset($_SESSION['userid'])) { ?>
 														<div class="user-wishlist">
-															<a href="../../views/profile/logout.php"><i class="fa fa-share-square-o"></i>Logout</a>
+															<a href="logout.php"><i class="fa fa-share-square-o"></i>Logout</a>
 														</div>
 													<?php } ?>
 							<?php if (isAdmin()) { ?>
@@ -115,22 +115,22 @@
 										<nav class="collapse navbar-collapse primary-navbar-collapse">
 											<ul class="nav navbar-nav primary-nav">
 												<li class="menu-item-has-children dropdown">
-													<a href="./index.php" class="dropdown-hover">
+													<a href="../index.php" class="dropdown-hover">
 														<span class="underline">Home</span> <span class="caret"></span>
 													</a>
 												</li>
 												<li class="menu-item-has-children megamenu megamenu-fullwidth dropdown">
-													<a href="shop.php" class="dropdown-hover">
+													<a href="../shop.php" class="dropdown-hover">
 														<span class="underline">Shop</span> <span class="caret"></span>
 													</a>
 												</li>
 												<li class="menu-item-has-children megamenu megamenu-fullwidth dropdown">
-													<a href="about-us.php" class="dropdown-hover">
+													<a href="../about-us.php" class="dropdown-hover">
 														<span class="underline">About Us</span> <span class="caret"></span>
 													</a>
 												</li>
 												<li class="menu-item-has-children megamenu megamenu-fullwidth dropdown">
-													<a href="contact-us.php" class="dropdown-hover">
+													<a href="../contact-us.php" class="dropdown-hover">
 														<span class="underline">Contact Us</span> <span class="caret"></span>
 													</a>
 												</li>
@@ -183,7 +183,7 @@
 
 														<div class="minicart-footer">
 															<div class="minicart-actions clearfix">
-																<a class="button" href="./../shop.php">
+																<a class="button" href="../shop.php">
 																	<span class="text">Go to the shop</span>
 																</a>
 															</div>
@@ -293,41 +293,70 @@ $user = $stmt->fetch();
 
     <!-- Start of my-profile page -->
 
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <center>  <li class="breadcrumb-item active" aria-current="page">My Profile</li><center>
-        </ol>
-    </nav>
-
     <section class="my-profile">
         <div class="mega-container">
             <aside
             class='grid-column-1 container d-flex flex-lg-column align-items-lg-start justify-content-lg-start flex-md-column align-items-md-start float-lg-left'>
             <div class="profile mb-4 d-flex flex-column justify-content-center align-items-start">
-                <h6 class="font-weight-bold my-account-heading">MY ACCOUNT</h6>
-                <img src="https://th.bing.com/th/id/R.17f2c2b13373bd4048fa4c080448ed25?rik=EMhK7I2caY2%2bAw&riu=http%3a%2f%2fwww.colegiodepadua.com.br%2fimg%2fuser.png&ehk=QKwFrUE%2fGegwZb1KOz9FS5U0rT4ZUGhr%2bMjaR2jdDeo%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1" width="40%" alt="Profile picture">
-                <p class='mb-0 mt-2'><?php echo $user['first_name'] .
-                    ' ' .
-                    $user['last_name']; ?></p>
-                <p><?php echo $user['email']; ?></p>
+				<p class='mb-0 mt-2'><?php// echo $user['first_name'] .
+        // ' ' .
+        //$user['last_name']; ?></p>
+                <p><?php// echo $user['email']; ?></p>
+            </div>
+            <div class="orders mb-4" style="min-height:55px">
+                <h6 class="font-weight-bold"><a href="../order_history.php"></a></h6>
             </div>
             <div class="orders mb-4">
-                <h6 class="font-weight-bold">ORDERS</h6>
-                <div class="list-group border-0">
-                    <a href="../order_history.php" class="list-items">My Order</a>
-                    <!-- <a href="Return-order.html" class="list-items">Return Order</a> -->
-                </div>
+                <h6 class="font-weight-bold" style="font-size:22px"><a href="../order_history.php">My Order</a></h6>
             </div>
             <div class="payment mb-4">
-                <h6 class="font-weight-bold"><a href="logout.php">Logout<a></h6>
+                <h6 class="font-weight-bold" style="font-size:22px"><a href="logout.php">Logout<a></h6>
                 
             </div>
-
         </aside>
-            <main class='flex-container grid-column-2 d-flex flex-column ml-xl-5 ml-lg-5 ml-md-5 ml-sm-0'>
-                <h3 class="font-weight-bold">MY PROFILE</h3>
+			</a>
+        <main class='flex-container grid-column-2 d-flex flex-column ml-xl-5 ml-lg-5 ml-md-5 ml-sm-0'>
+		<center>   <h3 class="font-weight-bold">MY ACCOUNT</h3></center>
                 <hr>
-                <div id="profile-info">
+        <div id="profile-info">
+			<div class="flex-item flex-item-2 d-flex justify-content-between">
+       		<span class="profileHead">Name </span>
+			<span class="profileInfo">: <?php echo $user['first_name'] . ' '; ?>
+            <?php echo $user['last_name']; ?></span>
+        </div>
+        <br>
+        <div class="flex-item flex-item-1 d-flex justify-content-between">
+			<span class="profileHead">Phone </span>
+			<span class="profileInfo">: <?php echo $user['phone']; ?></span>
+        </div>
+            <br>
+            <div class="flex-item flex-item-3 d-flex justify-content-between">
+			<span class="profileHead">Email </span>
+			<span class="profileInfo">: <?php echo $user['email']; ?></span>
+            </div>
+            <br>
+            <div class="flex-item flex-item-5 d-flex justify-content-between">
+			<span class="profileHead">City </span>
+			<span class="profileInfo">: <?php echo $user['city']; ?></span>
+            </div>
+            <br>
+            <div class="flex-item flex-item-4 d-flex justify-content-between">
+			<span class="profileHead">Address </span>
+			<span class="profileInfo">: <?php echo $user['address']; ?></span>
+            </div>
+            <br>
+            <div class="flex-item flex-item-4 d-flex justify-content-between">
+			<span class="profileHead">Role </span>
+			<span class="profileInfo">: <?php echo $user['is_admin']
+       ? 'Admin'
+       : 'Member'; ?></span>
+                
+            </div>
+            
+            <br>
+            <div class="flex-item flex-item-8 d-flex justify-content-between">
+               
+            </div>`
                 </div>
                 <button type="button" id="edit-profile-btn" onclick="location.href ='Edit-profile.php';" class="edit-button btn" aria-label='edit button'>EDIT</button>
             </main>
@@ -351,7 +380,8 @@ $user = $stmt->fetch();
         let returnedHTML = " ";
         returnedHTML += `
         <div class="flex-item flex-item-2 d-flex justify-content-between">
-        <p class='key'>Name</p>
+		
+        <h2 style="font-size:20px">Name</h2>
             <?php echo $user['first_name'] . ' '; ?>
             <?php echo $user['last_name']; ?>
 
@@ -389,7 +419,7 @@ $user = $stmt->fetch();
             <div class="flex-item flex-item-8 d-flex justify-content-between">
                
             </div>`
-        document.getElementById('profile-info').innerHTML += returnedHTML;  
+        // document.getElementById('profile-info').innerHTML += returnedHTML;  
     </script>
 
 
@@ -421,7 +451,7 @@ $user = $stmt->fetch();
 <div class="modal fade user-login-modal" id="userloginModal" tabindex="-1" role="dialog" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form id="userloginModalForm" method="post" action="login.php">
+			<form id="userloginModalForm" method="post" action="../login.php">
 
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">
@@ -474,7 +504,7 @@ $user = $stmt->fetch();
 <div class="modal fade user-register-modal" id="userregisterModal" tabindex="-1" role="dialog" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form id="userregisterModalForm" action="signup.php" method="post">
+			<form id="userregisterModalForm" action="../signup.php" method="post">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">
 						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
