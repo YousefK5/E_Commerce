@@ -317,11 +317,7 @@
 																	<span class="price">
 																		<span class="amount"><?php echo $prod[
                       'price'
-<<<<<<< HEAD
-                  ]; ?></span><span class="amount"></span>
-=======
                   ]; ?></span> JD<span class="amount"></span>
->>>>>>> 4d16dfa2ff418778ed382d682a4ac7797a0b2dc3
 																	</span>
 																</div>
 																<div class="loop-add-to-cart">
@@ -396,11 +392,7 @@
 																	<span class="price">
 																		<span class="amount"><?php echo $prod[
                       'price'
-<<<<<<< HEAD
-                  ]; ?></span><span class="amount"></span>
-=======
                   ]; ?></span> JD<span class="amount"></span>
->>>>>>> 4d16dfa2ff418778ed382d682a4ac7797a0b2dc3
 																	</span>
 																</div>
 																<div class="loop-add-to-cart">
