@@ -6,13 +6,15 @@ $orders = $connect->query('SELECT * FROM orders');
 $orders = $orders->fetchAll();
 $products = $connect->query('SELECT * FROM products');
 $products = $products->fetchAll();
+$coupons = $connect->query('SELECT * FROM coupons');
+$coupons = $coupons->fetchAll();
 ?>
 
   <div class="container-fluid page-body-wrapper">
     <?php require 'sidebar.php'; ?>
         <!-- partial -->
         <div class="main-panel">
-          <div class="content-wrapper">
+          <div class="content-wrapper" style="background:whitesmoke;">
             <div class="page-header">
               <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white me-2">

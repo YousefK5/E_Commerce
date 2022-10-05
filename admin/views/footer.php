@@ -1,5 +1,5 @@
           <!-- partial:partials/_footer.html -->
-          <footer class="footer">
+          <footer class="footer" style="background:whitesmoke;">
             <div class="container-fluid d-flex justify-content-between">
               <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright ©2022</span>
             </div>
