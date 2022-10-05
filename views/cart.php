@@ -27,7 +27,7 @@ if (isset($_POST['qunatity_by_js'])) {
     $query = 'UPDATE `cart` SET `quantity` = ? WHERE `cart_id` = ?';
     $query = $connect->prepare($query);
     $query->execute([intval($_POST['qunatity_by_js']), $_POST['cart_id']]);
-    print_r($qunatity);
+    // print_r($qunatity);
 }
 
 //add to cart
@@ -101,20 +101,31 @@ if (isset($_POST['apply_coupon'])) {
                                                     <?php
                                                     $total = 0;
                                                     $item_count = 0;
+                                                    // print_r($productsInCart);
                                                     foreach (
                                                         $productsInCart
                                                         as $cart
                                                     ) {
 
+                                                        // print_r($cart);
                                                         //product
                                                         $query =
                                                             'SELECT * from `products` where product_id=? ';
                                                         $query = $connect->prepare(
                                                             $query
                                                         );
-                                                        $query->execute([
-                                                            $cart->product_id,
-                                                        ]);
+                                                        if ($fromDB) {
+                                                            $query->execute([
+                                                                $cart->product_id,
+                                                            ]);
+                                                        } else {
+                                                            // print_r($cart);
+                                                            $pId = $cart[0];
+                                                            $query->execute([
+                                                                $pId,
+                                                            ]);
+                                                            // print_r($cart);
+                                                        }
                                                         $product = $query->fetch(
                                                             PDO::FETCH_OBJ
                                                         );
@@ -133,16 +144,27 @@ if (isset($_POST['apply_coupon'])) {
                                                         );
 
                                                         //
-                                                        $qunatity =
-                                                            $cart->quantity;
+                                                        if ($fromDB) {
+                                                            $qunatity =
+                                                                $cart->quantity;
+                                                        } else {
+                                                            $qunatity =
+                                                                $cart[1];
+                                                        }
                                                         $sub_total =
                                                             $product->price *
                                                             $qunatity;
                                                         ?>
                                                         <tr class="cart_item">
 													<td class="product-remove hidden-xs">
-														<input type="hidden" value="<?php echo $cart->cart_id; ?>" name="id_c" id="cart_id<?php echo $cart->cart_id; ?>">
-														<a href="?del=<?php echo $cart->cart_id; ?>" class="remove" title="Remove this item">&times;</a>
+														<input type="hidden" value="<?php echo $fromDB
+                  ? $cart->cart_id
+                  : $cart[0]; ?>" name="id_c" id="cart_id<?php echo $fromDB
+    ? $cart->cart_id
+    : $cart[0]; ?>">
+														<a href="?del=<?php echo $fromDB
+                  ? $cart->cart_id
+                  : $cart[0]; ?>" class="remove" title="Remove this item">&times;</a>
 													</td>
 													<td class="product-thumbnail hidden-xs">
 														<a href="#">
@@ -150,7 +172,7 @@ if (isset($_POST['apply_coupon'])) {
 														</a>
 													</td>
 													<td class="product-name">
-														<a href="#" data-rel="quickViewModal" data-original-title="" title=""><?php echo $product->product_name; ?></a>
+														<a href="product_page.php?prod_id=<?php echo $product->product_id; ?>" data-original-title="" title=""><?php echo $product->product_name; ?></a>
 														<dl class="variation">
 															<dt class="variation-Size">category:</dt>
 															<dd class="variation-Size"><p><?php echo $category_name->category_name; ?></p></dd>
@@ -164,15 +186,17 @@ if (isset($_POST['apply_coupon'])) {
 													<td class="product-quantity text-center">
 														<div class="quantity">
 
+													<?php if ($fromDB) { ?>
 										           <input type="number" step="1" min="0" id="qunatity/<?php echo $cart->cart_id; ?>/<?php echo $product->price; ?>" class="breakdown" name="qunatity<?php echo $cart->product_id; ?>" value="<?php echo $qunatity; ?>" title="Qty" class="input-text qty text" size="4"/>
-														
-									
+													<?php } else { ?>
+													<input type="number" name="quantity" id="p<?php echo $cart[0]; ?>" class='quantityBy' value="<?php echo $cart[1]; ?>">
+													<?php } ?>
 									           </div>
 													</td>
 													
 													<td class="product-subtotal hidden-xs text-center">
 														<span class="amount" id="subTotal">JD <?php echo $product->price *
-                  $cart->quantity; ?></span>
+                  ($fromDB ? $cart->quantity : $cart[1]); ?></span>
 													</td>
 												</tr>
 												<div class="modal fade shop product-quickview" tabindex="-1" role="dialog" aria-hidden="true">
@@ -333,6 +357,7 @@ if (isset($_POST['apply_coupon'])) {
 												</tr>
 											</table>
 											<div class="wc-proceed-to-checkout">
+												<?php if ($fromDB) { ?>
 												<a href="checkout.php?price=<?php echo $total; ?>&c=<?php if (
     isset($coupon_saved->id_coupon)
 ) {
@@ -340,6 +365,9 @@ if (isset($_POST['apply_coupon'])) {
 } else {
     ' ';
 } ?>" class="checkout-button button alt wc-forward">Proceed to Checkout</a>
+<?php } else { ?>
+<a data-rel="loginModal" class="checkout-button button alt wc-forward">Proceed to Checkout</a>
+	<?php } ?>
 											</div>
 										</div>
 							
@@ -351,11 +379,235 @@ if (isset($_POST['apply_coupon'])) {
 				</div>
 			</div>
 
-<?php require_once 'footer.php'; ?>
 
-<script>
-    document.body.classList.add("shop-account");
-</script>
+
+			<!-- ///////////////////////////////////////////////////////////////////////////////////  -->
+
+			<footer id="footer" class="footer">
+	<div class="footer-info">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<div class="footer-info-logo">
+						<!-- logo image -->
+						<img alt="logo" src="../images/ltrblack.png" style="max-width: 25%;">
+					</div>
+					<div class="copyright text-center">Copyright right © 2022 Gruop4. All Rights Reserved.</div>
+					<div class="footer-social">
+						<a href="https://www.facebook.com" title="Facebook">
+							<i class="fa fa-facebook"></i>
+						</a>
+						<a href="https://www.twitter.com" title="Twitter">
+							<i class="fa fa-behance"></i>
+						</a>
+						<a href="https://www.instgram.com" title="Instagram">
+							<i class="fa fa-instagram instagram-bg-hover"></i>
+						</a>
+						<a href="https://www.pinterest.com" title="Pinterest">
+							<i class="fa fa-pinterest"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+</div>
+
+
+
+
+<!-- login model  -->
+<div class="modal fade user-login-modal" id="userloginModal" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form id="userloginModalForm" method="post" action="login.php?from=cart">
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title">Login</h4>
+				</div>
+
+				<div class="modal-body">
+					<!-- <div class="user-login-facebook">
+								<button class="btn-login-facebook" type="button">
+									<i class="fa fa-facebook"></i>Sign in with Facebook
+								</button>
+							</div>
+							<div class="user-login-or"><span>or</span></div> -->
+
+
+					<!-- login form input  -->
+					<div class="form-group">
+						<label>Email</label>
+						<input type="text" id="username" name="email" required class="form-control" value="" placeholder="Email">
+						<input type="hidden" id="hiddenPrice" name="totalPrice" required value="<?php echo $total; ?>">
+						<?php if (isset($coupon_saved->id_coupon)) { ?>
+						<input type="hidden" id="hiddenCoupon" name="coupon" required value="<?php echo $coupon_saved->id_coupon; ?>">
+						<?php } ?>
+					</div>
+					<div class="form-group">
+						<label for="password">Password</label>
+						<input type="password" id="password" required value="" name="password" class="form-control" placeholder="Password">
+					</div>
+				</div>
+
+				<div class="modal-footer">
+					<span class="user-login-modal-register pull-left">
+						<a data-rel="registerModal" href="#">Not a Member yet?</a>
+					</span>
+					<button type="submit" name="login" class="btn btn-default btn-outline">Sign in</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+<!-- register modal -->
+<div class="modal fade user-register-modal" id="userregisterModal" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form id="userregisterModalForm" action="signup.php?from=cart" method="post">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title">Register account</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+					<input type="hidden" id="hiddenPrices" name="totalPrice" required value="<?php echo $total; ?>">
+						<?php if (isset($coupon_saved->id_coupon)) { ?>
+						<input type="hidden" id="hiddenCoupons" name="coupon" required value="<?php echo $coupon_saved->id_coupon; ?>">
+						<?php } ?>
+						<label>First Name <span class="error">* <?php if (isset($_POST['register'])) {
+          echo $nameErr;
+      } ?></span></label>
+						<input type="text" name="fname" required class="form-control" value="" placeholder="Username">
+
+					</div>
+					<div class="form-group">
+						<label>Last Name <span class="error">* <?php if (isset($_POST['register'])) {
+          echo $nameErr;
+      } ?></span></label>
+						<input type="text" name="lname" required class="form-control" value="" placeholder="Username">
+
+					</div>
+					<div class="form-group">
+						<label for="user_email">Email <span class="error">* <?php if (
+          isset($_POST['register'])
+      ) {
+          echo $emailErr;
+      } ?></span></label>
+						<input type="email" id="user_email" name="email" required class="form-control" value="" placeholder="Email">
+						
+
+					</div>
+
+
+					<div class="form-group">
+						<label>Phone <span class="error">* <?php if (isset($_POST['register'])) {
+          echo $phoneErr;
+      } ?></span></label>
+						<input type="text" name="phone" required class="form-control" value="" placeholder="Phone">
+
+					</div>
+
+
+					<div class="form-group">
+						<label>Address <span class="error">* <?php if (isset($_POST['register'])) {
+          echo $addressEr;
+      } ?></span></label>
+						<input type="text" name="address" required class="form-control" value="" placeholder="Address">
+						
+
+					</div>
+
+
+					<div class="form-group">
+						<label>City <span class="error">* <?php if (isset($_POST['register'])) {
+          echo $cityEr;
+      } ?></span></label>
+						<input type="text" name="city" required class="form-control" value="" placeholder="City">
+						
+
+					</div>
+
+
+
+
+
+
+					<div class="form-group">
+						<label for="user_password">Password <span class="error">* <?php if (
+          isset($_POST['register'])
+      ) {
+          echo $passErr;
+      } ?></span></label>
+						<input type="password" id="user_password" required value="" name="password" class="form-control" placeholder="Password">
+						
+
+					</div>
+					<div class="form-group">
+						<label for="user_password">Retype password <span class="error">* <?php if (
+          isset($_POST['register'])
+      ) {
+          echo $cpassErr;
+      } ?></span></label>
+						<input type="password" id="cuser_password" required value="" name="cuser_password" class="form-control" placeholder="Retype password">
+						
+
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					<span class="user-login-modal-link pull-left">
+						<a data-rel="loginModal" href="#loginModal">Already have an account?</a>
+					</span>
+					<input type="submit" name="register" class="btn btn-default btn-outline" value="Register">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+	
+<div class="modal fade user-lostpassword-modal" id="userlostpasswordModal" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form id="userlostpasswordModalForm">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title">Forgot Password</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label>Username or E-mail:</label>
+						<input type="text" name="user_login" required class="form-control" value="" placeholder="Username or E-mail">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<span class="user-login-modal-link pull-left">
+						<a data-rel="loginModal" href="#loginModal">Already have an account?</a>
+					</span>
+					<button type="submit" class="btn btn-default btn-outline">try in</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<!-- product-quickview -->
+
+
+
+
 <script type='text/javascript' src='http://code.jquery.com/jquery-1.11.3.min.js'></script>
 		<script type='text/javascript' src='../js/jquery-migrate.min.js'></script>
 		<script type='text/javascript' src='../js/jquery.themepunch.tools.min.js'></script>
@@ -381,5 +633,14 @@ if (isset($_POST['apply_coupon'])) {
 		<script type='text/javascript' src='../js/slider.min.js'></script>
 		<script type='text/javascript' src='../js/jquery-ui-touch-punch.min.js'></script>
 		<script type='text/javascript' src='../js/price-slider.js'></script>
+		<script type='text/javascript' src='../js/custom.js'></script>
 
+		<script type='text/javascript' src='../js/jquery.magnific-popup.min.js'></script>
+		<!-- <script type='text/javascript' src='../js/jquery.js'></script> -->
+		<script type='text/javascript' src='../js/jquery.cookie.min.js'></script>
 		<script src="cart.js"></script> 
+<!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+</body>
+
+</html>
+

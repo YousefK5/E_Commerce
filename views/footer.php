@@ -9,20 +9,6 @@
 						<img alt="logo" src="../images/ltrblack.png" style="max-width: 25%;">
 					</div>
 					<div class="copyright text-center">Copyright right © 2022 Gruop4. All Rights Reserved.</div>
-					<div class="footer-social">
-						<a href="https://www.facebook.com" title="Facebook">
-							<i class="fa fa-facebook"></i>
-						</a>
-						<a href="https://www.twitter.com" title="Twitter">
-							<i class="fa fa-behance"></i>
-						</a>
-						<a href="https://www.instgram.com" title="Instagram">
-							<i class="fa fa-instagram instagram-bg-hover"></i>
-						</a>
-						<a href="https://www.pinterest.com" title="Pinterest">
-							<i class="fa fa-pinterest"></i>
-						</a>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -107,89 +93,83 @@
 
 					<!-- register input  -->
 					<div class="form-group">
-						<label>First Name</label>
-						<input type="text" name="fname" required class="form-control" value="" placeholder="Username">
-						<span class="error">* <?php if (isset($_POST['register'])) {
+						<label>First Name <span class="error" id="spanFname">* <?php if (
+          isset($_POST['register'])
+      ) {
           echo $nameErr;
-      } ?></span>
+      } ?></span></label>
+						<input type="text" id="fname" name="fname" required class="form-control" value="" placeholder="First Name">
+						
 
 					</div>
 					<div class="form-group">
-						<label>Last Name</label>
-						<input type="text" name="lname" required class="form-control" value="" placeholder="Username">
-						<span class="error">* <?php if (isset($_POST['register'])) {
+						<label>Last Name <span class="error" id="spanLname">* <?php if (
+          isset($_POST['register'])
+      ) {
           echo $nameErr;
-      } ?></span>
+      } ?></span></label>
+						<input type="text" id="lname" name="lname" required class="form-control" value="" placeholder="Last Name">
+						
 
 					</div>
 					<div class="form-group">
-						<label for="user_email">Email</label>
-						<input type="email" id="user_email" name="email" required class="form-control" value="" placeholder="Email">
-						<span class="error">* <?php if (isset($_POST['register'])) {
+						<label for="user_email">Email <span class="error" id="spanEmail">* <?php if (
+          isset($_POST['register'])
+      ) {
           echo $emailErr;
-      } ?></span>
+      } ?></span></label>
+						<input type="email" id="user_email" name="email" required class="form-control" value="" placeholder="Email">
+						
 
 					</div>
-
-
 					<div class="form-group">
-						<label>Phone</label>
-						<input type="text" name="phone" required class="form-control" value="" placeholder="Phone">
-						<span class="error">* <?php if (isset($_POST['register'])) {
+						<label>Phone <span class="error" id="spanPhone">* <?php if (
+          isset($_POST['register'])
+      ) {
           echo $phoneErr;
-      } ?></span>
-
+      } ?></span></label>
+						<input type="text" id="phone" name="phone" required class="form-control" value="" placeholder="Phone">
+						
 					</div>
-
-
 					<div class="form-group">
-						<label>Address</label>
-						<input type="text" name="address" required class="form-control" value="" placeholder="Address">
-						<span class="error">* <?php if (isset($_POST['register'])) {
+						<label>Address <span class="error" id="spanAddress">* <?php if (
+          isset($_POST['register'])
+      ) {
           echo $addressEr;
-      } ?></span>
-
+      } ?></span></label>
+						<input type="text" id="address" name="address" required class="form-control" value="" placeholder="Address">
+						
 					</div>
-
-
 					<div class="form-group">
-						<label>City</label>
-						<input type="text" name="city" required class="form-control" value="" placeholder="City">
-						<span class="error">* <?php if (isset($_POST['register'])) {
+						<label>City <span class="error" id="spanCity">* <?php if (
+          isset($_POST['register'])
+      ) {
           echo $cityEr;
-      } ?></span>
+      } ?></span></label>
+						<input type="text" id="city" name="city" required class="form-control" value="" placeholder="City">
+						
 
 					</div>
-
-
-
-
-
-
 					<div class="form-group">
-						<label for="user_password">Password</label>
-						<input type="password" id="user_password" required value="" name="password" class="form-control" placeholder="Password">
-						<span class="error">* <?php if (isset($_POST['register'])) {
+						<label for="user_password">Password <span class="error" id="spanPassword">* <?php if (
+          isset($_POST['register'])
+      ) {
           echo $passErr;
-      } ?></span>
+      } ?></span></label>
+						<input type="password" id="user_password" required value="" name="password" class="form-control" placeholder="Password">
+						
 
 					</div>
 					<div class="form-group">
-						<label for="user_password">Retype password</label>
-						<input type="password" id="cuser_password" required value="" name="cuser_password" class="form-control" placeholder="Retype password">
-						<span class="error">* <?php if (isset($_POST['register'])) {
+						<label for="user_password">Retype password <span class="error" id="spanCPassword">* <?php if (
+          isset($_POST['register'])
+      ) {
           echo $cpassErr;
-      } ?></span>
-
+      } ?></span></label>
+						<input type="password" id="cuser_password" required value="" name="cuser_password" class="form-control" placeholder="Retype password">
+					
 					</div>
 					
-
-
-
-
-
-
-
 				</div>
 				<div class="modal-footer">
 					<span class="user-login-modal-link pull-left">
@@ -234,8 +214,6 @@
 <!-- product-quickview -->
 
 
-
-
 <script type='text/javascript' src='http://code.jquery.com/jquery-1.11.3.min.js'></script>
 		<script type='text/javascript' src='../js/jquery-migrate.min.js'></script>
 		<script type='text/javascript' src='../js/jquery.themepunch.tools.min.js'></script>
@@ -267,7 +245,105 @@
 		<!-- <script type='text/javascript' src='../js/jquery.js'></script> -->
 		<script type='text/javascript' src='../js/jquery.cookie.min.js'></script>
 
+<script>
+	document.getElementById("fname").onblur= function() {
+		let isName = /^[a-zA-Z\s]+$/igm.test(document.getElementById("fname").value);
+		if(!isName) {
+			document.getElementById("spanFname").innerHTML="* Name Must Be Letters Only";
+		} 
+		else {
+			document.getElementById("spanFname").innerHTML="*";
+		}
+	}
+	document.getElementById("lname").onblur= function() {
+		let isName = /^[a-zA-Z\s]+$/igm.test(document.getElementById("lname").value);
+		if(!isName) {
+			document.getElementById("spanLname").innerHTML="* Name Must Be Letters Only";
+		}
+		else {
+			document.getElementById("spanLname").innerHTML="*";
+		}
+	}
+	document.getElementById("user_email").onblur= function() {
+		let isName = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/ig.test(document.getElementById("user_email").value);
+		let userEmail=document.getElementById("user_email").value;
+		fetch('checkEmail.php', {
+            method: 'POST', // or 'PUT'
+            headers : {
+                'Content-Type': 'application/x-www-form-urlencoded', 
+            },
+            body: `email=${userEmail}`,
+            })
+            .then((response) => {
+                response.text().then(res=>{
+					console.log(res);
+                    if(res==1) {
+						document.getElementById("spanEmail").innerHTML="* Email is Already Registred";
+					}
+					else if(!isName){
+						document.getElementById("spanEmail").innerHTML="* Email Must Be Valid Form Like : test@gmail.com";
+					}
+					else {
+						document.getElementById("spanEmail").innerHTML="* ";
+					}
+                });
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+	
+	document.getElementById("phone").onblur= function() {
+		let isName = /^\d{10}$/igm.test(document.getElementById("phone").value);
+		if(!isName) {
+			document.getElementById("spanPhone").innerHTML="* Phone Number Must Be 10 Numbers";
+		}
+		else {
+			document.getElementById("spanPhone").innerHTML="*";
+		}
+	}
+	document.getElementById("city").onblur= function() {
+		let isName = /^[a-zA-Z\s]+$/igm.test(document.getElementById("city").value);
+		if(!isName) {
+			document.getElementById("spanCity").innerHTML="* City Must Be Letters Only";
+		}
+		else {
+			document.getElementById("spanCity").innerHTML="*";
+		}
+	}
+	document.getElementById("address").onblur= function() {
+		let isName = /^[a-zA-Z\s0-9-/,]+$/igm.test(document.getElementById("address").value);
+		if(!isName) {
+			document.getElementById("spanAddress").innerHTML="* Address Must Be Letters Only";
+		}
+		else {
+			document.getElementById("spanAddress").innerHTML="*";
+		}
+	}
+	document.getElementById("user_password").onblur= function() {
+		let isName = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(document.getElementById("user_password").value);
+		if(!isName) {
+			document.getElementById("spanPassword").innerHTML="* Password Must Be Contain Uppercase , Lowercase , Number, Special Character";
+		}
+		else {
+			document.getElementById("spanPassword").innerHTML="*";
+		}
+	}
+	document.getElementById("cuser_password").onblur= function() {
+		let isName = document.getElementById("cuser_password").value==document.getElementById("user_password").value;
+		if(!isName) {
+			document.getElementById("spanCPassword").innerHTML="* Confirm Password Doesn't Match";
+		}
+		else {
+			document.getElementById("spanCPassword").innerHTML="*";
+		}
+	}
 
+	// function(id,regex,error) {
+	// 	document.getElementById(id).onblur= function() {
+	// 	}
+	// }
+</script>
 
 <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
 

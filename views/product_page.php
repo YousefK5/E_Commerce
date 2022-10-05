@@ -76,7 +76,6 @@
 												</div>
 
 																				<?php if (isset($_POST['add_to_card'])) {
-                        $_SESSION['userid'] = 13;
                         $qunatity = $_POST['quantity'];
                         $insert = $connect->prepare(
                             'INSERT INTO cart (quantity,product_id,user_id) VALUES (?,?,?)'
@@ -152,7 +151,7 @@
 															</div>
 															<div class="variations_button">
 																<div class="quantity">
-																	<input type="number" class="breakd" id="qunatity/<?php echo $product->product_id; ?>" name="quantity" value="1" title="Qty" class="input-text qty text" size="4">
+																	<input style="height:45px;" type="number" class="breakd button" id="qunatity/<?php echo $product->product_id; ?>" name="quantity" value="1" title="Qty" class="input-text qty text" size="4">
 																</div>
 																<button type="submit" id="button" name="add_to_card" class="button">Add to cart</button>
 															</div>
@@ -160,28 +159,6 @@
 													</form>
 												</div>
 												<div class="offcanvas-widget">
-
-
-													<div class="share-links">
-														<div class="share-icons">
-															<span class="facebook-share">
-																<a href="https://www.facebook.com" title="Facebook">
-																	<i class="fa fa-facebook"></i>
-																</a> </span>
-															<span class="twitter-share">
-																<a href="https://www.twitter.com" title="Twitter">
-																	<i class="fa fa-behance"></i>
-																</a> </span>
-															<span class="google-plus-share">
-																<a href="https://www.instgram.com" title="Instagram">
-																	<i class="fa fa-instagram instagram-bg-hover"></i>
-																</a> </span>
-															<span class="linkedin-share">
-																<a href="https://www.pinterest.com" title="Pinterest">
-																	<i class="fa fa-pinterest"></i>
-																</a> </span>
-														</div>
-													</div>
 												</div>
 											</div>
 										</div>
@@ -213,13 +190,11 @@ foreach ($products as $prod) {
 																	<div class="product-wrap">
 																		<div class="product-images">
 																			<div class="shop-loop-thumbnail">
-																				<img width="300" height="350" src="imgs/<?php echo $prod->image1; ?>" alt="Product-2" />
+																				<img width="300" height="350" src="../imgs/<?php echo $prod->image1; ?>" alt="Product-2" />
 																			</div>
 													
 																			<div class="clear"></div>
-																			<div class="shop-loop-quickview">
-																				<a href="#" data-rel="quickViewModal"><i class="fa fa-plus"></i></a>
-																			</div>
+																			
 																		</div>
 																	</div>
 																	<figcaption>
@@ -230,11 +205,11 @@ foreach ($products as $prod) {
 																			<div class="info-meta">
 																				<div class="info-price">
 																					<span class="price">
-																						<span class="amount"><?php echo $prod->price; ?></span>
+																						<span class="amount"><?php echo $prod->price; ?> JD</span>
 																					</span>
 																				</div>
 																				<div class="loop-add-to-cart">
-																					<a href="./add_to_cart.php?ad=<?php echo $prod->product_id; ?>">Select options</a>
+																					<a href="./add_to_cart.php?ad=<?php echo $prod->product_id; ?>$from=product">Add To Cart</a>
 																				</div>
 																			</div>
 																		</div>
