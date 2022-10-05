@@ -13,7 +13,7 @@ $products = $products->fetchAll(PDO::FETCH_ASSOC);
 <?php require 'sidebar.php'; ?>
 
 <div class="main-panel">
-          <div class="content-wrapper">
+          <div class="content-wrapper" style="background:whitesmoke;">
             <div class="page-header">
               <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white me-2">
@@ -62,7 +62,7 @@ $products = $products->fetchAll(PDO::FETCH_ASSOC);
                         <td><?php echo $product['product_id']; ?></td>
                         <td><?php echo $product['product_name']; ?></td>
                         <td><?php echo $product['price']; ?></td>
-                        <td><?php echo $product['description']; ?></td>
+                        <td ><?php echo $product['description']; ?></td>
                         <td><img src="../../imgs/<?php echo $product[
                             'image1'
                         ]; ?>">

@@ -12,7 +12,7 @@ $products = $products->fetchAll();
     <?php require 'sidebar.php'; ?>
         <!-- partial -->
         <div class="main-panel">
-          <div class="content-wrapper">
+          <div class="content-wrapper" style="background:whitesmoke;">
             <div class="page-header">
               <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white me-2">

@@ -63,7 +63,7 @@ $categories = $categories->fetchAll();
             Success , A New Product Is Added
             </div>";
           } ?>
-          <div class="content-wrapper">
+          <div class="content-wrapper" style="background:whitesmoke;">
             <div class="page-header">
               <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white me-2">
