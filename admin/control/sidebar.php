@@ -7,7 +7,11 @@
               <a href="#" class="nav-link">
                 
                 <div class="nav-profile-text d-flex flex-column">
-                  <span class="font-weight-bold mb-2">David Grey. H</span>
+                  <span class="font-weight-bold mb-2"><?php echo $curUser[
+                      'first_name'
+                  ] .
+                      ' ' .
+                      $curUser['last_name']; ?></span>
                 </div>
               </a>
             </li>
@@ -39,6 +43,12 @@
               <a class="nav-link" href="../views/orders.php">
                 <span class="menu-title">Orders</span>
                 <i class="mdi mdi-table-large menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../views/coupons.php">
+                <span class="menu-title">coupons</span>
+                <i class="mdi mdi-ticket-percent menu-icon"></i>
               </a>
             </li>
           </ul>

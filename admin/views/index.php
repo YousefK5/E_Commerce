@@ -6,6 +6,8 @@ $orders = $connect->query('SELECT * FROM orders');
 $orders = $orders->fetchAll();
 $products = $connect->query('SELECT * FROM products');
 $products = $products->fetchAll();
+$coupons = $connect->query('SELECT * FROM coupons');
+$coupons = $coupons->fetchAll();
 ?>
 
   <div class="container-fluid page-body-wrapper">
