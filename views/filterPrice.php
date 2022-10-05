@@ -39,7 +39,7 @@ $categories = $query->fetchAll(PDO::FETCH_OBJ);
                                 } ?>
                                 <li class="product masonry-item col-md-3 col-sm-6 <?php echo trim(
                                     $categorie->category_name
-                                ); ?>">
+                                ); ?>" style="min-height:400px">
                                     <div class="product-container">
                                         <figure>
                                             <div class="product-wrap">

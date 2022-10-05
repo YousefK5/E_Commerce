@@ -279,3 +279,28 @@ if (empty($productsInCart)) { ?>
 				</div>
 			</div>
 		</header>
+		<?php if (isset($_GET['err'])) {
+      if ($_GET['err'] == 'login') { ?> 
+				<script>
+					window.onload =function() {
+						Swal.fire({
+							icon: 'error',
+							title: 'Oops...',
+							text: 'Invalid Email Or Password',
+						})
+				}
+				</script>
+				<?php }
+      if ($_GET['err'] == 'signup') { ?> 
+					<script>
+						window.onload =function() {
+							Swal.fire({
+								icon: 'error',
+								title: 'Oops...',
+								text: 'Invalid Information , Please Insert Correct Info',
+							})
+					}
+					</script>
+				<?php }
+  }
+?>

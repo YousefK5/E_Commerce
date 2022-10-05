@@ -1,5 +1,5 @@
 
-<footer id="footer" class="footer">
+<footer id="footer" class="footer" style="margin-top:50px">
 	<div class="footer-info">
 		<div class="container">
 			<div class="row">
@@ -345,7 +345,7 @@
 	// }
 </script>
 
-<!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 </body>

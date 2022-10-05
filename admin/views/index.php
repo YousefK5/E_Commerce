@@ -81,25 +81,31 @@ $coupons = $coupons->fetchAll();
                           </tr>
                         </thead>
                         <tbody>
-                          <?php for ($i = 0; $i < $orders; $i++) {
+                          <?php
+                          $i = 0;
+                          foreach ($orders as $order) {
 
-                              $curUserId = $orders[$i]['user_id'];
-                              $curUser = $connect->query("SELECT * FROM users WHERE user_id='$curUserId'");
+                              $i++;
+                              $curUserId = $order['user_id'];
+                              $curUser = $connect->query(
+                                  "SELECT * FROM users WHERE user_id='$curUserId'"
+                              );
                               $curUser = $curUser->fetch();
                               if ($i == 5) {
                                   break;
                               }
                               ?>
                           <tr>
-                            <td><?php echo $orders[$i]['order_id']; ?></td>
+                            <td><?php echo $order['order_id']; ?></td>
                             <td><?php echo $curUser['first_name'] .
                                 ' ' .
                                 $curUser['last_name']; ?></td>
-                            <td><?php echo $orders[$i]['order_date']; ?></td>
-                            <td><?php echo $orders[$i]['total_price']; ?></td>
+                            <td><?php echo $order['order_date']; ?></td>
+                            <td><?php echo $order['total_price']; ?></td>
                           </tr>
                           <?php
-                          } ?>
+                          }
+                          ?>
                         </tbody>
                       </table>
                     </div>
@@ -127,7 +133,9 @@ $coupons = $coupons->fetchAll();
                         <?php for ($i = 0; $i < $products; $i++) {
 
                             $curCatId = $products[$i]['category_id'];
-                            $curCat = $connect->query("SELECT * FROM categories WHERE category_id='$curCatId'");
+                            $curCat = $connect->query(
+                                "SELECT * FROM categories WHERE category_id='$curCatId'"
+                            );
                             $curCat = $curCat->fetch();
                             if ($i == 5) {
                                 break;

@@ -40,10 +40,12 @@ if (isset($_POST['login'])) {
         }
         //$user->user_id;}
         else {
+            echo "<script>location.href = 'index.php?err=login'</script>";
             echo "<script>alert('incorrect password ');</script>";
         }
         // header("Location: index.php");
     } else {
+        echo "<script>location.href = 'index.php?err=login'</script>";
         echo "<script>alert('It looks like you’re used incorrect email try login. Please ');</script>";
     }
 }

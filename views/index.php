@@ -213,7 +213,7 @@
 						</div>
 						</a>
 					</div>
-					<div class="lookbook-thumb">
+					<div class="lookbook-thumb" style="box-shadow: 6px 0px 8px 0px #00000029">
 						<div class="caroufredsel product-slider" data-height="variable" data-scroll-fx="scroll" data-scroll-item="1" data-visible-min="1" data-visible-max="3" data-responsive="1" data-infinite="1" data-autoplay="0" data-circular="1">
 							<div class="caroufredsel-wrap">
 								<div class="shop shop-lookbok columns-3">
