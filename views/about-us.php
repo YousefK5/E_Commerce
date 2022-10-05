@@ -39,9 +39,6 @@
 														<p>
 We offer you a distinguished service to display the best types of sleeping supplies from different pillows, blankets and liners for the yacht. Our goal is to provide you with the best services with the highest quality and the lowest prices.														</p>
 													</div>
-													<button class="btn btn-black-outline btn-lg btn-align-left" type="button">
-														<span>Read More</span>
-													</button>
 												</div>
 											</div>
 										</div>
@@ -58,7 +55,7 @@ We offer you a distinguished service to display the best types of sleeping suppl
 														<span class="icon_element-icon fa fa-anchor"></span>
 													</div>
 												</div>
-												<div class="content_element">
+												<div class="content_element" style="text-align:center">
 													<p>
 Our goal is to provide suitable products for everyone at the best prices													</p>
 												</div>
@@ -67,7 +64,7 @@ Our goal is to provide suitable products for everyone at the best prices								
 														<span class="icon_element-icon fa fa-cubes"></span>
 													</div>
 												</div>
-												<div class="content_element">
+												<div class="content_element" style="text-align:center">
 													<p>
 Because your satisfaction with our products is our privilege													</p>
 												</div>
@@ -76,7 +73,7 @@ Because your satisfaction with our products is our privilege													</p>
 														<span class="icon_element-icon fa fa-key"></span>
 													</div>
 												</div>
-												<div class="content_element">
+												<div class="content_element" style="text-align:center">
 													<p>
 														Because we believe in making things that are high quality and low maintenance.
 													</p>
