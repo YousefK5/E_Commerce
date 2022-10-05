@@ -8,7 +8,7 @@
 						<!-- logo image -->
 						<img alt="logo" src="../images/ltrblack.png" style="max-width: 25%;">
 					</div>
-					<div class="copyright text-center">Copyright right © 2022 Gruop4. All Rights Reserved.</div>
+					<div class="copyright text-center">Copyright right © 2022 All Rights Reserved.</div>
 				</div>
 			</div>
 		</div>

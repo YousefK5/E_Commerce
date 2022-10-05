@@ -133,7 +133,7 @@
 														<?php echo $product->description; ?></p>
 												</div>
 												<div class="product-actions res-color-attr">
-													<form class="cart" method="post">
+													<form class="cart" method="GET" action="add_to_cart.php">
 														<div class="product-options-outer">
 															<div class="variation_form_section">
 																<div class="product-options icons-lg">
@@ -150,8 +150,10 @@
 																<span class="price"><span class="amount"></span></span>
 															</div>
 															<div class="variations_button">
+																<input type="hidden" name="ad" value="<?php echo $product->product_id; ?>">
+																<input type="hidden" name="from" value="product">
 																<div class="quantity">
-																	<input style="height:45px;" type="number" class="breakd button" id="qunatity/<?php echo $product->product_id; ?>" name="quantity" value="1" title="Qty" class="input-text qty text" size="4">
+																	<input style="height:45px;" type="number" min="1" class="breakd button" id="qunatity/<?php echo $product->product_id; ?>" name="q" value="1" title="Qty" class="input-text qty text" size="4">
 																</div>
 																<button type="submit" id="button" name="add_to_card" class="button">Add to cart</button>
 															</div>
@@ -200,7 +202,7 @@ foreach ($products as $prod) {
 																	<figcaption>
 																		<div class="shop-loop-product-info">
 																			<div class="info-title">
-																				<h3 class="product_title"><a href="#"><?php echo $prod->product_name; ?></a></h3>
+																				<h3 class="product_title"><a href="?prod_id=<?php echo $prod->product_id; ?>"><?php echo $prod->product_name; ?></a></h3>
 																			</div>
 																			<div class="info-meta">
 																				<div class="info-price">

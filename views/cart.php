@@ -49,7 +49,7 @@ if (isset($_POST['apply_coupon'])) {
     $query->execute([$coupon]);
 
     $coupon_saved = $query->fetch(PDO::FETCH_OBJ);
-
+    // print_r($coupon_saved);
     if (!empty($coupon_saved)) {
         if (intval($coupon_saved->count) > 0) {
             $sub_total = isset($sub_total)
@@ -187,9 +187,9 @@ if (isset($_POST['apply_coupon'])) {
 														<div class="quantity">
 
 													<?php if ($fromDB) { ?>
-										           <input type="number" step="1" min="0" id="qunatity/<?php echo $cart->cart_id; ?>/<?php echo $product->price; ?>" class="breakdown" name="qunatity<?php echo $cart->product_id; ?>" value="<?php echo $qunatity; ?>" title="Qty" class="input-text qty text" size="4"/>
+										           <input type="number" step="1" min="1" id="qunatity/<?php echo $cart->cart_id; ?>/<?php echo $product->price; ?>" class="breakdown" name="qunatity<?php echo $cart->product_id; ?>" value="<?php echo $qunatity; ?>" title="Qty" class="input-text qty text" size="4"/>
 													<?php } else { ?>
-													<input type="number" name="quantity" id="p<?php echo $cart[0]; ?>" class='quantityBy' value="<?php echo $cart[1]; ?>">
+													<input type="number" min="1" name="quantity" id="p<?php echo $cart[0]; ?>" class='quantityBy' value="<?php echo $cart[1]; ?>">
 													<?php } ?>
 									           </div>
 													</td>
@@ -359,15 +359,15 @@ if (isset($_POST['apply_coupon'])) {
 											<div class="wc-proceed-to-checkout">
 												<?php if ($fromDB) { ?>
 												<a href="checkout.php?price=<?php echo $total; ?>&c=<?php if (
-    isset($coupon_saved->id_coupon)
+    isset($coupon_saved->coupon_id)
 ) {
-    echo $coupon_saved->id_coupon;
+    echo $coupon_saved->coupon_id;
 } else {
-    ' ';
+    echo ' ';
 } ?>" class="checkout-button button alt wc-forward">Proceed to Checkout</a>
-<?php } else { ?>
-<a data-rel="loginModal" class="checkout-button button alt wc-forward">Proceed to Checkout</a>
-	<?php } ?>
+												<?php } else { ?>
+												<a data-rel="loginModal" class="checkout-button button alt wc-forward">Proceed to Checkout</a>
+													<?php } ?>
 											</div>
 										</div>
 							
@@ -378,7 +378,6 @@ if (isset($_POST['apply_coupon'])) {
 					</div>
 				</div>
 			</div>
-
 
 
 			<!-- ///////////////////////////////////////////////////////////////////////////////////  -->
@@ -483,21 +482,25 @@ if (isset($_POST['apply_coupon'])) {
 						<?php if (isset($coupon_saved->id_coupon)) { ?>
 						<input type="hidden" id="hiddenCoupons" name="coupon" required value="<?php echo $coupon_saved->id_coupon; ?>">
 						<?php } ?>
-						<label>First Name <span class="error">* <?php if (isset($_POST['register'])) {
+						<label>First Name <span class="error" id="spanFname">* <?php if (
+          isset($_POST['register'])
+      ) {
           echo $nameErr;
       } ?></span></label>
-						<input type="text" name="fname" required class="form-control" value="" placeholder="Username">
+						<input type="text" id="fname" name="fname" required class="form-control" value="" placeholder="Username">
 
 					</div>
 					<div class="form-group">
-						<label>Last Name <span class="error">* <?php if (isset($_POST['register'])) {
+						<label>Last Name <span class="error" id="spanLname">* <?php if (
+          isset($_POST['register'])
+      ) {
           echo $nameErr;
       } ?></span></label>
-						<input type="text" name="lname" required class="form-control" value="" placeholder="Username">
+						<input type="text" id="lname" name="lname" required class="form-control" value="" placeholder="Username">
 
 					</div>
 					<div class="form-group">
-						<label for="user_email">Email <span class="error">* <?php if (
+						<label for="user_email">Email <span class="error" id="spanEmail">* <?php if (
           isset($_POST['register'])
       ) {
           echo $emailErr;
@@ -509,29 +512,35 @@ if (isset($_POST['apply_coupon'])) {
 
 
 					<div class="form-group">
-						<label>Phone <span class="error">* <?php if (isset($_POST['register'])) {
+						<label>Phone <span class="error" id="spanPhone">* <?php if (
+          isset($_POST['register'])
+      ) {
           echo $phoneErr;
       } ?></span></label>
-						<input type="text" name="phone" required class="form-control" value="" placeholder="Phone">
+						<input type="text" id="phone" name="phone" required class="form-control" value="" placeholder="Phone">
 
 					</div>
 
 
 					<div class="form-group">
-						<label>Address <span class="error">* <?php if (isset($_POST['register'])) {
+						<label>Address <span class="error" id="spanAddress">* <?php if (
+          isset($_POST['register'])
+      ) {
           echo $addressEr;
       } ?></span></label>
-						<input type="text" name="address" required class="form-control" value="" placeholder="Address">
+						<input type="text" id="address" name="address" required class="form-control" value="" placeholder="Address">
 						
 
 					</div>
 
 
 					<div class="form-group">
-						<label>City <span class="error">* <?php if (isset($_POST['register'])) {
+						<label>City <span class="error" id="spanCity">* <?php if (
+          isset($_POST['register'])
+      ) {
           echo $cityEr;
       } ?></span></label>
-						<input type="text" name="city" required class="form-control" value="" placeholder="City">
+						<input type="text" id="city" name="city" required class="form-control" value="" placeholder="City">
 						
 
 					</div>
@@ -542,7 +551,7 @@ if (isset($_POST['apply_coupon'])) {
 
 
 					<div class="form-group">
-						<label for="user_password">Password <span class="error">* <?php if (
+						<label for="user_password">Password <span class="error" id="spanPassword">* <?php if (
           isset($_POST['register'])
       ) {
           echo $passErr;
@@ -552,7 +561,7 @@ if (isset($_POST['apply_coupon'])) {
 
 					</div>
 					<div class="form-group">
-						<label for="user_password">Retype password <span class="error">* <?php if (
+						<label for="user_password">Retype password <span class="error" id="spanCPassword">* <?php if (
           isset($_POST['register'])
       ) {
           echo $cpassErr;
@@ -640,6 +649,107 @@ if (isset($_POST['apply_coupon'])) {
 		<script type='text/javascript' src='../js/jquery.cookie.min.js'></script>
 		<script src="cart.js"></script> 
 <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+
+<script>
+	document.getElementById("fname").onblur= function() {
+		let isName = /^[a-zA-Z\s]+$/igm.test(document.getElementById("fname").value);
+		if(!isName) {
+			document.getElementById("spanFname").innerHTML="* Name Must Be Letters Only";
+		} 
+		else {
+			document.getElementById("spanFname").innerHTML="*";
+		}
+	}
+	document.getElementById("lname").onblur= function() {
+		let isName = /^[a-zA-Z\s]+$/igm.test(document.getElementById("lname").value);
+		if(!isName) {
+			document.getElementById("spanLname").innerHTML="* Name Must Be Letters Only";
+		}
+		else {
+			document.getElementById("spanLname").innerHTML="*";
+		}
+	}
+	document.getElementById("user_email").onblur= function() {
+		let isName = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/ig.test(document.getElementById("user_email").value);
+		let userEmail=document.getElementById("user_email").value;
+		fetch('checkEmail.php', {
+            method: 'POST', // or 'PUT'
+            headers : {
+                'Content-Type': 'application/x-www-form-urlencoded', 
+            },
+            body: `email=${userEmail}`,
+            })
+            .then((response) => {
+                response.text().then(res=>{
+					console.log(res);
+                    if(res==1) {
+						document.getElementById("spanEmail").innerHTML="* Email is Already Registred";
+					}
+					else if(!isName){
+						document.getElementById("spanEmail").innerHTML="* Email Must Be Valid Form Like : test@gmail.com";
+					}
+					else {
+						document.getElementById("spanEmail").innerHTML="* ";
+					}
+                });
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+	
+	document.getElementById("phone").onblur= function() {
+		let isName = /^\d{10}$/igm.test(document.getElementById("phone").value);
+		if(!isName) {
+			document.getElementById("spanPhone").innerHTML="* Phone Number Must Be 10 Numbers";
+		}
+		else {
+			document.getElementById("spanPhone").innerHTML="*";
+		}
+	}
+	document.getElementById("city").onblur= function() {
+		let isName = /^[a-zA-Z\s]+$/igm.test(document.getElementById("city").value);
+		if(!isName) {
+			document.getElementById("spanCity").innerHTML="* City Must Be Letters Only";
+		}
+		else {
+			document.getElementById("spanCity").innerHTML="*";
+		}
+	}
+	document.getElementById("address").onblur= function() {
+		let isName = /^[a-zA-Z\s0-9-/,]+$/igm.test(document.getElementById("address").value);
+		if(!isName) {
+			document.getElementById("spanAddress").innerHTML="* Address Must Be Letters Only";
+		}
+		else {
+			document.getElementById("spanAddress").innerHTML="*";
+		}
+	}
+	document.getElementById("user_password").onblur= function() {
+		let isName = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(document.getElementById("user_password").value);
+		if(!isName) {
+			document.getElementById("spanPassword").innerHTML="* Password Must Be Contain Uppercase , Lowercase , Number, Special Character";
+		}
+		else {
+			document.getElementById("spanPassword").innerHTML="*";
+		}
+	}
+	document.getElementById("cuser_password").onblur= function() {
+		let isName = document.getElementById("cuser_password").value==document.getElementById("user_password").value;
+		if(!isName) {
+			document.getElementById("spanCPassword").innerHTML="* Confirm Password Doesn't Match";
+		}
+		else {
+			document.getElementById("spanCPassword").innerHTML="*";
+		}
+	}
+
+	// function(id,regex,error) {
+	// 	document.getElementById(id).onblur= function() {
+	// 	}
+	// }
+</script>
+
 </body>
 
 </html>
