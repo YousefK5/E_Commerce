@@ -83,7 +83,7 @@ $orders = $query->fetchAll(PDO::FETCH_OBJ);
                                                             ];
                                                         }
                                                         $query =
-                                                            'SELECT coupon_name from `coupons` where coupon_id=? ';
+                                                            'SELECT * from `coupons` where coupon_id=? ';
                                                         $query = $connect->prepare(
                                                             $query
                                                         );
@@ -123,7 +123,13 @@ $orders = $query->fetchAll(PDO::FETCH_OBJ);
                   $order->postal_code; ?></h6>
 													</td>
 													<td class="product-price text-center">
-													<h6 class="amount"><<?php echo $coupon_name->coupon_name; ?></h6>
+													<h6 class="amount"><?php echo $order->coupon_id
+                 ? 'YES ' .
+                     $coupon_name->coupon_name .
+                     '(' .
+                     $coupon_name->discount .
+                     '%)'
+                 : 'NO'; ?></h6>
 													</td>
 													<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 													<td class="product-name" style="text-align:center">
@@ -147,7 +153,6 @@ $orders = $query->fetchAll(PDO::FETCH_OBJ);
 
 														</style>
 															<script>
-																window.onload=function() {
 																	document.getElementById("o<?php echo $order->order_id; ?>").onclick= function() {
 																		Swal.fire({
 																		title: 'Order Number: <?php echo $order->order_id; ?>',
@@ -175,7 +180,6 @@ $orders = $query->fetchAll(PDO::FETCH_OBJ);
 																		}
 																		})
 																	}
-																}
 															</script>				
 														<?php// }} ?>			
 											</td>		
