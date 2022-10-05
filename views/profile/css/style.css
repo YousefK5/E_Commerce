@@ -5,7 +5,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    max-width: 100%;
+    /* max-width: 100%; */
 }
 
 /* START OF TOP HEADER DECOR */
@@ -4244,7 +4244,7 @@ footer .bottom-footer .row .col .social-holder img {
 
 .review-container .grid-container-2 .helpful-content button:hover {
     background-color: white;
-    color: #FD6E00;
+    color: black;
     font-weight: bold;
     border: 1px solid #FD6E00;
     transition: 0.3s;
@@ -8167,4 +8167,28 @@ footer .bottom-footer .row .col .social-holder img {
     .billing-section p {
         font-size: 0.8em;
     }
+}
+
+#profile-info {
+    background-color: whitesmoke !important;
+    padding: 15px !important;
+    border-radius: 20px !important;
+}
+
+#profile-info .profileHead {
+    font-weight:600;
+    font-size:18px;
+    width:150px;
+    display:inline-block;
+}
+
+#profile-info .profileInfo {
+    font-weight:500;
+    font-size:15px;
+    display:inline-block;
+}
+
+.form-control {
+    border-radius: 15px !important;
+    margin-bottom: 12px;
 }

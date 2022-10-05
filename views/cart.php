@@ -27,7 +27,7 @@ if (isset($_POST['qunatity_by_js'])) {
     $query = 'UPDATE `cart` SET `quantity` = ? WHERE `cart_id` = ?';
     $query = $connect->prepare($query);
     $query->execute([intval($_POST['qunatity_by_js']), $_POST['cart_id']]);
-    print_r($qunatity);
+    // print_r($qunatity);
 }
 
 //add to cart
@@ -119,7 +119,7 @@ if (isset($_POST['apply_coupon'])) {
                                                                 $cart->product_id,
                                                             ]);
                                                         } else {
-                                                            print_r($cart);
+                                                            // print_r($cart);
                                                             $pId = $cart[0];
                                                             $query->execute([
                                                                 $pId,
@@ -443,9 +443,9 @@ if (isset($_POST['apply_coupon'])) {
 					<div class="form-group">
 						<label>Email</label>
 						<input type="text" id="username" name="email" required class="form-control" value="" placeholder="Email">
-						<input type="hidden" id="username" name="totalPrice" required value="<?php echo $total; ?>">
+						<input type="hidden" id="hiddenPrice" name="totalPrice" required value="<?php echo $total; ?>">
 						<?php if (isset($coupon_saved->id_coupon)) { ?>
-						<input type="hidden" id="username" name="coupon" required value="<?php echo $coupon_saved->id_coupon; ?>">
+						<input type="hidden" id="hiddenCoupon" name="coupon" required value="<?php echo $coupon_saved->id_coupon; ?>">
 						<?php } ?>
 					</div>
 					<div class="form-group">
@@ -479,9 +479,9 @@ if (isset($_POST['apply_coupon'])) {
 				</div>
 				<div class="modal-body">
 					<div class="form-group">
-					<input type="hidden" id="username" name="totalPrice" required value="<?php echo $total; ?>">
+					<input type="hidden" id="hiddenPrices" name="totalPrice" required value="<?php echo $total; ?>">
 						<?php if (isset($coupon_saved->id_coupon)) { ?>
-						<input type="hidden" id="username" name="coupon" required value="<?php echo $coupon_saved->id_coupon; ?>">
+						<input type="hidden" id="hiddenCoupons" name="coupon" required value="<?php echo $coupon_saved->id_coupon; ?>">
 						<?php } ?>
 						<label>First Name <span class="error">* <?php if (isset($_POST['register'])) {
           echo $nameErr;
@@ -638,45 +638,9 @@ if (isset($_POST['apply_coupon'])) {
 		<script type='text/javascript' src='../js/jquery.magnific-popup.min.js'></script>
 		<!-- <script type='text/javascript' src='../js/jquery.js'></script> -->
 		<script type='text/javascript' src='../js/jquery.cookie.min.js'></script>
-
-
-
+		<script src="cart.js"></script> 
 <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
-
-
 </body>
 
 </html>
 
-<script>
-    document.body.classList.add("shop-account");
-
-	
-</script>
-<script type='text/javascript' src='http://code.jquery.com/jquery-1.11.3.min.js'></script>
-		<script type='text/javascript' src='../js/jquery-migrate.min.js'></script>
-		<script type='text/javascript' src='../js/jquery.themepunch.tools.min.js'></script>
-		<script type='text/javascript' src='../js/jquery.themepunch.revolution.min.js'></script>
-		<script type='text/javascript' src='../js/easing.min.js'></script>
-		<script type='text/javascript' src='../js/imagesloaded.pkgd.min.js'></script>
-		<script type='text/javascript' src='../js/bootstrap.min.js'></script>
-		<script type='text/javascript' src='../js/superfish-1.7.4.min.js'></script>
-		<script type='text/javascript' src='../js/jquery.appear.min.js'></script>
-		<script type='text/javascript' src='../js/script.js'></script>
-		<script type='text/javascript' src='../js/swatches-and-photos.js'></script>
-		<script type='text/javascript' src='../js/jquery.prettyPhoto.min.js'></script>
-		<script type='text/javascript' src='../js/jquery.prettyPhoto.init.min.js'></script>
-		<script type='text/javascript' src='../js/jquery.selectBox.min.js'></script>
-		<script type='text/javascript' src='../js/jquery.parallax.js'></script>
-		<script type='text/javascript' src='../js/jquery.touchSwipe.min.js'></script>
-		<script type='text/javascript' src='../js/jquery.transit.min.js'></script>
-		<script type='text/javascript' src='../js/jquery.carouFredSel.min.js'></script>
-		<script type='text/javascript' src='../js/isotope.pkgd.min.js'></script>
-		<script type='text/javascript' src='../js/core.min.js'></script>
-		<script type='text/javascript' src='../js/widget.min.js'></script>
-		<script type='text/javascript' src='../js/mouse.min.js'></script>
-		<script type='text/javascript' src='../js/slider.min.js'></script>
-		<script type='text/javascript' src='../js/jquery-ui-touch-punch.min.js'></script>
-		<script type='text/javascript' src='../js/price-slider.js'></script>
-
-		<script src="cart.js"></script> 
