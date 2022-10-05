@@ -5,12 +5,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
-	<title>Home Lookbook | HTML Template</title>
+	<title>Cloud Masters</title>
 	<link rel="shortcut icon" href="../images/favicon.png">
-	<!-- <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
-
 	<link rel='stylesheet' href='../css/settings.css' type='text/css' media='all' />
 	<link rel='stylesheet' href='../css/swatches-and-photos.css' type='text/css' media='all' />
 	<link rel='stylesheet' href='../css/font-awesome.min.css' type='text/css' media='all' />
@@ -19,10 +15,6 @@
 	<link rel='stylesheet' href='../css/style.css' type='text/css' media='all' />
 	<link rel='stylesheet' href='../css/shop.css' type='text/css' media='all' />
 	<!-- <link rel='stylesheet' href='../css/layout.css' type='text/css' media='all' /> -->
-
-	
-
-
 </head>
 
 <body>
@@ -30,68 +22,27 @@
 	<div class="offcanvas open">
 		<div class="offcanvas-wrap">
 			<div class="offcanvas-user clearfix">
-				<a class="offcanvas-user-wishlist-link" href="wishlist.html">
-					<i class="fa fa-heart-o"></i> My Wishlist
-				</a>
-				<a class="offcanvas-user-account-link" href="my-account.html">
-					<i class="fa fa-user"></i> Login
-				</a>
+			<?php if (isset($_SESSION['userid'])) { ?> 
+											<a href='./profile/My-profile.php'><?php echo $user['first_name'] .
+               ' ' .
+               $user['last_name'];} else { ?></a>
+											<a data-rel="loginModal" href="#"><i class="fa fa-user"></i> Login</a>
+											<?php } ?>
 			</div>
 			<nav class="offcanvas-navbar">
 				<ul class="offcanvas-nav">
-					<li> <a href="index.html">Home <span class="caret"></span></a></li>
+					<li> <a href="index.php">Home <span class="caret"></span></a></li>
 			
-					<li class="menu-item-has-children dropdown">
-						<a href="shop.html" class="dropdown-hover">Shop <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li id="menu-item-10433">
-								<a href="shop-by-category.html">Women <span class="caret"></span></a>
-								
-							</li>
-							<li>
-								<a href="shop-by-category.html">Brands <span class="caret"></span></a>
-							
-							</li>
-							<li>
-								<a href="shop-by-collection.html">Conllections <span class="caret"></span></a>
-						
-							</li>
-							<li>
-								<a href="#">Woo </span></a>
-				
-							</li>
-						</ul>
-					</li>
-					<li><a href="collection.html">Collections</a></li>
 			
 					<li class="menu-item-has-children dropdown">
 						<a href="#" class="dropdown-hover">Pages <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="about-us.html">About us</a></li>
-							<li><a href="contact-us.html">Contact Us</a></li>
-							<li><a href="faq.html">FAQ</a></li>
+							<li><a href="about-us.php">About us</a></li>
+							<li><a href="contact-us.php">Contact Us</a></li>
 						</ul>
 					</li>
 				</ul>
 			</nav>
-			<div class="offcanvas-widget">
-				<div class="widget social-widget">
-					<div class="social-widget-wrap social-widget-none">
-						<a href="https://www.facebook.com" title="Facebook">
-							<i class="fa fa-facebook"></i>
-						</a>
-						<a href="https://www.twitter.com" title="Twitter">
-							<i class="fa fa-behance"></i>
-						</a>
-						<a href="https://www.instgram.com" title="Instagram">
-							<i class="fa fa-instagram instagram-bg-hover"></i>
-						</a>
-						<a href="https://www.pinterest.com" title="Pinterest">
-							<i class="fa fa-pinterest"></i>
-						</a>
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
 	<div id="wrapper" class="wide-wrap">
@@ -101,25 +52,19 @@
 				<div class="container topbar-wap">
 					<div class="row">
 						<div class="col-sm-6">
-							<div class="left-topbar">
-								<div class="topbar-social">
-									<a href="https://www.facebook.com" title="Facebook">
-										<i class="fa fa-facebook"></i>
-									</a>
-									<a href="https://www.twitter.com" title="Twitter">
-										<i class="fa fa-behance"></i>
-									</a>
-									<a href="https://www.instgram.com" title="Instagram">
-										<i class="fa fa-instagram instagram-bg-hover"></i>
-									</a>
-									<a href="https://www.pinterest.com" title="Pinterest">
-										<i class="fa fa-pinterest"></i>
-									</a>
-								</div>
-							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="right-topbar">
+								<?php if (isset($_SESSION['userid'])) { ?>
+														<div class="user-wishlist">
+															<a href="../views/profile/logout.php"><i class="fa fa-share-square-o"></i>Logout</a>
+														</div>
+													<?php } ?>
+							<?php if (isAdmin()) { ?>
+												<div class="user-wishlist">
+													<a href="../admin/views/index.php"><i class="fa fa-cog"></i>Dashboard</a>
+												</div>
+											<?php } ?>
 								<div class="user-login">
 									<ul class="nav top-nav">
 										<li class="menu-item">
@@ -129,7 +74,9 @@
                $user['last_name'];} else { ?></a>
 											<a data-rel="loginModal" href="#"><i class="fa fa-user"></i> Login</a>
 											<?php } ?>
+											
 										</li>
+
 									</ul>
 								</div>
 
@@ -140,7 +87,7 @@
 			</div>
 			<div class="navbar-container">
 				<div class="navbar navbar-default  navbar-scroll-fixed" style="background-color: #1e1e1ea8;">
-					<div class="navbar-default-wrap" >
+					<div class="navbar-default-wrap">
 						<div class="container">
 							<div class="row">
 								<div class="col-md-12 navbar-default-col">
@@ -152,13 +99,6 @@
 												<span class="icon-bar bar-middle"></span>
 												<span class="icon-bar bar-bottom"></span>
 											</button>
-											<a class="navbar-search-button search-icon-mobile" href="#">
-												<i class="fa fa-search"></i>
-											</a>
-
-
-
-
 											<a class="cart-icon-mobile" href="#">
 												<!-- count of cart  -->
 												<i class="elegant_icon_bag"></i><span>0</span>
@@ -175,7 +115,7 @@
 										<nav class="collapse navbar-collapse primary-navbar-collapse">
 											<ul class="nav navbar-nav primary-nav">
 												<li class="menu-item-has-children dropdown">
-													<a href="./" class="dropdown-hover">
+													<a href="./index.php" class="dropdown-hover">
 														<span class="underline">Home</span> </span>
 													</a>
 
@@ -185,42 +125,51 @@
 														<span class="underline">Shop</span> <span class="caret"></span>
 													</a>
 												</li>
-
-												<li class="menu-item-has-children dropdown">
-
-													<!-- Pages link -->
-													<a href="#" class="dropdown-hover">
-														<span class="underline">Pages</span> <span class="caret"></span>
+												<li class="menu-item-has-children megamenu megamenu-fullwidth dropdown">
+													<a href="about-us.php" class="dropdown-hover">
+														<span class="underline">About Us</span> <span class="caret"></span>
 													</a>
-													<ul class="dropdown-menu">
-														<li><a href="about-us.php">About us</a></li>
-														<li><a href="contact-us.php">Contact Us</a></li>
-													</ul>
+												</li>
+												<li class="menu-item-has-children megamenu megamenu-fullwidth dropdown">
+													<a href="contact-us.php" class="dropdown-hover">
+														<span class="underline">Contact Us</span> <span class="caret"></span>
+													</a>
 												</li>
 												<!-- search desktop icon -->
 
-												<li class="navbar-search">
-													<a class="navbar-search-button" href="#">
-														<i class="fa fa-search"></i>
-													</a>
-												</li>
-
-
 												<!-- cart and boxes start -->
-	<?php
- if (isset($_GET['del'])) {
-     $cart_id = $_GET['del'];
+<?php
+if (isset($_GET['del'])) {
+    if (isset($_SESSION['userid'])) {
+        $cart_id = $_GET['del'];
+        $query = $connect->prepare('DELETE FROM `cart` Where cart_id=? ');
+        $query->execute([$cart_id]);
+    } else {
+        $productsInCart = $_SESSION['cartVisitor'];
+        for ($i = 0; $i < count($productsInCart); $i++) {
+            if ($productsInCart[$i][0] == $_GET['del']) {
+                unset($_SESSION['cartVisitor'][$i]);
+            }
+        }
+    }
+}
 
-     $query = $connect->prepare('DELETE  FROM `cart` Where cart_id=? ');
-     $query->execute([$cart_id]);
- }
+$fromDB = 0;
+$fromSS = 0;
+if (isset($_SESSION['userid'])) {
+    $query = 'SELECT * from `cart`';
+    $query = $connect->prepare($query);
+    $query->execute();
+    $productsInCart = $query->fetchAll(PDO::FETCH_OBJ);
+    $fromDB = 1;
+} elseif (isset($_SESSION['cartVisitor'])) {
+    $productsInCart = $_SESSION['cartVisitor'];
+    $fromSS = 1;
+} else {
+    $productsInCart = [];
+}
 
- $query = 'SELECT * from `cart`';
- $query = $connect->prepare($query);
- $query->execute();
- $productsInCart = $query->fetchAll(PDO::FETCH_OBJ);
-
- if (empty($productsInCart)) { ?>
+if (empty($productsInCart)) { ?>
 												<li class="navbar-minicart navbar-minicart-nav">
 													<a class="minicart-link" href="#">
 														<span class="minicart-icon">
@@ -246,12 +195,6 @@
 
 
 <?php } else { ?>
-
-
-
-
-
-
 												<li class="navbar-minicart navbar-minicart-nav">
 														<a class="minicart-link" href="#">
 															<span class="minicart-icon has-item">
@@ -267,7 +210,11 @@
 															<div class="minicart-body">
 																<?php foreach ($productsInCart as $pInCart) {
 
-                    $query = "SELECT * from `products` WHERE product_id= '$pInCart->product_id'";
+                    if ($fromDB) {
+                        $query = "SELECT * from `products` WHERE product_id= '$pInCart->product_id'";
+                    } else {
+                        $query = "SELECT * from `products` WHERE product_id= '$pInCart[0]'";
+                    }
                     $query = $connect->prepare($query);
                     $query->execute();
                     $product = $query->fetch(PDO::FETCH_OBJ);
@@ -283,10 +230,14 @@
 																			<a href="#"><?php echo $product->product_name; ?></a>
 																		</div>
 																		<div class="cart-product-quantity-price">
-																			<?php echo $pInCart->quantity; ?> x <span class="amount">&#36;<?php echo $product->price; ?></span>
+																			<?php echo $fromDB
+                       ? $pInCart->quantity
+                       : $pInCart[1]; ?> x <span class="amount">&#36;<?php echo $product->price; ?></span>
 																		</div>
 																	</div>
-																	<a href="?del=<?php echo $pInCart->cart_id; ?>" class="remove" title="Remove this item">&times;</a>
+																	<a href="?del=<?php echo $fromDB
+                     ? $pInCart->cart_id
+                     : $pInCart[0]; ?>" class="remove" title="Remove this item">&times;</a>
 																</div>
 																<?php
                 } ?>
@@ -301,7 +252,7 @@
 														</div>
 													</li>
 <?php }
- ?>
+?>
 												<!-- cart and boxes -->
 											</ul>
 
@@ -318,10 +269,6 @@
 						<div class="container">
 							<div class="header-search-overlay-wrap">
 								<!-- search form -->
-								<form class="searchform">
-									<input type="search" class="searchinput" name="s" value="" placeholder="Search..." />
-									<input type="submit" class="searchsubmit hidden" name="submit" value="Search" />
-								</form>
 								<button type="button" class="close">
 									<span aria-hidden="true" class="fa fa-times"></span>
 									<span class="sr-only">Close</span>

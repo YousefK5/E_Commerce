@@ -30,11 +30,11 @@ if (isset($_GET['id'])) {
 <?php require 'sidebar.php'; ?>
 
 <div class="main-panel">
-          <div class="content-wrapper">
+          <div class="content-wrapper" style="background:whitesmoke;">
             <div class="page-header">
               <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white me-2">
-                  <i class="mdi mdi-contacts menu-icon"></i>
+                  <i class="mdi mdi-table-large menu-icon"></i>
                 </span> Orders
               </h3>
               <nav aria-label="breadcrumb">
@@ -52,7 +52,7 @@ if (isset($_GET['id'])) {
                 <div class="row">
                     <div class="col-sm-5">
                         <h2>Orders For <b><?php echo isset($_GET['id'])
-                            ? $user['first_name'] . $user['last_name']
+                            ? $user['first_name'] .' '. $user['last_name']
                             : 'All Users'; ?></b></h2>
                     </div>
 

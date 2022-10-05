@@ -1,10 +1,8 @@
 <?php
 require_once '../../views/connection.php';
 
-$products = $connect->query(
-    'SELECT * FROM products JOIN categories ON products.category_id=categories.category_id'
-);
-$products = $products->fetchAll(PDO::FETCH_ASSOC);
+$coupons = $connect->query('SELECT * FROM coupons');
+$coupons = $coupons->fetchAll();
 ?>
 
 
@@ -15,10 +13,10 @@ $products = $products->fetchAll(PDO::FETCH_ASSOC);
 <div class="main-panel">
           <div class="content-wrapper" style="background:whitesmoke;">
             <div class="page-header">
-              <h3 class="page-title">
+            <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white me-2">
-                  <i class="uil uil-archive menu-icon"></i>
-                </span> Products
+                  <i class="mdi mdi-ticket-percent menu-icon"></i>
+                </span> Coupons
               </h3>
               <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
@@ -34,62 +32,34 @@ $products = $products->fetchAll(PDO::FETCH_ASSOC);
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-5">
-                        <h2>Products <b>Management</b></h2>
+                        <h2>Coupons</h2>
                     </div>
                     <div class="col-sm-7">
-                        <a href="../control/addProduct.php" class="btn btn-secondary bttn"><i class="material-icons">&#xE147;</i> <span>Add New Product</span></a>					
+                        <a href="../control/addCoupon.php" class="btn btn-secondary bttn"><i class="material-icons">&#xE147;</i> <span>Add New Coupon</span></a>					
                     </div>
                 </div>
             </div>
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Name</th>						
-                        <th>Price</th>						
-                        <th>Description</th>			
-                        <th>Images</th>						
-                        <th>Category</th>					
-                        <th>Discount</th>
-                        <th>Offers</th>
-                        <th>New arrivals</th>
-                        <th>Action</th>
+                        <th>Coupon ID</th>
+                        <th>Coupon name</th>			
+                        <th>Discount value</th>			
+                        <th>Count</th>						
+                        <th>Actions</th>						
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($products as $product) { ?>
+                    <?php foreach ($coupons as $coupon) { ?>
                     <tr>
-                        <td><?php echo $product['product_id']; ?></td>
-                        <td><?php echo $product['product_name']; ?></td>
-                        <td><?php echo $product['price']; ?></td>
-                        <td ><?php echo $product['description']; ?></td>
-                        <td><img src="../../imgs/<?php echo $product[
-                            'image1'
-                        ]; ?>">
-                        <?php if ($product['image2'] != null) { ?>
-                            <img src="../../imgs/<?php echo $product[
-                                'image2'
-                            ]; ?>">
-                        <?php } ?>
-                        <?php if ($product['image3'] != null) { ?>
-                            <img src="../../imgs/<?php echo $product[
-                                'image3'
-                            ]; ?>">
-                        <?php } ?>
-                        </td>
-                        <td><?php echo $product['category_name']; ?></td>
-
-
-                        <td><?php echo $product['discount']; ?></td>
-                        <td><?php echo $product['offers']?"yes":"No"; ?></td>
-                        <td><?php echo $product['new_arrive']?"yes":"No"; ?></td>
-
-
+                        <td><?php echo $coupon['coupon_id']; ?></td>
+                        <td><?php echo $coupon['coupon_name'];?></td>
+                        <td><?php echo $coupon['discount']; ?></td>
+                        <td><?php echo $coupon['count']; ?></td>
 
                         <td>
-                            <a href="../control/editProduct.php?id=<?php echo $product[
-                                'product_id'
-                            ]; ?>" class="settings" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                            <a href="../control/editCoupon.php?id=<?php echo $coupon['coupon_id']; ?>"
+                             class="settings" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                             <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>    
                         </td>
                     </tr>
@@ -98,7 +68,7 @@ $products = $products->fetchAll(PDO::FETCH_ASSOC);
                             <div class="modal-content">
                                 <form>
                                     <div class="modal-header">						
-                                        <h4 class="modal-title">Delete Product</h4>
+                                        <h4 class="modal-title">Delete Coupon</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                     </div>
                                     <div class="modal-body">					
@@ -107,10 +77,9 @@ $products = $products->fetchAll(PDO::FETCH_ASSOC);
                                     </div>
                                     <div class="modal-footer">
                                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                        <a href="../control/deleteProduct.php?id=<?php
-                                        echo $product['product_id'];
-                                        $sss = 1;
-                                        ?>" title="Delete" data-toggle="tooltip" class="delete btn btn-danger">Delete</a>
+                                        <a href="../control/deleteCoupon.php?id=<?php echo $coupon[
+                                            'coupon_id'
+                                        ]; ?>" title="Delete" data-toggle="tooltip" class="delete btn btn-danger">Delete</a>
                                     </div>
                                 </form>
                             </div>
@@ -134,10 +103,9 @@ $(document).ready(function(){
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <?php if (isset($_GET['d'])) { ?>
 <script>
-    swal.fire("Success , You Deleted This Product");
+    swal.fire("Success , You Deleted This Coupon");
     
 </script>
 <?php } ?>
-
 
 <?php require 'footer.php'; ?>

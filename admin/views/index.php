@@ -2,17 +2,19 @@
 <?php
 $users = $connect->query('SELECT * FROM users');
 $users = $users->fetchAll();
-$orders = $connect->query('SELECT * FROM orders');
+$orders = $connect->query('SELECT * FROM orders ORDER BY order_id DESC');
 $orders = $orders->fetchAll();
-$products = $connect->query('SELECT * FROM products');
+$products = $connect->query('SELECT * FROM products ORDER BY product_id DESC');
 $products = $products->fetchAll();
+$coupons = $connect->query('SELECT * FROM coupons');
+$coupons = $coupons->fetchAll();
 ?>
 
   <div class="container-fluid page-body-wrapper">
     <?php require 'sidebar.php'; ?>
         <!-- partial -->
         <div class="main-panel">
-          <div class="content-wrapper">
+          <div class="content-wrapper" style="background:whitesmoke;">
             <div class="page-header">
               <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white me-2">
@@ -75,16 +77,29 @@ $products = $products->fetchAll();
                             <th> Order number </th>
                             <th> Customer </th>
                             <th> Date </th>
-                            <th> Order details </th>
+                            <th> Total Price </th>
                           </tr>
                         </thead>
                         <tbody>
+                          <?php for ($i = 0; $i < $orders; $i++) {
+
+                              $curUserId = $orders[$i]['user_id'];
+                              $curUser = $connect->query("SELECT * FROM users WHERE user_id='$curUserId'");
+                              $curUser = $curUser->fetch();
+                              if ($i == 5) {
+                                  break;
+                              }
+                              ?>
                           <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td><?php echo $orders[$i]['order_id']; ?></td>
+                            <td><?php echo $curUser['first_name'] .
+                                ' ' .
+                                $curUser['last_name']; ?></td>
+                            <td><?php echo $orders[$i]['order_date']; ?></td>
+                            <td><?php echo $orders[$i]['total_price']; ?></td>
                           </tr>
+                          <?php
+                          } ?>
                         </tbody>
                       </table>
                     </div>
@@ -109,12 +124,25 @@ $products = $products->fetchAll();
                           </tr>
                         </thead>
                         <tbody>
+                        <?php for ($i = 0; $i < $products; $i++) {
+
+                            $curCatId = $products[$i]['category_id'];
+                            $curCat = $connect->query("SELECT * FROM categories WHERE category_id='$curCatId'");
+                            $curCat = $curCat->fetch();
+                            if ($i == 5) {
+                                break;
+                            }
+                            ?>
                           <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td><?php echo $products[$i]['product_id']; ?></td>
+                            <td><?php echo $products[$i][
+                                'product_name'
+                            ]; ?></td>
+                            <td><?php echo $products[$i]['price']; ?></td>
+                            <td><?php echo $curCat['category_name']; ?></td>
                           </tr>
+                          <?php
+                        } ?>
                         </tbody>
                       </table>
                     </div>

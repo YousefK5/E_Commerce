@@ -46,8 +46,8 @@ $curUser = $curUser->fetch();
       <!-- partial:partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-          <a class="navbar-brand brand-logo" href="index.php"><img src="../../images/ltrblack.png" alt="logo" /></a>
-          <a class="navbar-brand brand-logo-mini" href="index.php"><img src="../../images/ltrblack.png" alt="logo" /></a>
+          <a class="navbar-brand brand-logo" href="../views/index.php"><img src="../../images/ltrblack.png" alt="logo" style="min-height: 60px; min-width:175px;" /></a>
+          <a class="navbar-brand brand-logo-mini" href="../views/index.php"><img src="../../images/ltrblackmini.png" alt="logo" style="min-height: 30px; min-width:40px; margin-left: 25px;"/></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -79,6 +79,11 @@ $curUser = $curUser->fetch();
             </li>
             
 
+            <li class="nav-item nav-logout d-none d-lg-block">
+              <a class="nav-link" href="../../views/index.php">
+                Home
+              </a>
+            </li>
             <li class="nav-item nav-logout d-none d-lg-block">
               <a class="nav-link" href="../../views/profile/logout.php">
                 Logout
