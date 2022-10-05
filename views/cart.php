@@ -60,10 +60,34 @@ if (isset($_POST['apply_coupon'])) {
             $coupon_saved->count -= 1;
             $query->execute([$coupon_saved->count, $coupon_saved->coupon_id]);
         } else {
-            echo "<script>alert('invalid coupon')</script>";
+            echo "<script>
+			window.onload=function() {
+			Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: 'Invalid Coupon!',
+			  }) 
+			} </script>";
+            echo "<script>
+			setTimeout(function(){
+				window.location.href='cart.php';
+			 }, 3000);
+			</script>";
         }
     } else {
-        echo "<script>alert('invalid coupon')</script>";
+        echo "<script>
+			window.onload=function() {
+			Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: 'Invalid Coupon!',
+			  }) 
+			} </script>";
+        echo "<script>
+			setTimeout(function(){
+				window.location.href='cart.php';
+			 }, 3000);
+			</script>";
     }
 }
 ?>
@@ -527,7 +551,16 @@ if (isset($_POST['apply_coupon'])) {
 
 					</div>
 
+					<div class="form-group">
+						<label>City <span class="error" id="spanCity">* <?php if (
+          isset($_POST['register'])
+      ) {
+          echo $cityEr;
+      } ?></span></label>
+						<input type="text" id="city" name="city" required class="form-control" value="" placeholder="City">
+						
 
+					</div>
 					<div class="form-group">
 						<label>Address <span class="error" id="spanAddress">* <?php if (
           isset($_POST['register'])
@@ -540,16 +573,7 @@ if (isset($_POST['apply_coupon'])) {
 					</div>
 
 
-					<div class="form-group">
-						<label>City <span class="error" id="spanCity">* <?php if (
-          isset($_POST['register'])
-      ) {
-          echo $cityEr;
-      } ?></span></label>
-						<input type="text" id="city" name="city" required class="form-control" value="" placeholder="City">
-						
-
-					</div>
+					
 					<div class="form-group">
 						<label for="user_password">Password <span class="error" id="spanPassword">* <?php if (
           isset($_POST['register'])
@@ -648,7 +672,7 @@ if (isset($_POST['apply_coupon'])) {
 		<!-- <script type='text/javascript' src='../js/jquery.js'></script> -->
 		<script type='text/javascript' src='../js/jquery.cookie.min.js'></script>
 		<script src="cart.js"></script> 
-<!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
 	document.getElementById("fname").onblur= function() {

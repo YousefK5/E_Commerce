@@ -13,6 +13,20 @@ $query->execute([$_SESSION['userid']]);
 $orders = $query->fetchAll(PDO::FETCH_OBJ);
 ?>
 
+<?php if (isset($_GET['from'])) {
+    if ($_GET['from'] == 'checkout') {
+        echo "<script>
+			window.onload =function() {
+				Swal.fire({
+					icon: 'success',
+					title: 'Your Order has been successfully received.',
+					text: 'Thank you for your trust in our products.',
+					footer: 'Here you can browse all your orders',
+				})
+		}
+		</script>";
+    }
+} ?>
 
                <div class="heading-container">
 				<div class="container heading-standar">

@@ -28,7 +28,7 @@ if (isset($_POST['login'])) {
                     $coupon = $_POST['coupon'];
                     header("location: ./checkout.php?price=$total&c=$coupon");
                 }
-                header("location: ./checkout.php?price=$total&c=' '");
+                header("location: ./checkout.php?price=$total&c=0");
             } else {
                 echo "<script>swal({ icon: 'success',});</script>";
                 if ($user->is_admin) {

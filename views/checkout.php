@@ -36,14 +36,16 @@ if (isset($_POST['Chekout'])) {
     foreach ($carts as $cart) {
         $prodID = $cart['product_id'];
         $quant = $cart['quantity'];
-        $prodPrice = $connect->query("SELECT * FROM products WHERE product_id='$prodID'");
+        $prodPrice = $connect->query(
+            "SELECT * FROM products WHERE product_id='$prodID'"
+        );
         $prodPrice = $prodPrice->fetch();
         $prodPrice = $prodPrice['price'];
         $sql = $connect->query("INSERT INTO order_details (product_id , unit_price , quantity, order_id) 
         VALUES ('$prodID' ,'$prodPrice','$quant','$lastOrder')");
     }
     $emptyCart = $connect->query("DELETE FROM cart WHERE user_id='$userid'");
-    header('location:order_history.php'); // header('Refresh:0');
+    header('location:order_history.php?from=checkout'); // header('Refresh:0');
 }
 $query = 'SELECT * from `users` where user_id=?';
 $query = $connect->prepare($query);
@@ -332,15 +334,11 @@ $userNow = $query->fetch(PDO::FETCH_OBJ);
 
 <?php
 $curUserId = $_SESSION['userid'];
-$cart = $connect->query(
-    "SELECT * FROM cart JOIN products ON cart.product_id=products.product_id WHERE cart.user_id='$curUserId'"
-);
+$cart = $connect->query("SELECT * FROM cart JOIN products ON cart.product_id=products.product_id WHERE cart.user_id='$curUserId'");
 $cart = $cart->fetchAll();
 if ($_GET['c'] != '0') {
     $idCoupon = $_GET['c'];
-    $coupuns = $connect->query(
-        "SELECT * FROM coupons WHERE coupon_id='$idCoupon'"
-    );
+    $coupuns = $connect->query("SELECT * FROM coupons WHERE coupon_id='$idCoupon'");
     $coupon = $coupuns->fetch();
     $couponDiscount = $coupon['discount'];
 } else {

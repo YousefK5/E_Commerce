@@ -132,15 +132,6 @@
 						
 					</div>
 					<div class="form-group">
-						<label>Address <span class="error" id="spanAddress">* <?php if (
-          isset($_POST['register'])
-      ) {
-          echo $addressEr;
-      } ?></span></label>
-						<input type="text" id="address" name="address" required class="form-control" value="" placeholder="Address">
-						
-					</div>
-					<div class="form-group">
 						<label>City <span class="error" id="spanCity">* <?php if (
           isset($_POST['register'])
       ) {
@@ -150,6 +141,16 @@
 						
 
 					</div>
+					<div class="form-group">
+						<label>Address <span class="error" id="spanAddress">* <?php if (
+          isset($_POST['register'])
+      ) {
+          echo $addressEr;
+      } ?></span></label>
+						<input type="text" id="address" name="address" required class="form-control" value="" placeholder="Address">
+						
+					</div>
+					
 					<div class="form-group">
 						<label for="user_password">Password <span class="error" id="spanPassword">* <?php if (
           isset($_POST['register'])

@@ -61,7 +61,7 @@ $categories = $query->fetchAll(PDO::FETCH_OBJ);
             <div class="col-md-3 sidebar-wrap">
                 <div class="main-sidebar">
                     <div class="widget shop widget_price_filter">
-                    <h4 class="widget-title"><span>Price</span></h4>
+                    <!-- <h4 class="widget-title"><span>Price</span></h4> -->
                     <div>
 
                     </div>
