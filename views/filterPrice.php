@@ -69,7 +69,7 @@ $categories = $query->fetchAll(PDO::FETCH_OBJ);
                                                             </span>
                                                         </div>
                                                         <div class="loop-add-to-cart">
-                                                        <a href="add_to_cart.php?ad=<?php echo $product->product_id; ?>&from=index">Add To Cart</a>
+                                                        <a href="add_to_cart.php?ad=<?php echo $product->product_id; ?>&from=shop">Add To Cart</a>
                                                         </div>
                                                     </div>
                                                 </div>

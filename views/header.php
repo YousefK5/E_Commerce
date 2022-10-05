@@ -115,7 +115,7 @@
 										<nav class="collapse navbar-collapse primary-navbar-collapse">
 											<ul class="nav navbar-nav primary-nav">
 												<li class="menu-item-has-children dropdown">
-													<a href="./" class="dropdown-hover">
+													<a href="./index.php" class="dropdown-hover">
 														<span class="underline">Home</span> </span>
 													</a>
 
@@ -142,13 +142,13 @@
 if (isset($_GET['del'])) {
     if (isset($_SESSION['userid'])) {
         $cart_id = $_GET['del'];
-        $query = $connect->prepare('DELETE  FROM `cart` Where cart_id=? ');
+        $query = $connect->prepare('DELETE FROM `cart` Where cart_id=? ');
         $query->execute([$cart_id]);
     } else {
         $productsInCart = $_SESSION['cartVisitor'];
-        for ($i = 0; $i < $productsInCart; $i++) {
+        for ($i = 0; $i < count($productsInCart); $i++) {
             if ($productsInCart[$i][0] == $_GET['del']) {
-                unset($productsInCart[$i]);
+                unset($_SESSION['cartVisitor'][$i]);
             }
         }
     }

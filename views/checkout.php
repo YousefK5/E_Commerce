@@ -1,6 +1,6 @@
 <?php require './connection.php'; ?>
 <?php
-$total = $_REQUEST['price']; // echo $total;
+@$total = $_REQUEST['price']; // echo $total;
 $coupon = isset($_GET['c']);
 $userid = $_SESSION['userid'];
 if (isset($_POST['Chekout'])) {
@@ -486,72 +486,144 @@ $userNow = $query->fetch(PDO::FETCH_OBJ);
 			<div class="content-container">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-8 main-wrap">
+						<div class="col-md-5 main-wrap">
 							<div class="main-content">
 								<div class="shop">
                                 <h2>ADD YOUR INFORMATION</h2>
 									<form method="post" action="checkout.php">
-										
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div>
+                                            <p class="form-control-wrap your-name">
+                                                <LAbel> Full Name </LAbel>
+                                                <input type="text" name="address" value="<?php echo $userNow->first_name .
+                                                    ' ' .
+                                                    $userNow->last_name; ?>" size="40"  class="form-control text validates-as-required"/>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                    <div>
+                                            <p class="form-control-wrap your-name">
+                                            <LAbel>Phone </LAbel>
+                                                <input type="text" name="phone" value="<?php echo $userNow->phone; ?>" size="40" class="form-control text validates-as-required"/>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                <div>
+                                            <p class="form-control-wrap your-name">
+                                            <LAbel>Address </LAbel>
+                                                <input type="text" name="address" value="<?php echo $userNow->address; ?>" size="40" class="form-control text validates-as-required"/>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                <div>
+                                            <p class="form-control-wrap your-name">
+                                            <LAbel>City </LAbel>
+                                                <input type="text" name="city" value="<?php echo $userNow->city; ?>" size="40" class="form-control text validates-as-required"/>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div>
 
+                                            <p class="form-control-wrap your-name">
+                                            <LAbel>Postal Code </LAbel>
+                                            <input type="hidden" name="price" value="<?php echo $total; ?>" size="40" class="form-control text validates-as-required"/>
+                                            <input type="hidden" name="c" value="<?php echo $coupon; ?>" size="40" class="form-control text validates-as-required"/>
+                                                <input type="text" name="postal_code" value="" size="40" class="form-control text validates-as-required"/>
+                                            </p>
+                                        </div>
+                                    </div>
 
-
-<div class="row">
-    <div class="col-sm-12">
-        <div>
-            <p class="form-control-wrap your-name">
-                <LAbel> Full Name </LAbel>
-                <input type="text" name="address" value="<?php echo $userNow->first_name .
-                    ' ' .
-                    $userNow->last_name; ?>" size="40"  class="form-control text validates-as-required" style="width:50%" />
-            </p>
-        </div>
-    </div>
-    <div class="col-sm-12">
-    <div>
-            <p class="form-control-wrap your-name">
-            <LAbel>Phone </LAbel>
-                <input type="text" name="phone" value="<?php echo $userNow->phone; ?>" size="40" class="form-control text validates-as-required" style="width:50%"/>
-            </p>
-        </div>
-    </div>
-    <div class="col-sm-12">
-   <div>
-            <p class="form-control-wrap your-name">
-            <LAbel>Address </LAbel>
-                <input type="text" name="address" value="<?php echo $userNow->address; ?>" size="40" class="form-control text validates-as-required" style="width:50%"/>
-            </p>
-        </div>
-    </div>
-    <div class="col-sm-12">
-  <div>
-            <p class="form-control-wrap your-name">
-            <LAbel>City </LAbel>
-                <input type="text" name="city" value="<?php echo $userNow->city; ?>" size="40" class="form-control text validates-as-required" style="width:50%"/>
-            </p>
-        </div>
-    </div>
-    <div class="col-sm-12">
-        <div>
-
-            <p class="form-control-wrap your-name">
-            <LAbel>Postal Code </LAbel>
-            <input type="hidden" name="price" value="<?php echo $total; ?>" size="40" class="form-control text validates-as-required" style="width:50%"/>
-            <input type="hidden" name="c" value="<?php echo $coupon; ?>" size="40" class="form-control text validates-as-required" style="width:50%"/>
-                <input type="text" name="postal_code" value="" size="40" class="form-control text validates-as-required" style="width:50%"/>
-            </p>
-        </div>
-    </div>
-
-</div>
-
-<div class="row">
-</div>
-
-<input type="submit" name="Chekout" value="Chekout"  class="form-control submit" />
-</form>
-					</div>
+                                </div>
+                                <input type="submit" name="Chekout" value="Chekout"  class="form-control submit" />
+                                </form>
+					            </div>
 								</div>
 							</div>
+                            <link rel="stylesheet" href="checkout.css">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-6">
+                            <section class="woocommerce-order-details">
+                                <h2 class="woocommerce-order-details__title">Order details</h2>
+                                    <table class="woocommerce-table woocommerce-table--order-details shop_table order_details">
+                                    <thead>
+                                        <tr>
+                                        <th class="woocommerce-table__product-table product-total" style="text-align:left">Product Name</th>
+                                        <th class="woocommerce-table__product-table product-total">Unit Price</th>
+                                        <th class="woocommerce-table__product-table product-total">Quantity</th>
+                                        <th class="woocommerce-table__product-table product-total">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $curUserId = $_SESSION['userid'];
+                                        $cart = $connect->query(
+                                            "SELECT * FROM cart JOIN products ON cart.product_id=products.product_id WHERE cart.user_id='$curUserId'"
+                                        );
+                                        $cart = $cart->fetchAll();
+                                        if ($_GET['c'] != '') {
+                                            $idCoupon = $_GET['c'];
+                                            $coupuns = $connect->query(
+                                                "SELECT * FROM coupons WHERE coupon_id='$idCoupon'"
+                                            );
+                                            $coupon = $coupuns->fetch();
+                                            $couponDiscount =
+                                                $coupon['discount'];
+                                        } else {
+                                            $couponDiscount = 0;
+                                        }
+                                        foreach ($cart as $c) { ?>
+
+                                        <tr class="woocommerce-table__line-item order_item">
+                                        <td class="woocommerce-table__product-name product-name" style="text-align:left">
+                                            <?php echo $c[
+                                                'product_name'
+                                            ]; ?></td>
+                                            <td><strong class="product-quantity"><?php echo $c[
+                                                'price'
+                                            ]; ?></strong></td>
+                                            <td><strong class="product-quantity"><?php echo $c[
+                                                'quantity'
+                                            ]; ?></strong></td>
+                                        <td class="woocommerce-table__product-total product-total">
+                                            <?php echo $c['price'] *
+                                                $c['quantity']; ?>
+                                        </td>
+                                        </tr>
+                                        <?php }
+                                        ?>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                        <th scope="row">Subtotal:</th>
+                                        <td><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol"></span><?php echo $_GET[
+                                            'price'
+                                        ]; ?></span>
+                                        </td>
+                                        </tr>
+                                        <tr>
+                                        <th scope="row">Discount :</th>
+                                        <td><?php echo $couponDiscount
+                                            ? $couponDiscount
+                                            : 0; ?>%</td>
+                                        </tr>
+                                        <tr>
+                                        <th scope="row">Total:</th>
+                                        <td><?php echo $couponDiscount
+                                            ? $_GET['price'] -
+                                                $_GET['price'] *
+                                                    ($couponDiscount / 100)
+                                            : $_GET['price']; ?>
+                                        </td>
+                                        </tr>
+                                    </tfoot>
+                                    </table>
+                                </section>
+                            </div>
 						</div>
 					</div>
 				</div>

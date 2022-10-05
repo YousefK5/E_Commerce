@@ -142,9 +142,9 @@
                     $query->execute([$cart_id]);
                 } else {
                     $productsInCart = $_SESSION['cartVisitor'];
-                    for ($i = 0; $i < $productsInCart; $i++) {
+                    for ($i = 0; $i < count($productsInCart); $i++) {
                         if ($productsInCart[$i][0] == $_GET['del']) {
-                            unset($productsInCart[$i]);
+                            unset($_SESSION['cartVisitor'][$i]);
                         }
                     }
                 }
