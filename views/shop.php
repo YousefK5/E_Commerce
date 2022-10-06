@@ -61,7 +61,15 @@ $categories = $query->fetchAll(PDO::FETCH_OBJ);
             <div class="col-md-3 sidebar-wrap">
                 <div class="main-sidebar">
                     <div class="widget shop widget_price_filter">
-                    <!-- <h4 class="widget-title"><span>Price</span></h4> -->
+                        <div style="margin-bottom:20px">
+                            <input type="text" name="search" id="searchP" placeholder="Search..." style="width: 100%;
+                                                                                                        height: 43px;
+                                                                                                        border-radius: 15px;
+                                                                                                        padding: 15px;
+                                                                                                        font-size: 20px;
+                                                                                                        border: 1px solid #0075ff;
+                                                                                                        box-shadow: inset 0px 0px 1px 1px #0075ff;">
+                        </div>
                     <div>
 
                     </div>
@@ -112,7 +120,7 @@ $categories = $query->fetchAll(PDO::FETCH_OBJ);
                                 </a>
                                 <span class="amount"><?php echo $product[
                                     'price'
-                                ]; ?> JD</span>
+                                ]; ?> JOD</span>
                                 <!-- <ins><span class="amount">&#36;19.00</span></ins> -->
                             </li>
                             <?php }
@@ -147,7 +155,7 @@ $categories = $query->fetchAll(PDO::FETCH_OBJ);
 ); ?>"><?php echo ucfirst($categorie->category_name); ?></a>
                                     </li>
                                     <script>
-                                        console.log(document.querySelector(".selected"));
+                                        // console.log(document.querySelector(".selected"));
                                         window.onload = function() {
                                             document.querySelector(".selected").click();
                                         }
@@ -230,7 +238,7 @@ $categories = $query->fetchAll(PDO::FETCH_OBJ);
                                                     <div class="info-meta">
                                                         <div class="info-price">
                                                             <span class="price">
-                                                                <span class="amount">JD <?php echo $product->price; ?></span>
+                                                                <span class="amount"><?php echo $product->price; ?> JOD</span>
                                                             </span>
                                                         </div>
                                                         <div class="loop-add-to-cart">
@@ -262,6 +270,7 @@ $categories = $query->fetchAll(PDO::FETCH_OBJ);
     let curCat = (curCateg.id).slice(2);
     let leftPrice=document.getElementById("minPrice");
     let rightPrice=document.getElementById("maxPrice");
+    let searchInput=document.getElementById("searchP");
     // console.log(curCat);
 
     [...categ].forEach(element => {
@@ -275,7 +284,7 @@ $categories = $query->fetchAll(PDO::FETCH_OBJ);
             headers : {
                 'Content-Type': 'application/x-www-form-urlencoded', 
             },
-            body: `min=${leftPrice.value*10}&max=${rightPrice.value*10}&cat=${curCat}`,
+            body: `min=${leftPrice.value*10}&max=${rightPrice.value*10}&cat=${curCat}&s=${searchInput.value}`,
             })
             .then((response) => {
                 response.text().then(res=>{
@@ -298,7 +307,7 @@ $categories = $query->fetchAll(PDO::FETCH_OBJ);
             headers : {
                 'Content-Type': 'application/x-www-form-urlencoded', 
             },
-            body: `min=${leftPrice.value*10}&max=${rightPrice.value*10}&cat=${curCat}`,
+            body: `min=${leftPrice.value*10}&max=${rightPrice.value*10}&cat=${curCat}&s=${searchInput.value}`,
             })
             .then((response) => {
                 response.text().then(res=>{
@@ -314,13 +323,13 @@ $categories = $query->fetchAll(PDO::FETCH_OBJ);
     rightPrice.addEventListener("input", function() {
         // let maxP=rightPrice.value*10;
         document.getElementById("spanMax").innerHTML=`Max Price : ${rightPrice.value*10}`;
-        console.log(rightPrice.value);
+        // console.log(rightPrice.value);
         fetch('filterPrice.php', {
             method: 'POST', // or 'PUT'
             headers : {
                 'Content-Type': 'application/x-www-form-urlencoded', 
             },
-            body: `min=${leftPrice.value*10}&max=${rightPrice.value*10}&cat=${curCat}`,
+            body: `min=${leftPrice.value*10}&max=${rightPrice.value*10}&cat=${curCat}&s=${searchInput.value}`,
             })
             .then((response) => {
                 response.text().then(res=>{
@@ -333,6 +342,30 @@ $categories = $query->fetchAll(PDO::FETCH_OBJ);
             });
     }, false); 
 
+    searchInput.addEventListener('input' , function() {
+        console.log(searchInput.value);
+        fetch('filterPrice.php', {
+            method: 'POST', // or 'PUT'
+            headers : {
+                'Content-Type': 'application/x-www-form-urlencoded', 
+            },
+            body: `min=${leftPrice.value*10}&max=${rightPrice.value*10}&cat=${curCat}&s=${searchInput.value}`,
+            })
+            .then((response) => {
+                response.text().then(res=>{
+                    // console.log(res);
+                    document.getElementById("wrapProducts").innerHTML = res;
+                });
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    },false);
+
 </script>
+
+<script>
+	
+	</script>
 
 <?php require 'footer.php'; ?>

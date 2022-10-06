@@ -13,13 +13,14 @@ $categories = $query->fetchAll(PDO::FETCH_OBJ);
     $min = $_POST['min'];
     $max = $_POST['max'];
     $cat = $_POST['cat'];
+    $search = $_POST['s'];
     if ($cat == '0') {
         $products = $connect->query(
-            "SELECT * FROM products WHERE price BETWEEN '$min' AND '$max'"
+            "SELECT * FROM products WHERE product_name LIKE '%$search%' AND price BETWEEN '$min' AND '$max'"
         );
     } else {
         $products = $connect->query(
-            "SELECT * FROM products WHERE category_id='$cat' AND price BETWEEN '$min' AND '$max'"
+            "SELECT * FROM products WHERE product_name LIKE '%$search%' AND category_id='$cat' AND price BETWEEN '$min' AND '$max'"
         );
     }
 
@@ -65,7 +66,7 @@ $categories = $query->fetchAll(PDO::FETCH_OBJ);
                                                     <div class="info-meta">
                                                         <div class="info-price">
                                                             <span class="price">
-                                                                <span class="amount">JD <?php echo $product->price; ?></span>
+                                                                <span class="amount"> <?php echo $product->price; ?> JOD</span>
                                                             </span>
                                                         </div>
                                                         <div class="loop-add-to-cart">

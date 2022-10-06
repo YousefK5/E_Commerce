@@ -110,5 +110,11 @@
 				</div>
 			</div>
 
+			<script>
+	window.onload = function () {
+		document.getElementById("about").style.cssText = "border-bottom: 2px solid white;"
+	}
+	</script>
+
 
 <?php require_once 'footer.php'; ?>
