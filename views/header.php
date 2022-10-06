@@ -116,23 +116,23 @@
 											<ul class="nav navbar-nav primary-nav">
 												<li class="menu-item-has-children dropdown">
 													<a href="./index.php" class="dropdown-hover">
-														<span class="underline">Home</span> </span>
+														<span class="underline" id="home">Home</span> </span>
 													</a>
 
 												</li>
 												<li class="menu-item-has-children megamenu megamenu-fullwidth dropdown">
 													<a href="shop.php" class="dropdown-hover">
-														<span class="underline">Shop</span> <span class="caret"></span>
+														<span class="underline" id="shop">Shop</span> <span class="caret"></span>
 													</a>
 												</li>
 												<li class="menu-item-has-children megamenu megamenu-fullwidth dropdown">
 													<a href="about-us.php" class="dropdown-hover">
-														<span class="underline">About Us</span> <span class="caret"></span>
+														<span class="underline" id="about">About Us</span> <span class="caret"></span>
 													</a>
 												</li>
 												<li class="menu-item-has-children megamenu megamenu-fullwidth dropdown">
 													<a href="contact-us.php" class="dropdown-hover">
-														<span class="underline">Contact Us</span> <span class="caret"></span>
+														<span class="underline" id="contact">Contact Us</span> <span class="caret"></span>
 													</a>
 												</li>
 												<!-- search desktop icon -->

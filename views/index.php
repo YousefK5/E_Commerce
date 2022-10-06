@@ -248,7 +248,7 @@
 																	<span class="price">
 																		<span class="amount"><?php echo $prod[
                       'price'
-                  ]; ?></span> JD<span class="amount"></span>
+                  ]; ?></span> JOD<span class="amount"></span>
 																	</span>
 																</div>
 																<div class="loop-add-to-cart">
@@ -317,7 +317,7 @@
 																	<span class="price">
 																		<span class="amount"><?php echo $prod[
                       'price'
-                  ]; ?></span> JD<span class="amount"></span>
+                  ]; ?></span> JOD<span class="amount"></span>
 																	</span>
 																</div>
 																<div class="loop-add-to-cart">
@@ -390,9 +390,12 @@
 															<div class="info-meta">
 																<div class="info-price">
 																	<span class="price">
-																		<span class="amount"><?php echo $prod[
-                      'price'
-                  ]; ?></span> JD<span class="amount"></span>
+																		<span class="amount"><del><?php echo $prod['price'] +
+                      $prod['price'] *
+                          ($prod['discount'] /
+                              100); ?> JOD</del><?php echo $prod[
+     'price'
+ ]; ?></span> JOD<span class="amount"></span>
 																	</span>
 																</div>
 																<div class="loop-add-to-cart">
@@ -422,53 +425,11 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<script>
+	window.onload = function () {
+		document.getElementById("home").style.cssText = "border-bottom: 2px solid white;"
+	}
+</script>
 
 
 

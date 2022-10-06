@@ -20,7 +20,7 @@ $orders = $query->fetchAll(PDO::FETCH_OBJ);
 				Swal.fire({
 					icon: 'success',
 					title: 'Your Order has been successfully received.',
-					text: 'Thank you for your trust in our products.',
+					text: 'Thank you for your trust in our products. We will contact you soon when the order is ready',
 					footer: 'Here you can browse all your orders',
 				})
 		}

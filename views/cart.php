@@ -204,7 +204,7 @@ if (isset($_POST['apply_coupon'])) {
 													</td>
 													<td class="product-price text-center">
 													<input type="hidden" value="<?php echo $product->price; ?>" name="price">
-                                                    <span class="amount">JD <?php echo $product->price; ?></span>
+                                                    <span class="amount"> <?php echo $product->price; ?> JOD</span>
 
 													</td>
 													<td class="product-quantity text-center">
@@ -219,8 +219,8 @@ if (isset($_POST['apply_coupon'])) {
 													</td>
 													
 													<td class="product-subtotal hidden-xs text-center">
-														<span class="amount" id="subTotal">JD <?php echo $product->price *
-                  ($fromDB ? $cart->quantity : $cart[1]); ?></span>
+														<span class="amount" id="subTotal"> <?php echo $product->price *
+                  ($fromDB ? $cart->quantity : $cart[1]); ?> JOD</span>
 													</td>
 												</tr>
 												<div class="modal fade shop product-quickview" tabindex="-1" role="dialog" aria-hidden="true">
@@ -361,7 +361,7 @@ if (isset($_POST['apply_coupon'])) {
 											<table>
 												<tr class="cart-subtotal">
 													<th>Subtotal</th>
-													<td><span class="amount">JD <?php echo $total; ?></span></td>
+													<td><span class="amount"> <?php echo $total; ?> JOD</span></td>
 												</tr>
 												<tr class="shipping">
 													<th>Discount</th>
@@ -373,11 +373,11 @@ if (isset($_POST['apply_coupon'])) {
 												</tr>
 												<tr class="order-total">
 													<th>Total</th>
-													<td><strong><span class="amount">JD <?php if (isset($_POST['apply_coupon'])) {
+													<td><strong><span class="amount"> <?php if (isset($_POST['apply_coupon'])) {
                  echo $total - $total * ($coupon_saved->discount / 100);
              } else {
                  echo $total;
-             } ?></span></strong></td>
+             } ?> JOD</span></strong></td>
 												</tr>
 											</table>
 											<div class="wc-proceed-to-checkout">
@@ -450,6 +450,7 @@ if (isset($_POST['apply_coupon'])) {
 					<button type="button" class="close" data-dismiss="modal">
 						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
 					</button>
+					<h4>You Have To Login To Complete Checkout Proccess</h4>
 					<h4 class="modal-title">Login</h4>
 				</div>
 
